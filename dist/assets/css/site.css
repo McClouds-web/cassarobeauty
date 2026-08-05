@@ -1329,3 +1329,30 @@ body:has(.hero--dark) .hero--dark .hero__seal { top: 172px; right: 44px; }
 /* ---- Never allow sideways scroll ------------------------------------------ */
 html, body { max-width: 100%; overflow-x: hidden; }
 img, video { max-width: 100%; }
+
+/* =========================================================================
+   Cover pages: header stack height
+   The hero pulls up behind the announcement bar and header. That offset was
+   hardcoded per breakpoint and drifted out of sync, leaving a strip of page
+   background above the bar. One variable now drives both the pull-up and the
+   padding that compensates for it, so they cannot disagree.
+     desktop  40 announce + 96 header (14+68+14)
+     <=1024   40 announce + 80 header (10+60+10)
+     <=420    36 announce + 80 header
+   ========================================================================= */
+:root { --topstack: 136px; }
+@media (max-width: 1024px) { :root { --topstack: 120px; } }
+@media (max-width: 420px)  { :root { --topstack: 116px; } }
+
+body:has(.hero--dark) .hero--dark,
+body:has(.hero--dark) .hero--dark[class] {
+  margin-top: calc(-1 * var(--topstack));
+  padding-top: var(--topstack);
+}
+/* Fallback ground for the top strip only. A background on <body> would show
+   through every section below the hero, so it is pinned behind the header
+   stack instead. */
+body:has(.hero--dark)::before {
+  content: ""; position: fixed; top: 0; left: 0; right: 0;
+  height: var(--topstack); background: #81492B; z-index: -1;
+}
