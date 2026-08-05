@@ -1143,3 +1143,187 @@ body:has(.hero--dark) .hero--dark .hero__seal { top: 172px; right: 44px; }
 .pdp__stage .ph-img { padding: 12px; }
 .brandcard__media .ph-img { padding: 8px; }
 .pcard:hover .pcard__media .ph-img { transform: scale(1.04); }
+
+/* =========================================================================
+   Responsive corrections
+   ========================================================================= */
+
+/* ---- Announcement bar ----------------------------------------------------
+   The base rule kept only the first child on narrow screens, which left the
+   phone number and dropped the offer. Show the offer instead — it is the one
+   line worth the space — and centre it. */
+@media (max-width: 1024px) {
+  .announce .wrap > :not(:first-child) { display: block; }
+  .announce .wrap > :first-child,
+  .announce .wrap > .announce__social { display: none; }
+  .announce .wrap { justify-content: center; }
+  .announce { font-size: 12px; }
+}
+@media (max-width: 420px) {
+  .announce .wrap { height: 36px; }
+  .announce { font-size: 11px; }
+}
+
+/* ---- Header pill ---------------------------------------------------------
+   Search, wishlist and account all live in the drawer on small screens, so
+   the pill keeps only the cart and the menu button. */
+@media (max-width: 1024px) {
+  .icons > a[aria-label="Search"],
+  .icons > a[aria-label="Wishlist"],
+  .icons > a[aria-label="Account"] { display: none; }
+  .icons { gap: 2px; }
+  .burger { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; }
+  .burger:hover { background: var(--section); }
+}
+
+/* ---- Hero below desktop --------------------------------------------------
+   A landscape photograph inside a tall narrow box either zooms in hard
+   (`cover`) or floats with dead space (`contain`). Below 1024 the hero stops
+   being an overlay and becomes stacked: a full-width image band with the copy
+   underneath on solid cocoa. Nothing crops, nothing overlaps. */
+@media (max-width: 1024px) {
+  body:has(.hero--dark) .hero--dark {
+    height: auto; min-height: 0; max-height: none;
+    margin-top: -116px; padding-top: 116px;
+    display: block;
+    background: var(--green-dark);
+  }
+  .hero--dark .hero__backdrop { display: none; }
+  body:has(.hero--dark) .hero--dark .hero__cover {
+    position: static;
+    width: 100%; height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover; object-position: 58% 18%;
+  }
+  .hero--dark::after { display: none; }
+  body:has(.hero--dark) .hero--dark::before { display: none; }
+  body:has(.hero--dark) .hero--dark .hero__seal { display: none; }
+  .hero--cover .hero__inner { padding-top: 28px; padding-bottom: 36px; }
+  .hero--cover .hero__copy { max-width: 100%; }
+}
+@media (max-width: 720px) {
+  body:has(.hero--dark) .hero--dark { margin-top: -104px; padding-top: 104px; }
+  body:has(.hero--dark) .hero--dark .hero__cover { aspect-ratio: 4 / 3; object-position: 60% 16%; }
+  .hero--cover h1 { font-size: 30px; line-height: 1.16; }
+  .hero--cover .hero__copy p br { display: none; }
+  .hero--cover .hero__cta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero--cover .hero__cta .btn { width: 100%; padding-left: 10px; padding-right: 10px; font-size: 13px; }
+}
+
+/* ---- Section rhythm and type --------------------------------------------- */
+@media (max-width: 720px) {
+  .section { padding: 40px 0; }
+  .wrap { padding: 0 18px; }
+  h2, .section-head h2 { font-size: 24px; }
+  .newsletter h2 { font-size: 22px; }
+  .pagehead { padding: 30px 0; }
+  .pagehead h1 { font-size: 26px; }
+  /* stacked headlines were breaking awkwardly at narrow widths */
+  .section-head h2 br, .newsletter h2 br { display: none; }
+}
+
+/* ---- Grids ---------------------------------------------------------------
+   Two product cards per row reads better than one full-width card. */
+@media (max-width: 720px) {
+  .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .grid--2 { grid-template-columns: 1fr; }
+  .cats, .cats--4 { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .pcard__name { font-size: 13px; }
+  .pcard__cat, .rating { font-size: 11px; }
+  .price { font-size: 14px; }
+  .bloglist .grid--3, .blog-layout .grid--3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .grid--3, .grid--4 { gap: 12px; }
+  .rating { display: none; }   /* "Rating coming soon" crowds a narrow card */
+}
+
+/* ---- Trust + support strips ---------------------------------------------- */
+@media (max-width: 720px) {
+  .trust .wrap { grid-template-columns: 1fr; gap: 16px; padding-top: 26px; padding-bottom: 26px; }
+  .trust__item { justify-content: flex-start; }
+  .trust__item .ico { font-size: 26px; }
+}
+
+/* ---- Product detail ------------------------------------------------------ */
+@media (max-width: 720px) {
+  .pdp { gap: 26px; }
+  .pdp__title { font-size: 22px; }
+  .pdp__price { font-size: 22px; }
+  .pdp__actions { gap: 10px; }
+  .pdp__actions .btn { flex: 1 1 140px; }
+  .tabs { gap: 18px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { white-space: nowrap; font-size: 14px; }
+  .spec { font-size: 12px; }
+  .spec th, .spec td { padding: 10px 12px; }
+}
+
+/* ---- Filters -------------------------------------------------------------
+   A long checkbox list above the products buries the grid on a phone, so the
+   sidebar collapses into a disclosure. */
+@media (max-width: 1024px) {
+  .filters {
+    border: 1px solid var(--line); border-radius: var(--radius-card);
+    padding: 16px 18px; margin-bottom: 22px;
+  }
+  .filters__title { margin-bottom: 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .filters__title::after { content: "+"; font-size: 20px; line-height: 1; }
+  .filters.is-open .filters__title::after { content: "\2212"; }
+  .filters > :not(.filters__title) { display: none; }
+  .filters.is-open > :not(.filters__title) { display: block; margin-top: 18px; }
+  .filters.is-open .ask { display: block; }
+}
+
+/* ---- Tables --------------------------------------------------------------
+   Cart and wishlist rows become stacked blocks with their column label. */
+@media (max-width: 720px) {
+  .linetable thead { display: none; }
+  .linetable, .linetable tbody, .linetable tr, .linetable td { display: block; width: 100%; }
+  .linetable tr {
+    border: 1px solid var(--line); border-radius: var(--radius-card);
+    padding: 14px; margin-bottom: 14px; position: relative;
+  }
+  .linetable td { border: 0; padding: 4px 0; }
+  .linetable__prod { display: flex; gap: 12px; align-items: center; padding-right: 26px; }
+  .linetable .rm { position: absolute; top: 12px; right: 12px; }
+  .linetable td[data-label]::before {
+    content: attr(data-label) " "; color: var(--muted); font-size: 12px;
+  }
+  .cart-actions { flex-direction: column; align-items: stretch; }
+  .cart-actions .input, .cart-actions .btn { max-width: 100% !important; width: 100%; }
+  .summary { position: static; }
+}
+
+/* ---- Account, blog, contact, checkout ------------------------------------ */
+@media (max-width: 720px) {
+  .acctnav { grid-template-columns: 1fr; }
+  .blogside { order: 2; }
+  .bd-share { flex-direction: row; justify-content: flex-start; align-items: center; }
+  .infocard { padding: 18px; }
+  .row2 { grid-template-columns: 1fr; gap: 0; }
+  .radios { flex-direction: column; gap: 10px; }
+  .radio, .paymethod { width: 100%; }
+  .orderbar { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .orderbar .btn { margin-left: 0; width: 100%; }
+}
+
+/* ---- Footer --------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .footer { padding-top: 38px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 26px; }
+  .footer__grid > :first-child { grid-column: 1 / -1; }
+  .footer__grid > :last-child { grid-column: 1 / -1; }
+  .footer__bar { flex-direction: column; gap: 10px; text-align: left; }
+  .subscribe { flex-direction: column; }
+  .subscribe .btn { width: 100%; }
+}
+
+/* ---- Marquee -------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .marquee__track { font-size: 12px; gap: 28px; padding: 10px 0; animation-duration: 26s; }
+}
+
+/* ---- Never allow sideways scroll ------------------------------------------ */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, video { max-width: 100%; }
