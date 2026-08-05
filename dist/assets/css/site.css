@@ -1391,3 +1391,86 @@ body:has(.hero--dark)::before {
 @media (prefers-reduced-motion: reduce) {
   .hero__slide { transition: none; }
 }
+
+/* =========================================================================
+   Hero: settle transition + parallax
+   The incoming cover fades in over a longer curve while easing down from a
+   slight scale, so it settles rather than snapping. Parallax offset comes
+   from --py, set in rAF on scroll.
+   ========================================================================= */
+.hero__slide {
+  opacity: 0;
+  transform: scale(1.045);
+  transition: opacity 1.6s cubic-bezier(.4,0,.2,1),
+              transform 2.6s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+.hero__slide.is-active { opacity: 1; transform: scale(1); }
+
+/* Parallax is scroll-driven in CSS rather than a scroll listener: it runs on
+   the compositor, cannot jank the scroll thread, and needs no JS. Browsers
+   without scroll-driven animation simply get a static cover. */
+@supports (animation-timeline: scroll()) {
+  .hero--dark .hero__cover {
+    animation: heroDrift linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100vh;
+  }
+  .hero--dark .hero__backdrop {
+    animation: heroDriftBack linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100vh;
+  }
+}
+@keyframes heroDrift     { from { transform: translate3d(0,0,0); }
+                           to   { transform: translate3d(0,96px,0); } }
+@keyframes heroDriftBack { from { transform: scale(1.15) translate3d(0,0,0); }
+                           to   { transform: scale(1.15) translate3d(0,38px,0); } }
+
+@media (max-width: 1024px) {
+  /* stacked hero — no parallax, and the settle stays but without the scale
+     so the image band cannot bleed past its container */
+  .hero--dark .hero__cover,
+  .hero--dark .hero__backdrop { transform: none; }
+  .hero__slide { transform: none; }
+  .hero__slide.is-active { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide { transition: none; transform: none; }
+  .hero--dark .hero__cover, .hero--dark .hero__backdrop { transform: none; }
+}
+
+/* =========================================================================
+   Stacked hero: vignette instead of a hard edge
+   The copy block used to butt against the bottom of the photograph on one
+   straight line. It now overlaps the image and sits on a gradient that starts
+   fully transparent over the picture and resolves into solid brown, so the
+   two read as one surface.
+   ========================================================================= */
+@media (max-width: 1024px) {
+  .hero--cover .hero__inner {
+    position: relative;
+    z-index: 3;
+    margin-top: -128px;
+    padding-top: 0;
+  }
+  .hero--cover .hero__inner::before {
+    content: "";
+    position: absolute;
+    left: 50%; transform: translateX(-50%);
+    top: -60px; bottom: -60px; width: 100vw;
+    z-index: -1;
+    background: linear-gradient(180deg,
+      rgba(129,73,43,0)    0%,
+      rgba(129,73,43,.35) 18%,
+      rgba(131,74,44,.78) 40%,
+      #854C2E             62%,
+      #8B5032            100%);
+  }
+  /* a little more image, since the copy now sits over its lower edge */
+  body:has(.hero--dark) .hero--dark .hero__cover { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 720px) {
+  .hero--cover .hero__inner { margin-top: -104px; }
+  body:has(.hero--dark) .hero--dark .hero__cover { aspect-ratio: 1 / 1; object-position: 60% 12%; }
+}

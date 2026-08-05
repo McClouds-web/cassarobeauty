@@ -76,7 +76,7 @@
     }
     function start() {
       if (!still && !timer && slides.length > 1) {
-        timer = setInterval(function () { show(idx + 1); }, 6000);
+        timer = setInterval(function () { show(idx + 1); }, 10000);
       }
     }
     function stop() { clearInterval(timer); timer = null; }
