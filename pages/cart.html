@@ -1,0 +1,66 @@
+<section class="pagehead">
+  <div class="wrap">
+    <h1>Shopping Cart</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>Shopping Cart</b></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap cart-layout">
+    <div>
+      <table class="linetable">
+        <thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="linetable__prod">
+              <button class="rm" aria-label="Remove">&times;</button>
+              {{PH|SKIN1004 Madagascar Centella Ampoule Image}}
+              <div><strong>Madagascar Centella Ampoule</strong><small>SKIN1004</small></div>
+            </td>
+            <td>R___</td>
+            <td><div class="qty" data-qty><button type="button">&minus;</button><input value="1"/><button type="button">+</button></div></td>
+            <td class="strong">R___</td>
+          </tr>
+          <tr>
+            <td class="linetable__prod">
+              <button class="rm" aria-label="Remove">&times;</button>
+              {{PH|Beauty of Joseon Relief Sun Image}}
+              <div><strong>Relief Sun: Rice + Probiotics</strong><small>Beauty of Joseon</small></div>
+            </td>
+            <td>R___</td>
+            <td><div class="qty" data-qty><button type="button">&minus;</button><input value="1"/><button type="button">+</button></div></td>
+            <td class="strong">R___</td>
+          </tr>
+          <tr>
+            <td class="linetable__prod">
+              <button class="rm" aria-label="Remove">&times;</button>
+              {{PH|Abib Acne Foam Cleanser Image}}
+              <div><strong>Acne Foam Cleanser</strong><small>Abib</small></div>
+            </td>
+            <td>R___</td>
+            <td><div class="qty" data-qty><button type="button">&minus;</button><input value="1"/><button type="button">+</button></div></td>
+            <td class="strong">R___</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cart-actions">
+        <input class="input" style="max-width:230px" placeholder="Coupon Code"/>
+        <button class="btn btn--primary">Apply Coupon</button>
+        <a class="link-underline" href="cart.html">Clear Shopping Cart</a>
+      </div>
+    </div>
+
+    <aside class="summary">
+      <h3>Order Summary</h3>
+      <dl>
+        <div><dt>Items</dt><dd>3</dd></div>
+        <div><dt>Sub Total</dt><dd>R___</dd></div>
+        <div><dt>Shipping</dt><dd>Calculated at checkout</dd></div>
+        <div><dt>Coupon Discount</dt><dd>R___</dd></div>
+      </dl>
+      <div class="summary__total"><span>Total</span><b>R___</b></div>
+      <a class="btn btn--primary btn--block" href="checkout-billing.html">Proceed to Checkout</a>
+    </aside>
+  </div>
+</section>

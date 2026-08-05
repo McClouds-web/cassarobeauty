@@ -1,0 +1,36 @@
+<section class="pagehead">
+  <div class="wrap">
+    <h1>My Account</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>My Account</b></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap acct">
+    <nav class="acctnav">
+        <a class="acctnav__item" href="account.html">Personal Information</a>
+        <a class="acctnav__item" href="account-orders.html">My Orders</a>
+        <a class="acctnav__item" href="account-address.html">Manage Address</a>
+        <a class="acctnav__item is-active" href="account-payment.html">Payment Method</a>
+        <a class="acctnav__item" href="account-password.html">Password Manager</a>
+        <a class="acctnav__item" href="account-logout.html">Logout</a>
+    </nav>
+    <div class="acct__panel">
+      <p style="font-size:13px;margin-bottom:20px">Saved payment methods will appear here. Available options will be confirmed once the payment gateway is finalised.</p>
+
+      <div class="paymethod paymethod--card">
+        <label class="paymethod__head"><input type="radio" name="pm"/> <b class="pm-logo pm-logo--card"><span class="material-symbols-outlined" style="font-size:16px">add_card</span></b> Add New Card</label>
+        <div class="paymethod__body">
+          <div class="field"><label>Card Holder Name <span class="req">*</span></label><input class="input" placeholder="Name on card"/></div>
+          <div class="field"><label>Card Number <span class="req">*</span></label><input class="input" placeholder="Card number"/></div>
+          <div class="row2">
+            <div class="field"><label>Expiry Date <span class="req">*</span></label><input class="input" placeholder="MM/YY"/></div>
+            <div class="field"><label>CVV <span class="req">*</span></label><input class="input" placeholder="CVV"/></div>
+          </div>
+          <label class="check"><input type="checkbox"/> Save card for future payments</label>
+          <button class="btn btn--primary" style="margin-top:12px">Add Card</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

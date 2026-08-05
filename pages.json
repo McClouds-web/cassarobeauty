@@ -1,0 +1,182 @@
+[
+ {
+  "file": "index",
+  "title": "Home",
+  "nav": "home",
+  "desc": "Carefully selected skincare, makeup and beauty essentials from trusted international brands."
+ },
+ {
+  "file": "shop",
+  "title": "Shop",
+  "nav": "shop",
+  "desc": "Shop carefully selected skincare, cosmetics and beauty essentials."
+ },
+ {
+  "file": "product",
+  "title": "Product Details",
+  "nav": "shop",
+  "desc": "Product details."
+ },
+ {
+  "file": "medicube-collagen-jelly-cream",
+  "title": "Medicube Collagen Jelly Cream",
+  "nav": "skin",
+  "desc": "Medicube Collagen Jelly Cream 50 ml \u2014 a lightweight gel moisturiser for long-lasting hydration."
+ },
+ {
+  "file": "abib-collagen-gel-mask",
+  "title": "Abib Collagen Gel Mask",
+  "nav": "skin",
+  "desc": "Abib Collagen Gel Mask Sedum Jelly 35 g \u2014 a hydrating hydrogel sheet mask."
+ },
+ {
+  "file": "abib-acne-foam-cleanser",
+  "title": "Abib Acne Foam Cleanser",
+  "nav": "skin",
+  "desc": "Abib Acne Foam Cleanser Heartleaf Foam 120 ml \u2014 a gentle daily cleanser with Heartleaf and BHA."
+ },
+ {
+  "file": "skincare",
+  "title": "Skincare",
+  "nav": "skin",
+  "desc": "Carefully selected skincare from trusted international brands."
+ },
+ {
+  "file": "makeup",
+  "title": "Makeup",
+  "nav": "makeup",
+  "desc": "Makeup coming soon to Cassaro Beauty."
+ },
+ {
+  "file": "fragrance",
+  "title": "Fragrance",
+  "nav": "fragrance",
+  "desc": "Fragrance and body care coming soon to Cassaro Beauty."
+ },
+ {
+  "file": "brands",
+  "title": "Brands",
+  "nav": "brands",
+  "desc": "The beauty brands stocked by Cassaro Beauty."
+ },
+ {
+  "file": "cart",
+  "title": "Shopping Cart",
+  "nav": "",
+  "desc": "Review the items in your cart."
+ },
+ {
+  "file": "checkout-billing",
+  "title": "Checkout",
+  "nav": "",
+  "desc": "Billing details."
+ },
+ {
+  "file": "checkout-payment",
+  "title": "Checkout",
+  "nav": "",
+  "desc": "Select a payment method."
+ },
+ {
+  "file": "order-completed",
+  "title": "Order Completed",
+  "nav": "",
+  "desc": "Your order is complete."
+ },
+ {
+  "file": "wishlist",
+  "title": "Wishlist",
+  "nav": "",
+  "desc": "Products you have saved."
+ },
+ {
+  "file": "track-order",
+  "title": "Track Your Order",
+  "nav": "",
+  "desc": "Track your Cassaro Beauty order."
+ },
+ {
+  "file": "order-status",
+  "title": "Order Status",
+  "nav": "",
+  "desc": "Current status of your order."
+ },
+ {
+  "file": "about",
+  "title": "About Us",
+  "nav": "about",
+  "desc": "Cassaro Beauty is a premium online destination for carefully selected skincare and cosmetics."
+ },
+ {
+  "file": "blogs",
+  "title": "Beauty Journal",
+  "nav": "journal",
+  "desc": "Skincare guides and beauty product information from Cassaro Beauty."
+ },
+ {
+  "file": "blog-details",
+  "title": "Beauty Journal",
+  "nav": "journal",
+  "desc": "Skincare guides from the Cassaro Beauty Journal."
+ },
+ {
+  "file": "contact",
+  "title": "Contact Us",
+  "nav": "contact",
+  "desc": "Get in touch with the Cassaro Beauty team."
+ },
+ {
+  "file": "faqs",
+  "title": "FAQs",
+  "nav": "",
+  "desc": "Frequently asked questions about orders, delivery and returns."
+ },
+ {
+  "file": "account",
+  "title": "My Account",
+  "nav": "",
+  "desc": "Personal information."
+ },
+ {
+  "file": "account-orders",
+  "title": "My Account",
+  "nav": "",
+  "desc": "My orders."
+ },
+ {
+  "file": "account-address",
+  "title": "My Account",
+  "nav": "",
+  "desc": "Manage addresses."
+ },
+ {
+  "file": "account-payment",
+  "title": "My Account",
+  "nav": "",
+  "desc": "Payment methods."
+ },
+ {
+  "file": "account-password",
+  "title": "My Account",
+  "nav": "",
+  "desc": "Password manager."
+ },
+ {
+  "file": "account-logout",
+  "title": "My Account",
+  "nav": "",
+  "desc": "Log out."
+ },
+ {
+  "file": "404",
+  "title": "Page Not Found",
+  "nav": "",
+  "desc": "The page you are looking for cannot be found."
+ },
+ {
+  "file": "coming-soon",
+  "title": "Coming Soon",
+  "nav": "",
+  "desc": "Cassaro Beauty is launching soon."
+ }
+]

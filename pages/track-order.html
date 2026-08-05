@@ -1,0 +1,17 @@
+<section class="pagehead">
+  <div class="wrap">
+    <h1>Track Your Order</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>Track Your Order</b></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <p style="margin-bottom:26px">To track your order, enter your order number in the box below and select Track Order. Your order number is included on your receipt and in your order confirmation email.</p>
+    <form onsubmit="event.preventDefault();location.href='order-status.html'">
+      <div class="field"><label>Order Number <span class="req">*</span></label><input class="input" placeholder="Enter your order number" required/></div>
+      <div class="field"><label>Billing Email <span class="req">*</span></label><input class="input" type="email" placeholder="Enter your email address" required/></div>
+      <button class="btn btn--primary" type="submit">Track Order</button>
+    </form>
+  </div>
+</section>

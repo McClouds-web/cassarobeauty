@@ -1,0 +1,46 @@
+<section class="pagehead">
+  <div class="wrap">
+    <h1>My Account</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>My Account</b></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap acct">
+    <nav class="acctnav">
+        <a class="acctnav__item" href="account.html">Personal Information</a>
+        <a class="acctnav__item" href="account-orders.html">My Orders</a>
+        <a class="acctnav__item is-active" href="account-address.html">Manage Address</a>
+        <a class="acctnav__item" href="account-payment.html">Payment Method</a>
+        <a class="acctnav__item" href="account-password.html">Password Manager</a>
+        <a class="acctnav__item" href="account-logout.html">Logout</a>
+    </nav>
+    <div class="acct__panel">
+      <p style="font-size:13px;margin-bottom:20px">Your saved delivery addresses will appear here.</p>
+
+      <h3 style="margin:0 0 18px">Add New Address</h3>
+      <form onsubmit="event.preventDefault();alert('Address added.')">
+        <div class="row2">
+          <div class="field"><label>First Name <span class="req">*</span></label><input class="input" placeholder="First name"/></div>
+          <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" placeholder="Last name"/></div>
+        </div>
+        <div class="field"><label>Company Name (Optional)</label><input class="input" placeholder="Company name"/></div>
+        <div class="field"><label>Country <span class="req">*</span></label><select class="input"><option selected>South Africa</option></select></div>
+        <div class="field"><label>Street Address <span class="req">*</span></label><input class="input" placeholder="Street address"/></div>
+        <div class="field"><label>City <span class="req">*</span></label><input class="input" placeholder="City"/></div>
+        <div class="field"><label>Province <span class="req">*</span></label>
+          <select class="input">
+            <option value="">Select Province</option>
+            <option>Eastern Cape</option><option>Free State</option><option>Gauteng</option>
+            <option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option>
+            <option>Northern Cape</option><option>North West</option><option>Western Cape</option>
+          </select>
+        </div>
+        <div class="field"><label>Postal Code <span class="req">*</span></label><input class="input" placeholder="Postal code"/></div>
+        <div class="field"><label>Phone <span class="req">*</span></label><input class="input" placeholder="Phone number"/></div>
+        <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" placeholder="Email address"/></div>
+        <button class="btn btn--primary" type="submit">Add Address</button>
+      </form>
+    </div>
+  </div>
+</section>

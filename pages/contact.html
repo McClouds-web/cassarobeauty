@@ -1,0 +1,33 @@
+<section class="pagehead">
+  <div class="wrap">
+    <h1>Contact Us</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>Contact Us</b></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-layout">
+    <form onsubmit="event.preventDefault();this.reset();alert('Thank you. Your message has been sent.')">
+      <div class="row2">
+        <div class="field"><label>First Name <span class="req">*</span></label><input class="input" placeholder="First name" required/></div>
+        <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" placeholder="Last name" required/></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" placeholder="Email address" required/></div>
+        <div class="field"><label>Phone <span class="req">*</span></label><input class="input" placeholder="Phone number" required/></div>
+      </div>
+      <div class="field"><label>Subject <span class="req">*</span></label><input class="input" placeholder="Subject" required/></div>
+      <div class="field"><label>Your Message <span class="req">*</span></label><textarea class="input" placeholder="How can we help?" required></textarea></div>
+      <button class="btn btn--primary" type="submit">Send a Message</button>
+    </form>
+    <div class="contact-photo">{{PH|Contact Page Image}}</div>
+  </div>
+
+  <div class="wrap" style="margin-top:44px">
+    <div class="grid grid--3">
+      <div class="infocard"><span class="infocard__ico material-symbols-outlined">location_on</span><strong>Location</strong><small>South Africa</small></div>
+      <div class="infocard"><span class="infocard__ico material-symbols-outlined">call</span><strong>Phone</strong><small>+27 XX XXX XXXX</small></div>
+      <div class="infocard"><span class="infocard__ico material-symbols-outlined">mail</span><strong>Email</strong><small>info@cassarobeauty.co.za</small></div>
+    </div>
+  </div>
+</section>

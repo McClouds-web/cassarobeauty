@@ -1,0 +1,14 @@
+# Raw Stitch export from the abandoned first build (20 MB, superseded by the
+# Behance reference). Kept locally, not worth versioning.
+_source/
+_archive-stitch-build/
+
+# One-off migration scripts from that build
+extract_pages.py
+wire_links.py
+fetch_images.py
+image-map.json
+
+.DS_Store
+__pycache__/
+*.pyc
