@@ -1,4 +1,4 @@
-/* Beauty Shop — shared behaviour */
+/* Cassaro Beauty — shared behaviour */
 (function () {
   'use strict';
 
@@ -55,6 +55,53 @@
       input.value = (parseInt(input.value, 10) || 1) + 1;
     });
   });
+
+  /* Hero cover slideshow: crossfade, dots, auto-advance.
+     Pauses on hover and while the tab is hidden, and never auto-advances for
+     visitors who have asked for reduced motion. */
+  var hero = document.querySelector('[data-hero-slider]');
+  if (hero) {
+    var slides = hero.querySelectorAll('.hero__slide');
+    var dots = hero.querySelectorAll('.hero__dots button');
+    var idx = 0, timer = null;
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(n) {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach(function (el, k) { el.classList.toggle('is-active', k === idx); });
+      dots.forEach(function (el, k) {
+        el.classList.toggle('is-active', k === idx);
+        el.setAttribute('aria-selected', k === idx ? 'true' : 'false');
+      });
+    }
+    function start() {
+      if (!still && !timer && slides.length > 1) {
+        timer = setInterval(function () { show(idx + 1); }, 6000);
+      }
+    }
+    function stop() { clearInterval(timer); timer = null; }
+
+    dots.forEach(function (el, k) {
+      el.addEventListener('click', function () { show(k); stop(); start(); });
+    });
+    hero.addEventListener('mouseenter', stop);
+    hero.addEventListener('mouseleave', start);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+    start();
+  }
+
+  /* Filter sidebar collapses to a disclosure below 1024 */
+  var filters = document.querySelector('.filters');
+  var ftitle = document.querySelector('.filters__title');
+  if (filters && ftitle) {
+    ftitle.addEventListener('click', function () {
+      if (window.matchMedia('(max-width: 1024px)').matches) {
+        filters.classList.toggle('is-open');
+      }
+    });
+  }
 
   /* Tabs (product details, account) */
   document.querySelectorAll('[data-tabs]').forEach(function (nav) {

@@ -1356,3 +1356,38 @@ body:has(.hero--dark)::before {
   content: ""; position: fixed; top: 0; left: 0; right: 0;
   height: var(--topstack); background: #81492B; z-index: -1;
 }
+
+/* =========================================================================
+   Hero slideshow
+   Two covers crossfade behind fixed copy. The copy does not change between
+   slides, so nothing reflows and there is no layout shift on rotation.
+   ========================================================================= */
+.hero__slide {
+  position: absolute; inset: 0; z-index: 0;
+  opacity: 0; transition: opacity 1.1s ease;
+}
+.hero__slide.is-active { opacity: 1; }
+
+.hero__dots {
+  position: absolute; z-index: 4;
+  left: 0; right: 0; bottom: 26px;
+  display: flex; justify-content: center; gap: 10px;
+}
+.hero__dots button {
+  width: 34px; height: 4px; border-radius: var(--radius-pill);
+  background: rgba(244,236,225,.42);
+  transition: background .25s, width .25s;
+}
+.hero__dots button:hover { background: rgba(244,236,225,.7); }
+.hero__dots button.is-active { background: #F4ECE1; width: 52px; }
+
+@media (max-width: 1024px) {
+  /* stacked hero: the slides sit in flow, so only the image band crossfades */
+  .hero__slide { position: relative; inset: auto; }
+  .hero__slide:not(.is-active) { position: absolute; }
+  .hero__dots { position: static; margin: 14px 0 0; }
+  .hero__dots button { background: rgba(244,236,225,.38); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide { transition: none; }
+}

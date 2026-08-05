@@ -28,6 +28,7 @@ def marquee():
 IMAGES = {
  # hero + lifestyle
  "Cassaro Beauty Hero Image":            "cassaro-cover-1",
+ "Cassaro Beauty Hero Image 2":          "cassaro-cover-2",
  "About Image 1":                        "abib-heartleaf-cleanser-lifestyle",
  "About Image 2":                        "skin1004-madagascar-centella-ampoule-lifestyle",
  "About Image 3":                        "medicube-jar-lifestyle",
