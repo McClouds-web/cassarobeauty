@@ -1326,8 +1326,11 @@ body:has(.hero--dark) .hero--dark .hero__seal { top: 172px; right: 44px; }
   .marquee__track { font-size: 12px; gap: 28px; padding: 10px 0; animation-duration: 26s; }
 }
 
-/* ---- Never allow sideways scroll ------------------------------------------ */
-html, body { max-width: 100%; overflow-x: hidden; }
+/* ---- Never allow sideways scroll ------------------------------------------
+   `overflow-x: hidden` on html/body silently breaks `position: sticky` on
+   descendants, which stopped the header sticking. `clip` gives the same
+   protection without creating a scroll container. */
+html, body { max-width: 100%; overflow-x: clip; }
 img, video { max-width: 100%; }
 
 /* =========================================================================
@@ -1473,4 +1476,21 @@ body:has(.hero--dark)::before {
 @media (max-width: 720px) {
   .hero--cover .hero__inner { margin-top: -104px; }
   body:has(.hero--dark) .hero--dark .hero__cover { aspect-ratio: 1 / 1; object-position: 60% 12%; }
+}
+
+
+/* =========================================================================
+   Header stays put
+   The pill is pinned at every width so the menu and cart are always reachable
+   without scrolling back up.
+   ========================================================================= */
+.header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+}
+/* the announcement bar scrolls away; the header then rests against the top */
+@supports (position: sticky) {
+  .header { will-change: transform; }
 }
