@@ -1186,7 +1186,9 @@ body:has(.hero--dark) .hero--dark .hero__seal { top: 172px; right: 44px; }
     height: auto; min-height: 0; max-height: none;
     margin-top: -116px; padding-top: 116px;
     display: block;
-    background: var(--green-dark);
+    /* sampled from the cover photo itself (#81492B at the top edge, #8B5032
+       where it meets the copy) so the bands flow out of the image */
+    background: linear-gradient(180deg, #81492B 0%, #8B5032 100%);
   }
   .hero--dark .hero__backdrop { display: none; }
   body:has(.hero--dark) .hero--dark .hero__cover {
