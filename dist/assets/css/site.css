@@ -1352,13 +1352,9 @@ body:has(.hero--dark) .hero--dark[class] {
   margin-top: calc(-1 * var(--topstack));
   padding-top: var(--topstack);
 }
-/* Fallback ground for the top strip only. A background on <body> would show
-   through every section below the hero, so it is pinned behind the header
-   stack instead. */
-body:has(.hero--dark)::before {
-  content: ""; position: fixed; top: 0; left: 0; right: 0;
-  height: var(--topstack); background: #81492B; z-index: -1;
-}
+/* No fixed fallback strip: being position:fixed it stayed visible behind the
+   sticky header for the whole page. The --topstack variable already keeps the
+   hero flush with the bars, so nothing is needed here. */
 
 /* =========================================================================
    Hero slideshow
@@ -1444,53 +1440,54 @@ body:has(.hero--dark)::before {
 }
 
 /* =========================================================================
-   Stacked hero: vignette instead of a hard edge
-   The copy block used to butt against the bottom of the photograph on one
-   straight line. It now overlaps the image and sits on a gradient that starts
-   fully transparent over the picture and resolves into solid brown, so the
-   two read as one surface.
+   Stacked hero: fade the photograph itself into the brown
+   Fading the copy block was not enough — the gradient only reached about a
+   quarter opacity by the time it met the bottom of the picture, so the
+   photo's edge still read as a hard line. The fade now lives on the image and
+   resolves fully to the copy colour before the picture ends.
    ========================================================================= */
 @media (max-width: 1024px) {
+  .hero__slide { position: relative; }
+  .hero__slide:not(.is-active) { position: absolute; }
+  .hero__slide::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: -1px;
+    height: 210px; pointer-events: none;
+    background: linear-gradient(180deg,
+      rgba(133,76,46,0)   0%,
+      rgba(133,76,46,.28) 34%,
+      rgba(133,76,46,.72) 62%,
+      #854C2E             92%,
+      #854C2E            100%);
+  }
+  body:has(.hero--dark) .hero--dark {
+    background: linear-gradient(180deg, #854C2E 0%, #8B5032 100%);
+  }
   .hero--cover .hero__inner {
-    position: relative;
-    z-index: 3;
-    margin-top: -128px;
+    position: relative; z-index: 3;
+    margin-top: -34px;      /* small overlap; the fade does the blending */
     padding-top: 0;
   }
-  .hero--cover .hero__inner::before {
-    content: "";
-    position: absolute;
-    left: 50%; transform: translateX(-50%);
-    top: -60px; bottom: -60px; width: 100vw;
-    z-index: -1;
-    background: linear-gradient(180deg,
-      rgba(129,73,43,0)    0%,
-      rgba(129,73,43,.35) 18%,
-      rgba(131,74,44,.78) 40%,
-      #854C2E             62%,
-      #8B5032            100%);
-  }
-  /* a little more image, since the copy now sits over its lower edge */
   body:has(.hero--dark) .hero--dark .hero__cover { aspect-ratio: 4 / 3; }
 }
 @media (max-width: 720px) {
-  .hero--cover .hero__inner { margin-top: -104px; }
+  .hero__slide::after { height: 170px; }
+  .hero--cover .hero__inner { margin-top: -28px; }
   body:has(.hero--dark) .hero--dark .hero__cover { aspect-ratio: 1 / 1; object-position: 60% 12%; }
 }
 
-
-/* =========================================================================
-   Header stays put
-   The pill is pinned at every width so the menu and cart are always reachable
-   without scrolling back up.
-   ========================================================================= */
-.header {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 60;
+/* Brand social marks (inline SVG, so they render as the real logos). */
+.announce__social a,
+.socials a { display: grid; place-items: center; }
+.announce__social a svg { width: 13px; height: 13px; }
+.socials a svg { width: 15px; height: 15px; }
+.announce__social a {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; color: var(--green);
+  transition: background .2s, color .2s;
 }
-/* the announcement bar scrolls away; the header then rests against the top */
-@supports (position: sticky) {
-  .header { will-change: transform; }
-}
+.announce__social a:hover { background: var(--gold-light); color: #fff; }
+.announce__tel { color: inherit; text-decoration: none; }
+.announce__tel:hover { text-decoration: underline; }
+.footer address a { color: inherit; }
+.footer address a:hover { color: var(--green); }

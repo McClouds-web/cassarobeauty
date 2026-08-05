@@ -57,8 +57,8 @@
   });
 
   /* Hero cover slideshow: crossfade, dots, auto-advance.
-     Pauses on hover and while the tab is hidden, and never auto-advances for
-     visitors who have asked for reduced motion. */
+     Pauses while the tab is hidden, and never auto-advances for visitors who
+     have asked for reduced motion. */
   var hero = document.querySelector('[data-hero-slider]');
   if (hero) {
     var slides = hero.querySelectorAll('.hero__slide');
@@ -76,7 +76,7 @@
     }
     function start() {
       if (!still && !timer && slides.length > 1) {
-        timer = setInterval(function () { show(idx + 1); }, 10000);
+        timer = setInterval(function () { show(idx + 1); }, 5000);
       }
     }
     function stop() { clearInterval(timer); timer = null; }
@@ -84,8 +84,8 @@
     dots.forEach(function (el, k) {
       el.addEventListener('click', function () { show(k); stop(); start(); });
     });
-    hero.addEventListener('mouseenter', stop);
-    hero.addEventListener('mouseleave', start);
+    /* No pause on hover: the hero sits behind the announcement bar, so a
+       cursor resting near the top of the page would hold the loop still. */
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) { stop(); } else { start(); }
     });
