@@ -1685,15 +1685,19 @@ body:has(.hero--dark) .hero--dark[class] {
 .videoblock.videoblock--wide .ph-img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1774 / 887;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   border-radius: 0;
 }
 
 /* Copy sits in the photograph's own empty left third, over a scrim in the
    shot's own tan so it reads as haze rather than a panel. */
-.videoblock.videoblock--wide { display: flex; align-items: center; }
+.videoblock.videoblock--wide {
+  display: flex; align-items: center;
+  /* the band, not the image, carries the photo's 2:1 shape — the image is
+     absolutely positioned for the overlay and can no longer set the height */
+  aspect-ratio: 1774 / 887;
+}
 .videoblock.videoblock--wide img,
 .videoblock.videoblock--wide .ph-img { position: absolute; inset: 0; z-index: 0; }
 .videoblock.videoblock--wide::before {
@@ -1723,7 +1727,10 @@ body:has(.hero--dark) .hero--dark[class] {
     background: linear-gradient(180deg,
       rgba(178,130,90,.30) 0%, rgba(178,130,90,.72) 46%, rgba(178,130,90,.94) 100%);
   }
-  .videoblock.videoblock--wide { align-items: flex-end; }
+  .videoblock.videoblock--wide {
+    align-items: flex-end;
+    aspect-ratio: auto; min-height: 540px;
+  }
   .collectionband__body {
     width: auto; margin: 0 20px 24px; text-align: center;
   }
