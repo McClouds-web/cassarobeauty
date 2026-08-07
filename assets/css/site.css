@@ -18,6 +18,7 @@
   --placeholder:  #B5A79B;
   --line:         #E7DCCD;
   --section:      #F4ECE1;  /* Cream */
+  --shot:         #EBCBAF;  /* flat rim colour baked into every product photo */
   --card:         #FFFFFF;
   --white:        #FBF7F0;  /* Porcelain — page ground */
 
@@ -191,8 +192,9 @@ p  { margin: 0; color: var(--body); }
 .pcard__cat { font-size: 12px; color: var(--muted); }
 .pcard__row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .pcard__name { font-size: 15px; font-weight: 600; margin: 2px 0 6px; }
-.rating { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--body); }
-.rating .star { color: var(--star); }
+.rating { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; color: var(--body); white-space: nowrap; }
+.rating .star { color: var(--star); font-size: 14px; font-variation-settings: "FILL" 1; }
+.rating__n { font-weight: 600; color: var(--ink); margin-left: 2px; }
 .price { font-size: 15px; font-weight: 600; color: var(--gold); }
 .price del { color: var(--muted); font-weight: 400; margin-left: 6px; font-size: 13px; }
 
@@ -399,6 +401,12 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
   grid-template-rows: 190px 190px; gap: 14px;
 }
 .about-strip__gallery img { width: 100%; height: 100%; object-fit: cover; }
+/* The four tiles carry the rounded shape, so they have to clip their own image
+   and paint the product ground; without overflow the letterboxed shot spills
+   past the corners and reads as overlapping tiles. */
+.about-strip__gallery > div {
+  position: relative; overflow: hidden; background: var(--shot);
+}
 .about-strip__gallery .g1 { border-radius: 90px 16px 16px 16px; }
 .about-strip__gallery .g2 { border-radius: 16px 90px 16px 16px; }
 .about-strip__gallery .g3 { border-radius: 16px 16px 16px 90px; }
@@ -521,7 +529,10 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
 
 .pdp__title { font-size: 30px; margin: 4px 0 10px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .tag-stock { font-size: 11px; font-weight: 500; color: var(--instock); background: #ECEFE3; border-radius: var(--radius-pill); padding: 4px 12px; }
-.pdp__rating { font-size: 13px; color: var(--body); margin-bottom: 10px; }
+.pdp__rating { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--body); margin-bottom: 10px; }
+.stars-inline { display: inline-flex; }
+.stars-inline .star { color: var(--star); font-size: 18px; font-variation-settings: "FILL" 1; }
+.pdp__rating b { color: var(--ink); font-weight: 600; }
 .muted { color: var(--muted); }
 .pdp__price { font-size: 26px; font-weight: 700; color: var(--gold); margin-bottom: 14px; }
 .pdp__price del { font-size: 17px; color: var(--muted); font-weight: 400; margin-left: 8px; }
@@ -1237,7 +1248,8 @@ body:has(.hero--dark) .hero--dark .hero__seal { top: 172px; right: 44px; }
 }
 @media (max-width: 420px) {
   .grid--3, .grid--4 { gap: 12px; }
-  .rating { display: none; }   /* "Rating coming soon" crowds a narrow card */
+  .rating { gap: 2px; font-size: 10px; }
+  .rating .star { font-size: 12px; }
 }
 
 /* ---- Trust + support strips ---------------------------------------------- */
@@ -1491,3 +1503,92 @@ body:has(.hero--dark) .hero--dark[class] {
 .announce__tel:hover { text-decoration: underline; }
 .footer address a { color: inherit; }
 .footer address a:hover { color: var(--green); }
+
+/* ---- Product shots -------------------------------------------------------
+   Every product photo is a square with a flat #EBCBAF rim baked in, so any
+   container can letterbox it against the same colour: the product is always
+   whole and the seam is invisible whatever the container ratio.            */
+.pcard__media, .dealcard__media, .pdp__stage, .pdp__thumbs button,
+.brandcard__media, .insta a, .post__media, .about-strip__gallery > div,
+.deals__side-wrap, .videoblock, .contact-photo, .review__shots img,
+.linetable__prod img, .recent img, .cat .ph-img, .member img,
+.bd-hero, .deals__side, .videoblock img, .contact-photo img {
+  background: var(--shot);
+}
+.pcard__media img, .dealcard__media img, .pdp__stage img, .pdp__thumbs img,
+.brandcard__media .ph-img, .insta img, .post__media img,
+.about-strip__gallery img, .deals__side, .videoblock img,
+.contact-photo img, .review__shots img, .linetable__prod img,
+.recent img, .cat .ph-img, .member img, .bd-hero {
+  object-fit: contain;
+}
+
+/* A purpose-shot promo banner already leaves its own copy space, so it runs at
+   full strength instead of the washed-back treatment used for stock imagery. */
+/* The generic promo rule dims stock imagery to 50%; that selector is more
+   specific than a plain .promo--banner one, so match its weight to win. A
+   purpose-shot banner also shows whole rather than cropped: `contain` keeps
+   every product in frame and the container ground is sampled from the file,
+   so the letterbox is invisible. */
+.promo:not(.promo--dark).promo--banner > img.ph--promo {
+  opacity: 1;
+  object-fit: contain;
+  object-position: right center;
+}
+/* Each banner sits on its own photographed ground, sampled from the file, so
+   the container and the photo are the same colour at every viewport width. */
+.promo--banner  { background: #F3D6BD; }
+.promo--arrivals { background: #F6D5B7; }
+.promo--korean  { background: #D5B185; }
+
+/* The Korean Skincare banner runs full-bleed. Giving the block the photo's own
+   2.19:1 ratio means `cover` has almost nothing to crop, so the whole scene
+   reads at its true scale instead of a magnified slice. */
+.promo--korean {
+  aspect-ratio: 1857 / 847;
+  min-height: 260px;
+  align-items: center;
+}
+.promo:not(.promo--dark).promo--korean > img.ph--promo {
+  object-fit: cover;
+  object-position: right center;
+}
+/* A soft left-to-right haze in the photo's own beige, so the copy stays legible
+   over the image without sitting in a hard coloured box. */
+.promo--korean::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg,
+    rgba(240,226,206,.96) 0%,
+    rgba(240,226,206,.86) 30%,
+    rgba(240,226,206,.45) 50%,
+    rgba(240,226,206,0)   68%);
+}
+.promo--korean .promo__body { max-width: 46%; }
+
+/* The New In panel carries a purpose-shot photo rather than stock imagery
+   washed over green. The panel stretches to the grid height so `cover` fills it
+   edge to edge with no ground band, and the label reads via a text shadow
+   instead of a gradient haze, which was itself showing as a beige strip. */
+.arrivals:has(.arrivals__feature--shot) { align-items: stretch; }
+.arrivals__feature--shot,
+.arrivals__feature--shot .ph--promo,
+.arrivals__feature--shot > img.ph--promo {
+  /* Three separate rules paint this card cocoa: the container background at
+     :906, the image's own background at :880, and the .32 wash at :904. Clear
+     all of them so nothing but the photo shows. */
+  background: none;
+  background-color: transparent;
+}
+.arrivals__feature--shot {
+  overflow: hidden;
+  min-height: 420px;
+  border-radius: var(--radius-card);
+}
+.arrivals__feature--shot > img.ph--promo {
+  opacity: 1; object-fit: cover; object-position: center;
+}
+.arrivals__feature--shot h3,
+.arrivals__feature--shot .link-underline {
+  color: var(--ink);
+  text-shadow: 0 1px 10px rgba(251,247,240,.9), 0 1px 3px rgba(251,247,240,1);
+}

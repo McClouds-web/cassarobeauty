@@ -51,7 +51,7 @@
 <section class="section" style="padding-top:0">
   <div class="wrap">
     <div class="grid grid--2">
-      <div class="promo">
+      <div class="promo promo--banner">
         {{PH|Skincare Promotion Image|ph--promo}}
         <div class="promo__body">
           <span class="tag">Featured</span>
@@ -60,13 +60,13 @@
           <a class="btn btn--primary btn--sm" href="skincare.html">Shop Skincare <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
         </div>
       </div>
-      <div class="promo promo--dark">
+      <div class="promo promo--banner promo--arrivals">
         {{PH|New Arrivals Promotion Image|ph--promo}}
         <div class="promo__body">
           <span class="tag">New In</span>
           <h3>New Beauty <span class="gold">Arrivals</span></h3>
           <p>Explore the latest additions to the <br/>Cassaro Beauty collection.</p>
-          <a class="btn btn--white btn--sm" href="shop.html">Shop New Arrivals <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
+          <a class="btn btn--primary btn--sm" href="shop.html">Shop New Arrivals <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
         </div>
       </div>
     </div>
@@ -128,8 +128,6 @@
   </div>
 </section>
 
-{{MARQUEE}}
-
 <!-- ===== Featured offers ===== -->
 <section class="section">
   <div class="wrap">
@@ -137,20 +135,20 @@
       <h2>Featured <span class="gold">Offers</span></h2>
     </div>
     <div class="grid grid--2" style="margin-bottom:24px">
-      <a class="dealcard" href="product.html">
+      <a class="dealcard" href="axis-y-dark-spot-correcting-glow-serum.html">
         <div class="dealcard__media">{{PH|AXIS-Y Dark Spot Correcting Glow Serum Image}}</div>
         <div>
-          <div class="pcard__row"><span class="pcard__cat">AXIS-Y</span><span class="rating">Rating coming soon</span></div>
+          <div class="pcard__row"><span class="pcard__cat">AXIS-Y</span>{{STARS|Dark Spot Correcting Glow Serum}}</div>
           <h3 class="pcard__name">Dark Spot Correcting Glow Serum</h3>
           <div class="price">R___</div>
           <p style="font-size:13px;margin:10px 0 14px">A brightening serum selected for <br/>everyday routines.</p>
           <span class="link-underline">Shop Now</span>
         </div>
       </a>
-      <a class="dealcard" href="product.html">
+      <a class="dealcard" href="isntree-green-tea-fresh-toner.html">
         <div class="dealcard__media">{{PH|Isntree Green Tea Fresh Toner Image}}</div>
         <div>
-          <div class="pcard__row"><span class="pcard__cat">Isntree</span><span class="rating">Rating coming soon</span></div>
+          <div class="pcard__row"><span class="pcard__cat">Isntree</span>{{STARS|Green Tea Fresh Toner}}</div>
           <h3 class="pcard__name">Green Tea Fresh Toner</h3>
           <div class="price">R___</div>
           <p style="font-size:13px;margin:10px 0 14px">A lightweight toner for daily <br/>cleansing routines.</p>
@@ -158,19 +156,17 @@
         </div>
       </a>
     </div>
-    <div class="promo promo--dark">
+    <div class="promo promo--banner promo--korean">
       {{PH|Korean Skincare Banner Image|ph--promo}}
       <div class="promo__body">
-        <span style="font-size:13px;color:rgba(255,255,255,.75)">Featured Collection</span>
+        <span style="font-size:13px;color:var(--body)">Featured Collection</span>
         <h3 style="margin:6px 0 8px">Discover <span class="gold">Korean Skincare</span> <br/>Favourites</h3>
         <p style="font-size:13px;margin-bottom:18px">Explore popular cleansers, serums, toners, sunscreens and treatments from leading skincare brands.</p>
-        <a class="btn btn--white btn--sm" href="shop.html">Shop the Collection <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
+        <a class="btn btn--primary btn--sm" href="shop.html">Shop the Collection <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
       </div>
     </div>
   </div>
 </section>
-
-{{MARQUEE}}
 
 <!-- ===== New arrivals ===== -->
 <section class="section">
@@ -182,11 +178,11 @@
       <p style="font-size:13px;max-width:420px">The latest skincare and beauty products added to the Cassaro Beauty collection, selected from trusted international brands.</p>
     </div>
     <div class="arrivals">
-      <a class="arrivals__feature" href="shop.html">
+      <a class="arrivals__feature arrivals__feature--shot" href="shop.html">
         {{PH|New Arrivals Feature Image|ph--promo}}
         <div style="position:relative;z-index:2">
-          <h3 style="color:#fff;font-size:26px">New In</h3>
-          <div class="link-underline" style="color:#fff;margin-top:12px">SHOP NOW</div>
+          <h3 style="font-size:26px">New In</h3>
+          <div class="link-underline" style="margin-top:12px">SHOP NOW</div>
         </div>
       </a>
       <div class="grid grid--3">
@@ -197,35 +193,6 @@
         {{CARD|Abib Acne Foam Cleanser Image|Abib|Acne Foam Cleanser}}
         {{CARD|Medicube Deep Peptide Radiance Mask Image|Medicube|Deep Peptide Radiance Mask}}
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Testimonials ===== -->
-<section class="section section--grey">
-  <div class="wrap center">
-    <h2>What Our <span class="gold">Customers Say</span></h2>
-    <div class="quote" style="margin-top:26px">
-      <div>
-        <p style="max-width:640px;margin:0 auto">Customer reviews will appear here once verified purchases and feedback are available.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Journal ===== -->
-<section class="section">
-  <div class="wrap">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:26px">
-      <div>
-        <h2>Beauty <span class="gold">Journal</span></h2>
-      </div>
-      <a class="btn btn--primary btn--sm" href="blogs.html">View All Articles</a>
-    </div>
-    <div class="grid grid--3">
-      {{POST|Journal Image 1|Skincare|How to Build a Simple Skincare Routine}}
-      {{POST|Journal Image 2|Skincare|Serum, Ampoule and Toner: What Is the Difference?}}
-      {{POST|Journal Image 3|Sunscreen|Why Sunscreen Belongs in Your Daily Routine}}
     </div>
   </div>
 </section>
@@ -253,29 +220,3 @@
   </div>
 </section>
 
-{{MARQUEE}}
-
-<!-- ===== FAQs ===== -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Questions? <span class="gold">Look here.</span></h2>
-    </div>
-    <div class="faq-layout">
-      <div>
-        {{FAQ|What types of products does Cassaro Beauty sell?|Cassaro Beauty offers carefully selected skincare, makeup, fragrance, body care and beauty accessories from established international brands.|open}}
-        {{FAQ|Are the products sold by Cassaro Beauty authentic?|We source our products through established supply channels. Full sourcing details will be published here once confirmed.}}
-        {{FAQ|How long does delivery take?|Delivery timeframes will be confirmed at checkout once our delivery partners are finalised.}}
-        {{FAQ|Do you deliver across South Africa?|Delivery options are available across South Africa. Coverage details will be confirmed here shortly.}}
-        {{FAQ|Can I return unopened cosmetics or skincare products?|A returns policy for unopened products is being finalised and will be published on this page.}}
-        {{FAQ|How do I track my order?|Order tracking is available from the Track Your Order page using your order number and billing email.}}
-      </div>
-      <div class="ask">
-        <span class="bubble material-symbols-outlined">forum</span>
-        <strong>Have a different question?</strong>
-        <small>Our team will answer your questions <br/>about orders and products.</small>
-        <a class="btn btn--white btn--sm" href="contact.html">Contact Us</a>
-      </div>
-    </div>
-  </div>
-</section>

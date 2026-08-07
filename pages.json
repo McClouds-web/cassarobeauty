@@ -21,19 +21,175 @@
   "file": "medicube-collagen-jelly-cream",
   "title": "Medicube Collagen Jelly Cream",
   "nav": "skin",
-  "desc": "Medicube Collagen Jelly Cream 50 ml \u2014 a lightweight gel moisturiser for long-lasting hydration."
+  "desc": "Medicube Collagen Jelly Cream 50 ml — a lightweight gel moisturiser for long-lasting hydration."
  },
  {
   "file": "abib-collagen-gel-mask",
   "title": "Abib Collagen Gel Mask",
   "nav": "skin",
-  "desc": "Abib Collagen Gel Mask Sedum Jelly 35 g \u2014 a hydrating hydrogel sheet mask."
+  "desc": "Abib Collagen Gel Mask Sedum Jelly 35 g — a hydrating hydrogel sheet mask."
  },
  {
   "file": "abib-acne-foam-cleanser",
   "title": "Abib Acne Foam Cleanser",
   "nav": "skin",
-  "desc": "Abib Acne Foam Cleanser Heartleaf Foam 120 ml \u2014 a gentle daily cleanser with Heartleaf and BHA."
+  "desc": "Abib Acne Foam Cleanser Heartleaf Foam 120 ml — a gentle daily cleanser with Heartleaf and BHA."
+ },
+ {
+  "file": "skin1004-madagascar-centella-ampoule-foam",
+  "title": "SKIN1004 Madagascar Centella Ampoule Foam",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Ampoule Foam 125 ml — a gentle foaming cleanser with Centella Asiatica from Madagascar."
+ },
+ {
+  "file": "skin1004-madagascar-centella-poremizing-deep-cleansing-foam",
+  "title": "SKIN1004 Madagascar Centella Poremizing Deep Cleansing Foam",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Poremizing Deep Cleansing Foam 125 ml — a creamy deep cleansing foam with Centella Asiatica from Madagascar."
+ },
+ {
+  "file": "medicube-pdrn-pink-niacinamide-whip-cleanser",
+  "title": "Medicube PDRN Pink Niacinamide Whip Cleanser",
+  "nav": "skin",
+  "desc": "Medicube PDRN Pink Niacinamide Whip Cleanser 120 g — a creamy whip cleanser with PDRN and niacinamide."
+ },
+ {
+  "file": "abib-deep-clean-foam-cleanser",
+  "title": "Abib Deep Clean Foam Cleanser",
+  "nav": "skin",
+  "desc": "Abib Deep Clean Foam Cleanser Sedum Hyaluron Foam 150 ml — a refreshing foam cleanser with Sedum Sarmentosum Extract and multi-form hyaluronic acid."
+ },
+ {
+  "file": "isntree-green-tea-fresh-toner",
+  "title": "Isntree Green Tea Fresh Toner",
+  "nav": "skin",
+  "desc": "Isntree Green Tea Fresh Toner 200 ml — a lightweight daily toner with green tea extract from Jeju."
+ },
+ {
+  "file": "anua-niacinamide-10-txa-4-serum",
+  "title": "Anua Niacinamide 10 + TXA 4 Serum",
+  "nav": "skin",
+  "desc": "Anua Niacinamide 10 + TXA 4 Serum 30 ml — a brightening serum with 10% niacinamide and 4% tranexamic acid."
+ },
+ {
+  "file": "beauty-of-joseon-glow-deep-serum",
+  "title": "Beauty of Joseon Glow Deep Serum",
+  "nav": "skin",
+  "desc": "Beauty of Joseon Glow Deep Serum: Rice + Alpha-Arbutin — a lightweight brightening serum with rice-derived ingredients and alpha-arbutin."
+ },
+ {
+  "file": "skin1004-madagascar-centella-poremizing-fresh-ampoule",
+  "title": "SKIN1004 Madagascar Centella Poremizing Fresh Ampoule",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Poremizing Fresh Ampoule 100 ml — a lightweight ampoule for visible pores and sebum balance."
+ },
+ {
+  "file": "skin1004-madagascar-centella-tea-trica-relief-ampoule",
+  "title": "SKIN1004 Madagascar Centella Tea-Trica Relief Ampoule",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Tea-Trica Relief Ampoule 100 ml — a lightweight soothing ampoule for oily, stressed or blemish-prone skin."
+ },
+ {
+  "file": "skin1004-tone-brightening-capsule-ampoule",
+  "title": "SKIN1004 Madagascar Centella Tone Brightening Capsule Ampoule",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Tone Brightening Capsule Ampoule 100 ml — a lightweight brightening ampoule for dullness and uneven-looking tone."
+ },
+ {
+  "file": "axis-y-dark-spot-correcting-glow-serum",
+  "title": "AXIS-Y Dark Spot Correcting Glow Serum",
+  "nav": "skin",
+  "desc": "AXIS-Y Dark Spot Correcting Glow Serum — a lightweight brightening serum with 5% niacinamide, squalane and sea buckthorn extract."
+ },
+ {
+  "file": "skin1004-madagascar-centella-ampoule",
+  "title": "SKIN1004 Madagascar Centella Ampoule",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Ampoule 55 ml — a lightweight soothing ampoule with Centella Asiatica from Madagascar."
+ },
+ {
+  "file": "skin1004-hyalu-cica-water-fit-sun-serum",
+  "title": "SKIN1004 Madagascar Centella Hyalu-Cica Water-Fit Sun Serum",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++ 50 ml — a lightweight hydrating daily sunscreen."
+ },
+ {
+  "file": "dr-althea-147-barrier-cream",
+  "title": "Dr. Althea 147 Barrier Cream",
+  "nav": "skin",
+  "desc": "Dr. Althea 147 Barrier Cream 50 ml — a barrier-supporting moisturiser with ceramide, betaine and multi-form hyaluronic acid."
+ },
+ {
+  "file": "k-secret-seoul-1988-cream",
+  "title": "K-SECRET Seoul 1988 Cream",
+  "nav": "skin",
+  "desc": "K-SECRET Seoul 1988 Cream: Snail Mucin 93% + Rice — a nourishing moisturiser for hydration, smoothness and barrier support."
+ },
+ {
+  "file": "medicube-deep-peptide-radiance-mask",
+  "title": "Medicube Deep Peptide Radiance Mask",
+  "nav": "skin",
+  "desc": "Medicube Deep Peptide Radiance Mask 27 ml — a moisture-rich cream-essence sheet mask with peptides, niacinamide and panthenol."
+ },
+ {
+  "file": "medicube-collagen-radiance-mask",
+  "title": "Medicube Collagen Radiance Mask",
+  "nav": "skin",
+  "desc": "Medicube Collagen Radiance Mask — a moisture-rich sheet mask with a triple collagen complex, for all skin types."
+ },
+ {
+  "file": "eqqualberry-collagen-glow-up-hydrogel-mask",
+  "title": "EQQUALBERRY Bouncy Day Collagen Glow Up Hydrogel Mask",
+  "nav": "skin",
+  "desc": "EQQUALBERRY Bouncy Day Collagen Glow Up Hydrogel Mask 30 g — a brightening hydrogel treatment mask with niacinamide and glutathione."
+ },
+ {
+  "file": "medicube-kojic-acid-turmeric-brightening-gel-mask",
+  "title": "Medicube Kojic Acid Turmeric Brightening Gel Mask",
+  "nav": "skin",
+  "desc": "Medicube Kojic Acid Turmeric Brightening Gel Mask 28 g — a brightening gel mask with kojic acid, turmeric and 2% niacinamide."
+ },
+ {
+  "file": "medicube-pdrn-pink-collagen-gel-mask",
+  "title": "Medicube PDRN Pink Collagen Gel Mask",
+  "nav": "skin",
+  "desc": "Medicube PDRN Pink Collagen Gel Mask 28 g — a moisture-rich gel mask with Sodium DNA, niacinamide and hydrolyzed collagen."
+ },
+ {
+  "file": "medicube-zero-pore-blackhead-mud-mask",
+  "title": "Medicube Zero Pore Blackhead Mud Mask",
+  "nav": "skin",
+  "desc": "Medicube Zero Pore Blackhead Mud Mask 100 g — a clay treatment mask with AHA, BHA, PHA and a 30% pore-purifying clay complex."
+ },
+ {
+  "file": "cosrx-advanced-snail-92-cream",
+  "title": "COSRX Advanced Snail 92 All in One Cream",
+  "nav": "skin",
+  "desc": "COSRX Advanced Snail 92 All in One Cream 100 g — a nourishing daily moisturiser with 92% snail secretion filtrate."
+ },
+ {
+  "file": "anua-azelaic-acid-10-hyaluron-serum",
+  "title": "Anua Azelaic Acid 10 + Hyaluron Redness Soothing Serum",
+  "nav": "skin",
+  "desc": "Anua Azelaic Acid 10 + Hyaluron Redness Soothing Serum 30 ml — a soothing serum with 10% azelaic acid and hyaluronic acid."
+ },
+ {
+  "file": "medicube-collagen-night-wrapping-mask",
+  "title": "Medicube Collagen Night Wrapping Mask",
+  "nav": "skin",
+  "desc": "Medicube Collagen Night Wrapping Mask 75 ml — an overnight wrapping mask with collagen extract, niacinamide and Ceramide NP."
+ },
+ {
+  "file": "beauty-of-joseon-relief-sun",
+  "title": "Beauty of Joseon Relief Sun: Rice + Probiotics",
+  "nav": "skin",
+  "desc": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+ PA++++ 50 ml — a lightweight daily sunscreen with a moisturising finish."
+ },
+ {
+  "file": "skin1004-centella-toning-toner",
+  "title": "SKIN1004 Madagascar Centella Toning Toner",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Toning Toner 210 ml — a lightweight daily toner with Centella Asiatica and PHA."
  },
  {
   "file": "skincare",

@@ -12,3 +12,6 @@ image-map.json
 .DS_Store
 __pycache__/
 *.pyc
+
+# Ruflo daemon state — machine-local, churns on every status
+.claude-flow/
