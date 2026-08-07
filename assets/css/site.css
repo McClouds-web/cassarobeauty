@@ -1808,3 +1808,106 @@ body:has(.hero--dark) .hero--dark[class] {
   .pagehead--cover { min-height: 260px; }
   .grid--3, .grid--4 { gap: 10px; }
 }
+
+/* =========================================================================
+   Responsive audit — photo + copy components
+   On a phone these all put text on top of the photograph. At desktop widths
+   the shot has an empty third to hold the copy; at 400px that third does not
+   exist, so the words land on the products. Every one of them stacks instead:
+   the picture keeps its own shape above, the copy sits on solid ground below.
+   ========================================================================= */
+@media (max-width: 860px) {
+
+  /* --- Promo banners: Featured Skincare, New Arrivals, Korean Skincare ---- */
+  .promo.promo--banner,
+  .promo.promo--korean {
+    display: block;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    padding: 0;
+    overflow: hidden;
+  }
+  .promo.promo--banner > img.ph--promo,
+  .promo.promo--korean > img.ph--promo {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    opacity: 1;
+  }
+  /* the scrims exist only to lift copy off the photo; stacked, they just tint */
+  .promo.promo--korean::before,
+  .promo.promo--banner::before { display: none; }
+  .promo.promo--banner .promo__body,
+  .promo.promo--korean .promo__body {
+    max-width: 100%;
+    width: auto;
+    padding: 20px 22px 26px;
+  }
+
+  /* --- New In feature card ------------------------------------------------ */
+  .arrivals__feature--shot {
+    display: block;
+    min-height: 0;
+    padding: 0;
+  }
+  .arrivals__feature--shot > img.ph--promo {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .arrivals__feature--shot > div { padding: 18px 20px 22px; }
+  .arrivals__feature--shot h3,
+  .arrivals__feature--shot .link-underline { text-shadow: none; }
+
+  /* --- About collection band ---------------------------------------------- */
+  .videoblock.videoblock--wide {
+    display: block;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+  .videoblock.videoblock--wide img,
+  .videoblock.videoblock--wide .ph-img {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1774 / 887;
+  }
+  .videoblock.videoblock--wide::before { display: none; }
+  .collectionband__body {
+    width: auto;
+    margin: 0;
+    padding: 20px 22px 26px;
+    text-align: left;
+    color: var(--ink);
+    background: var(--shot);
+  }
+  .collectionband__body h3 { color: var(--ink); }
+  .collectionband__body p { color: var(--body); }
+  .collectionband__body .tag { background: rgba(36,24,18,.10); color: var(--ink); }
+}
+
+/* --- Page covers: never crop on a phone --------------------------------- */
+@media (max-width: 720px) {
+  .pagehead--cover {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: 3 / 2;
+  }
+  .pagehead--cover .pagehead__bg { object-position: center top; }
+  .pagehead--cover.pagehead--cover-bottom { aspect-ratio: 3 / 2; }
+  .pagehead--cover.pagehead--cover-bottom .pagehead__bg { object-position: center bottom; }
+
+  /* the About strip tiles are fixed 190px rows, which squashes them */
+  .about-strip__gallery { grid-template-rows: auto auto; }
+  .about-strip__gallery > div { aspect-ratio: 1 / 1; }
+}
