@@ -209,3 +209,50 @@
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 })();
+
+/* -------------------------------------------------------------------------
+   Reveal on scroll
+   Elements fade and rise once, the first time they enter the viewport. Items
+   inside the same row are staggered a little so a grid arrives as a sequence
+   rather than a block. Anything already on screen at load is revealed
+   immediately, so nothing above the fold waits for a scroll event.
+   ------------------------------------------------------------------------- */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+
+  var SELECTOR = [
+    '.section-head', '.pcard', '.brandcard', '.cat', '.vmcard', '.infocard',
+    '.post', '.promo', '.videoblock', '.about-strip__gallery > div',
+    '.about-strip__copy', '.deals__side', '.deals__mid', '.arrivals__feature',
+    '.insta a', '.insta .ph-img', '.newsletter .wrap', '.trust__item'
+  ].join(',');
+
+  var items = Array.prototype.slice.call(document.querySelectorAll(SELECTOR));
+  if (!items.length) return;
+
+  items.forEach(function (el) {
+    el.classList.add('reveal');
+    // stagger by position among siblings, capped so long grids do not crawl
+    var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+    var delay = Math.min(i, 5) * 60;
+    if (delay) el.style.transitionDelay = delay + 'ms';
+  });
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-in');
+      io.unobserve(entry.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+  items.forEach(function (el) {
+    var box = el.getBoundingClientRect();
+    if (box.top < window.innerHeight) {
+      el.classList.add('is-in');       // already visible at load
+    } else {
+      io.observe(el);
+    }
+  });
+})();

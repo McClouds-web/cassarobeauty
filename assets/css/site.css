@@ -1925,3 +1925,69 @@ body:has(.hero--dark) .hero--dark[class] {
   .about-strip__gallery { grid-template-rows: auto auto; }
   .about-strip__gallery > div { aspect-ratio: 1 / 1; }
 }
+
+/* =========================================================================
+   Rounded imagery
+   Declared with :where() so its weight is zero — circles, avatars and any
+   component with its own radius keep theirs untouched.
+   ========================================================================= */
+:where(.ph-img, .pcard__media, .dealcard__media, .brandcard__media,
+       .pdp__stage, .pdp__thumbs button, .insta a, .insta img,
+       .videoblock, .contact-photo, .deals__side, .about-strip__gallery > div,
+       .arrivals__feature, .post__media, .member img, .bd-hero) {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+/* =========================================================================
+   Motion
+   One reveal on first scroll into view, and a light lift on hover. Distances
+   are small and durations short on purpose — the page should settle, not
+   perform. Anyone who asks for reduced motion gets none of it.
+   ========================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s cubic-bezier(.22,.61,.36,1),
+              transform .55s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+.pcard, .brandcard, .vmcard, .infocard, .post {
+  transition: transform .3s cubic-bezier(.22,.61,.36,1),
+              box-shadow .3s cubic-bezier(.22,.61,.36,1),
+              border-color .25s;
+}
+.pcard:hover, .brandcard:hover, .post:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+.btn { transition: background .25s, color .25s, border-color .25s, transform .18s; }
+.btn:active { transform: translateY(1px); }
+.cat:hover .ph-img { transform: scale(1.04); }
+.cat .ph-img { transition: transform .5s cubic-bezier(.22,.61,.36,1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .pcard:hover, .brandcard:hover, .post:hover { transform: none; }
+  .cat:hover .ph-img { transform: none; }
+}
+
+/* =========================================================================
+   Mobile: the two grids that were still on fixed row heights
+   ========================================================================= */
+@media (max-width: 860px) {
+  /* Instagram strip — square cells instead of 140px rows, so a square packshot
+     is not letterboxed into a slot half its height */
+  .insta { grid-auto-rows: auto; gap: 10px; }
+  .insta a, .insta img, .insta .ph-img {
+    aspect-ratio: 1 / 1; height: auto; width: 100%;
+  }
+  .insta__big { grid-column: span 2; grid-row: span 2; }
+  .insta__big.ph-img { aspect-ratio: 1 / 1; }
+
+  /* New In feature card — the photo is a tall 800x1800 stack, so a wide box
+     threw away two of the three jars */
+  .arrivals__feature--shot > img.ph--promo { aspect-ratio: 3 / 4; }
+}
