@@ -1577,15 +1577,15 @@ body:has(.hero--dark) .hero--dark[class] {
    whole and the seam is invisible whatever the container ratio.            */
 .pcard__media, .dealcard__media, .pdp__stage, .pdp__thumbs button,
 .brandcard__media, .insta a, .post__media, .about-strip__gallery > div,
-.deals__side-wrap, .videoblock, .contact-photo, .review__shots img,
+.deals__side-wrap, .videoblock, .review__shots img,
 .linetable__prod img, .recent img, .cat .ph-img, .member img,
-.bd-hero, .deals__side, .videoblock img, .contact-photo img {
+.bd-hero, .deals__side, .videoblock img {
   background: var(--shot);
 }
 .pcard__media img, .dealcard__media img, .pdp__stage img, .pdp__thumbs img,
 .brandcard__media .ph-img, .insta img, .post__media img,
 .about-strip__gallery img, .deals__side, .videoblock img,
-.contact-photo img, .review__shots img, .linetable__prod img,
+.review__shots img, .linetable__prod img,
 .recent img, .cat .ph-img, .member img, .bd-hero {
   object-fit: contain;
 }
@@ -1746,18 +1746,12 @@ body:has(.hero--dark) .hero--dark[class] {
    height to throw away — off the bottom when anchored top, off the top when
    anchored bottom. The band now takes the photo's own 3:2 shape with no cap,
    so the whole frame shows and there is nothing to crop. */
-.pagehead--cover.pagehead--cover-bottom {
-  height: auto;
-  min-height: 0;
-  max-height: none;
-  aspect-ratio: 1536 / 1024;
-}
+/* Every cover uses the same band as the homepage hero, so no page reads bigger
+   or smaller than another. This shot is 3:2 against a ~1.87:1 band, so it is
+   the one that gives up height — anchored bottom, the crop comes off the empty
+   wall rather than the products along the base. */
 .pagehead--cover.pagehead--cover-bottom .pagehead__bg {
-  object-position: center center;
-}
-@media (max-width: 1024px) {
-  .pagehead--cover.pagehead--cover-bottom { aspect-ratio: auto; min-height: 420px; }
-  .pagehead--cover.pagehead--cover-bottom .pagehead__bg { object-position: center bottom; }
+  object-position: center bottom;
 }
 
 /* The contact photo is a 4:3 portrait, and the generic rules pin it to a 470px
