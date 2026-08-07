@@ -1593,4 +1593,8 @@ body:has(.hero--dark) .hero--dark[class] {
 }
 /* The card is itself an <a>, so the call to action is a styled span rather
    than a nested link. */
-.arrivals__feature--shot .btn { display: inline-flex; align-items: center; gap: 6px; }
+.arrivals__feature--shot .btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: 0 6px 20px rgba(36,24,18,.22);
+}
+.arrivals__feature--shot:hover .btn { background: var(--green); color: #fff; }
