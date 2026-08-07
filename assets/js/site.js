@@ -11,11 +11,49 @@
     if (!drawer || !scrim) return;
     drawer.classList.toggle('is-open', on);
     scrim.classList.toggle('is-open', on);
-    document.body.style.overflow = on ? 'hidden' : '';
+    drawer.setAttribute('aria-hidden', on ? 'false' : 'true');
+    if (open) {
+      open.classList.toggle('is-active', on);   // burger morphs to a cross
+      open.setAttribute('aria-expanded', on ? 'true' : 'false');
+    }
+    /* lock the page behind the drawer without losing scroll position */
+    if (on) {
+      drawer.__y = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = -drawer.__y + 'px';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      if (typeof drawer.__y === 'number') window.scrollTo(0, drawer.__y);
+    }
+    if (on) {
+      var first = drawer.querySelector('a');
+      if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 260);
+    } else if (open) {
+      open.focus({ preventScroll: true });
+    }
   }
-  if (open)  open.addEventListener('click', function () { setDrawer(true); });
+  if (open)  open.addEventListener('click', function () {
+    setDrawer(!drawer.classList.contains('is-open'));
+  });
   if (close) close.addEventListener('click', function () { setDrawer(false); });
   if (scrim) scrim.addEventListener('click', function () { setDrawer(false); });
+
+  /* Escape closes it; following a link closes it too */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) setDrawer(false);
+  });
+  if (drawer) {
+    drawer.addEventListener('click', function (e) {
+      if (e.target.closest('a[href]')) setDrawer(false);
+    });
+  }
+  /* a resize past the breakpoint should not leave the page locked */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024 && drawer && drawer.classList.contains('is-open')) setDrawer(false);
+  });
 
   /* Accordions — one open at a time */
   document.querySelectorAll('.acc__head').forEach(function (head) {
