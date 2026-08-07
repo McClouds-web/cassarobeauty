@@ -15,3 +15,5 @@ __pycache__/
 
 # Ruflo daemon state — machine-local, churns on every status
 .claude-flow/
+.vercel
+.env*

@@ -530,7 +530,21 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
 @media (max-width: 1024px) {
   .hero__inner, .about-strip, .arrivals, .faq-layout { grid-template-columns: 1fr; }
   .deals { grid-template-columns: 1fr; }
-  .deals__side { height: 200px; }
+  /* Stacked, these go full width. A fixed 200px band against a square packshot
+     is a violent crop, so give them a shape instead and let the shot sit whole
+     on its own ground. */
+  .deals__side {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    background: var(--shot);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .deals__side .ph-img,
+  .deals__side img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
   .insta { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 720px) {
