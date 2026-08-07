@@ -2080,80 +2080,98 @@ body:has(.hero--dark) .hero--dark[class] {
 
 #drawer {
   position: fixed; inset: 0 0 0 auto; z-index: 90;
-  width: min(86vw, 380px);
+  width: min(84vw, 330px);
   display: flex; flex-direction: column;
-  background: var(--white);
-  box-shadow: -24px 0 60px rgba(36,24,18,.18);
+  /* cacao at the top easing to cocoa at the foot, with a warm gilt bloom
+     behind the brand mark */
+  background:
+    radial-gradient(120% 55% at 85% 0%, rgba(184,137,79,.30) 0%, rgba(184,137,79,0) 60%),
+    linear-gradient(168deg, #2E1D14 0%, #4A3021 42%, #6F4A34 100%);
+  color: var(--white);
+  box-shadow: -24px 0 60px rgba(36,24,18,.34);
   transform: translateX(102%);
   transition: transform .52s cubic-bezier(.22,.61,.36,1);
   overflow-y: auto; overscroll-behavior: contain;
-  padding: 18px 22px 26px;
+  padding: 18px 20px 24px;
 }
+/* botanical motifs — leaf, petal, droplet — tiled faintly behind the content */
+#drawer::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns="http%3A//www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" fill="none" stroke="%23F4ECE1" stroke-width="1.1" opacity="0.5"%3E%3Cpath d="M28 20c14 2 22 12 22 26 0 0-16 2-22-8-6-10 0-18 0-18Z"/%3E%3Cpath d="M28 20c0 18 8 30 22 34"/%3E%3Cpath d="M128 30c6 8 6 16 0 21-6-5-6-13 0-21Z"/%3E%3Cpath d="M96 96c10 2 15 9 15 19 0 0-11 1-15-6-4-7 0-13 0-13Z"/%3E%3Cpath d="M96 96c0 13 6 21 15 24"/%3E%3Cpath d="M52 128c5 7 5 14 0 19-5-5-5-12 0-19Z"/%3E%3Ccircle cx="150" cy="112" r="9"/%3E%3Cpath d="M150 103v18M141 112h18"/%3E%3Ccircle cx="20" cy="90" r="2.2" fill="%23F4ECE1" stroke="none"/%3E%3Ccircle cx="118" cy="160" r="2.2" fill="%23F4ECE1" stroke="none"/%3E%3Ccircle cx="86" cy="44" r="2.2" fill="%23F4ECE1" stroke="none"/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: .085;
+  mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,.25) 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,.25) 100%);
+}
+#drawer > * { position: relative; z-index: 1; }
 #drawer.is-open { transform: none; }
 
 .drawer__head {
   display: flex; align-items: center; justify-content: space-between;
-  padding-bottom: 16px; margin-bottom: 6px;
-  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px; margin-bottom: 4px;
+  border-bottom: 1px solid rgba(244,236,225,.16);
 }
-.drawer__mark { height: 26px; width: auto; }
+.drawer__mark { height: 40px; width: auto; }
 .drawer__close {
-  width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid rgba(244,236,225,.24);
   background: none; display: grid; place-items: center; cursor: pointer;
-  color: var(--ink);
+  color: var(--white);
   transition: background .25s, border-color .25s, transform .25s;
 }
-.drawer__close:hover { background: var(--section); border-color: var(--gold); transform: rotate(90deg); }
+.drawer__close span { font-size: 19px; }
+.drawer__close:hover { background: rgba(244,236,225,.10); border-color: var(--gold); transform: rotate(90deg); }
 
 /* primary nav — large, generous, one per line */
-.drawer__nav { margin: 6px 0 8px; }
+.drawer__nav { margin: 4px 0 6px; }
 .drawer__nav a {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 15px 2px; font-size: 19px; font-weight: 500; color: var(--ink);
-  border-bottom: 1px solid var(--line);
+  padding: 11px 2px; font-size: 15px; font-weight: 500; letter-spacing: .01em;
+  color: var(--white);
+  border-bottom: 1px solid rgba(244,236,225,.10);
   transition: color .25s, padding-left .3s cubic-bezier(.22,.61,.36,1);
 }
 .drawer__nav a i {
-  font-size: 18px; color: var(--gold);
+  font-size: 15px; color: var(--gold-light);
   opacity: 0; transform: translateX(-6px);
   transition: opacity .3s, transform .3s cubic-bezier(.22,.61,.36,1);
 }
-.drawer__nav a:hover { color: var(--green); padding-left: 8px; }
+.drawer__nav a:hover { color: var(--gold-light); padding-left: 7px; }
 .drawer__nav a:hover i { opacity: 1; transform: none; }
 
 /* secondary group — smaller, icon-led */
 .drawer__group { margin-top: 18px; }
 .drawer__group h4 {
-  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 10px;
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(244,236,225,.52); margin-bottom: 6px;
 }
 .drawer__sub a {
-  display: flex; align-items: center; gap: 12px;
-  padding: 11px 2px; font-size: 14px; color: var(--body);
+  display: flex; align-items: center; gap: 11px;
+  padding: 8px 2px; font-size: 13px; color: rgba(244,236,225,.80);
   transition: color .25s, gap .25s;
 }
-.drawer__sub a i { font-size: 19px; color: var(--gold); }
-.drawer__sub a:hover { color: var(--ink); gap: 15px; }
+.drawer__sub a i { font-size: 17px; color: var(--gold-light); }
+.drawer__sub a:hover { color: var(--white); gap: 14px; }
 
 .drawer__foot {
-  margin-top: auto; padding-top: 20px;
-  border-top: 1px solid var(--line);
+  margin-top: auto; padding-top: 16px;
+  border-top: 1px solid rgba(244,236,225,.16);
 }
 .drawer__tel {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-size: 15px; font-weight: 600; color: var(--ink);
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; color: var(--white);
 }
-.drawer__tel i { font-size: 19px; color: var(--gold); }
-.drawer__social { display: flex; gap: 10px; margin-top: 14px; }
+.drawer__tel i { font-size: 17px; color: var(--gold-light); }
+.drawer__social { display: flex; gap: 9px; margin-top: 12px; }
 .drawer__social a {
-  width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid var(--line); display: grid; place-items: center;
-  color: var(--body);
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid rgba(244,236,225,.22); display: grid; place-items: center;
+  color: rgba(244,236,225,.82);
   transition: background .25s, color .25s, border-color .25s, transform .25s;
 }
-.drawer__social svg { width: 16px; height: 16px; }
+.drawer__social svg { width: 15px; height: 15px; }
 .drawer__social a:hover {
-  background: var(--green); border-color: var(--green); color: #fff;
+  background: var(--gold); border-color: var(--gold); color: #fff;
   transform: translateY(-2px);
 }
 
