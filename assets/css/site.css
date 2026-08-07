@@ -1690,3 +1690,43 @@ body:has(.hero--dark) .hero--dark[class] {
   object-fit: contain;
   border-radius: 0;
 }
+
+/* Copy sits in the photograph's own empty left third, over a scrim in the
+   shot's own tan so it reads as haze rather than a panel. */
+.videoblock.videoblock--wide { display: flex; align-items: center; }
+.videoblock.videoblock--wide img,
+.videoblock.videoblock--wide .ph-img { position: absolute; inset: 0; z-index: 0; }
+.videoblock.videoblock--wide::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg,
+    rgba(178,130,90,.94) 0%, rgba(178,130,90,.80) 26%,
+    rgba(178,130,90,.38) 44%, rgba(178,130,90,0) 60%);
+}
+.collectionband__body {
+  position: relative; z-index: 2;
+  width: min(38%, 480px);
+  margin-left: clamp(24px, 8vw, 120px);
+  color: #fff;
+}
+.collectionband__body .tag {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: #fff; background: rgba(36,24,18,.34);
+  border-radius: var(--radius-pill); padding: 5px 14px; margin-bottom: 12px;
+}
+.collectionband__body h3 { font-size: clamp(22px, 2.4vw, 34px); line-height: 1.18; color: #fff; margin-bottom: 12px; }
+.collectionband__body p { font-size: 14px; color: rgba(255,255,255,.9); margin-bottom: 20px; }
+.collectionband__body .btn { display: inline-flex; align-items: center; gap: 6px; }
+
+@media (max-width: 860px) {
+  .videoblock.videoblock--wide::before {
+    background: linear-gradient(180deg,
+      rgba(178,130,90,.30) 0%, rgba(178,130,90,.72) 46%, rgba(178,130,90,.94) 100%);
+  }
+  .videoblock.videoblock--wide { align-items: flex-end; }
+  .collectionband__body {
+    width: auto; margin: 0 20px 24px; text-align: center;
+  }
+  .videoblock.videoblock--wide img,
+  .videoblock.videoblock--wide .ph-img { object-fit: cover; }
+}
