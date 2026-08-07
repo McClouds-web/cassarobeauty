@@ -53,6 +53,7 @@ IMAGES = {
  "Shop Cover Image":                     "shop-cover",
  "Skincare Cover Image":                 "skincare-cover",
  "More Brands Image":                    "new-arrivals-banner",
+ "About Collection Image":               "about-collection",
  "New Arrivals Feature Image":           "new-arrivals-feature",
  "Shop Promotion Image":                 "k-secret-seoul-1988-cream",
 

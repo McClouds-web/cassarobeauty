@@ -774,6 +774,12 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
 .vmcard p { font-size: 13px; }
 .videoblock { position: relative; border-radius: var(--radius-card); overflow: hidden; }
 .videoblock img { width: 100%; height: 340px; object-fit: cover; }
+/* A wide collection shot keeps its own 2:1 frame rather than being cropped
+   into the fixed band the video block uses. */
+.videoblock--wide img,
+.videoblock--wide .ph-img {
+  height: auto; aspect-ratio: 1774 / 887; object-fit: cover;
+}
 .videoblock__play {
   position: absolute; inset: 0; margin: auto; width: 62px; height: 62px; border-radius: 50%;
   background: rgba(255,255,255,.9); color: var(--green); display: grid; place-items: center; font-size: 30px;
