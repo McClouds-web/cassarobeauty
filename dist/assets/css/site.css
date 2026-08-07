@@ -1991,3 +1991,12 @@ body:has(.hero--dark) .hero--dark[class] {
      threw away two of the three jars */
   .arrivals__feature--shot > img.ph--promo { aspect-ratio: 3 / 4; }
 }
+
+/* Studio credit sits with the copyright line, quieter than it but with the
+   link in the brand gold so it still reads as a link. */
+.footer__credit { margin-left: 10px; opacity: .75; }
+.footer__credit a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
+.footer__credit a:hover { color: #fff; }
+@media (max-width: 620px) {
+  .footer__credit { display: block; margin: 6px 0 0; }
+}
