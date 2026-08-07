@@ -1765,3 +1765,45 @@ body:has(.hero--dark) .hero--dark[class] {
   object-fit: cover; object-position: center top;
   border-radius: var(--radius-card);
 }
+
+/* =========================================================================
+   Mobile pass
+   ========================================================================= */
+.filters__toggle { display: none; }
+
+@media (max-width: 900px) {
+  /* Filters: collapsed by default so products are reachable immediately */
+  .filters__toggle {
+    display: inline-flex; align-items: center; gap: 8px;
+    width: 100%; justify-content: center; margin-bottom: 16px;
+  }
+  .filters { display: none; margin-bottom: 8px; }
+  .filters.is-open { display: block; }
+  .filters .ask { display: none; }          /* the support card belongs below, not mid-filter */
+}
+
+@media (max-width: 720px) {
+  /* Covers: a 520px floor eats a phone screen whole */
+  .pagehead--cover { height: 82vw; min-height: 300px; max-height: 460px; }
+  .pagehead--cover::before { height: 140px; }
+
+  /* Contact photograph sits below the form once stacked, so it needs less height */
+  .contact-photo .ph-img,
+  .contact-photo img { min-height: 320px; }
+
+  /* Collection band: the copy stacks over the photo, so give it room */
+  .videoblock.videoblock--wide { min-height: 470px; }
+  .collectionband__body h3 { font-size: 22px; }
+
+  /* Product grids: two up reads better than one on a phone */
+  .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+  /* Tap targets */
+  .check { padding: 7px 0; }
+  .btn { padding: 12px 22px; }
+}
+
+@media (max-width: 420px) {
+  .pagehead--cover { min-height: 260px; }
+  .grid--3, .grid--4 { gap: 10px; }
+}

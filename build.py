@@ -108,6 +108,26 @@ IMAGES = {
 }
 
 
+_DIMS = {}
+
+
+def _dims(slug):
+    """Intrinsic size of a built image, so every <img> can carry width and
+    height and the browser reserves the right box before the file arrives."""
+    if slug not in _DIMS:
+        try:
+            from PIL import Image
+            with Image.open(f"assets/products/{slug}.jpg") as im:
+                _DIMS[slug] = im.size
+        except Exception:
+            _DIMS[slug] = None
+    return _DIMS[slug]
+
+
+# Images above the fold must not be deferred; everything else loads lazily.
+EAGER_CLASSES = ("hero__cover", "hero__backdrop", "pagehead__bg")
+
+
 def ph(label, extra=""):
     """Real image when we have one for this label, otherwise a labelled
     placeholder. Either way it fills the same container, so the box, ratio
@@ -116,7 +136,12 @@ def ph(label, extra=""):
     cls = ("ph " + extra).strip()
     if slug:
         img_cls = ("ph-img " + extra).strip()
-        return f'<img class="{img_cls}" src="assets/products/{slug}.jpg" alt="{label}"/>'
+        size = _dims(slug)
+        dim = f' width="{size[0]}" height="{size[1]}"' if size else ""
+        eager = any(c in extra for c in EAGER_CLASSES)
+        load = ' fetchpriority="high"' if eager else ' loading="lazy" decoding="async"'
+        return (f'<img class="{img_cls}" src="assets/products/{slug}.jpg"'
+                f' alt="{label}"{dim}{load}/>')
     return f'<div class="{cls}"><span>{label}</span></div>'
 
 

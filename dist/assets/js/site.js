@@ -197,3 +197,15 @@
     });
   }
 })();
+
+/* Shop filters collapse behind a toggle on small screens, where the sidebar
+   would otherwise push every product below a 30-checkbox list. */
+(function () {
+  var btn = document.querySelector('[data-filters-toggle]');
+  var panel = document.getElementById('shop-filters');
+  if (!btn || !panel) return;
+  btn.addEventListener('click', function () {
+    var open = panel.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+})();
