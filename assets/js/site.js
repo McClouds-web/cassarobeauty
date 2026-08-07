@@ -118,3 +118,82 @@
     });
   });
 })();
+
+/* -------------------------------------------------------------------------
+   Shop filters
+   Each product card carries data-brand / data-cat / data-skin / data-concern.
+   Checking boxes within a group is an OR; across groups it is an AND, which is
+   how shoppers expect facets to behave: "Serums or Toners, from SKIN1004".
+   ------------------------------------------------------------------------- */
+(function () {
+  var grid = document.querySelector('[data-product-grid]');
+  if (!grid) return;
+
+  var boxes = Array.prototype.slice.call(
+    document.querySelectorAll('.filters input[type="checkbox"][data-facet]'));
+  if (!boxes.length) return;
+
+  var cards   = Array.prototype.slice.call(grid.querySelectorAll('.pcard'));
+  var counter = document.querySelector('[data-result-count]');
+  var clear   = document.querySelector('[data-filter-clear]');
+  var empty   = null;
+
+  function selected() {
+    var by = {};
+    boxes.forEach(function (b) {
+      if (!b.checked) return;
+      (by[b.getAttribute('data-facet')] = by[b.getAttribute('data-facet')] || []).push(b.value);
+    });
+    return by;
+  }
+
+  function matches(card, by) {
+    return Object.keys(by).every(function (facet) {
+      var have = (card.getAttribute('data-' + facet) || '').split(' ').filter(Boolean);
+      var whole = card.getAttribute('data-' + facet) || '';
+      return by[facet].some(function (want) {
+        // brand and category are whole values that may contain spaces
+        return facet === 'brand' || facet === 'cat'
+          ? whole === want
+          : have.indexOf(want) !== -1;
+      });
+    });
+  }
+
+  function apply() {
+    var by = selected();
+    var active = Object.keys(by).length > 0;
+    var shown = 0;
+
+    cards.forEach(function (card) {
+      var ok = !active || matches(card, by);
+      card.hidden = !ok;
+      if (ok) shown++;
+    });
+
+    if (counter) {
+      counter.textContent = 'Showing ' + shown + ' product' + (shown === 1 ? '' : 's');
+    }
+    if (clear) clear.hidden = !active;
+
+    if (!shown) {
+      if (!empty) {
+        empty = document.createElement('p');
+        empty.className = 'filters__empty';
+        empty.textContent = 'No products match those filters. Try removing one.';
+        grid.parentNode.insertBefore(empty, grid.nextSibling);
+      }
+      empty.hidden = false;
+    } else if (empty) {
+      empty.hidden = true;
+    }
+  }
+
+  boxes.forEach(function (b) { b.addEventListener('change', apply); });
+  if (clear) {
+    clear.addEventListener('click', function () {
+      boxes.forEach(function (b) { b.checked = false; });
+      apply();
+    });
+  }
+})();

@@ -1737,3 +1737,6 @@ body:has(.hero--dark) .hero--dark[class] {
   .videoblock.videoblock--wide img,
   .videoblock.videoblock--wide .ph-img { object-fit: cover; }
 }
+
+.filters__clear { width: 100%; margin-bottom: 22px; }
+.filters__empty { padding: 40px 0; text-align: center; color: var(--body); font-size: 14px; }

@@ -219,11 +219,50 @@ def rating_block(name):
             f'<b>{score}</b> <span>({count} reviews)</span></div>')
 
 
+# Product -> the facets the Shop filters work on. Category is single-valued;
+# skin types and concerns come from each product's own "Suitable For" and
+# "Key Benefits" copy, so the filters agree with what the page claims.
+FACETS = {
+ "Madagascar Centella Ampoule":                        ("Ampoules",      "normal combination dry sensitive", "soothing hydration"),
+ "Madagascar Centella Ampoule Foam":                   ("Face Cleansers","normal combination oily",          "soothing"),
+ "Madagascar Centella Poremizing Deep Cleansing Foam": ("Face Cleansers","combination oily",                 "blemishes"),
+ "Madagascar Centella Poremizing Fresh Ampoule":       ("Ampoules",      "combination oily",                 "blemishes hydration"),
+ "Madagascar Centella Tea-Trica Relief Ampoule":       ("Ampoules",      "combination oily sensitive",       "soothing blemishes"),
+ "Tone Brightening Capsule Ampoule":                   ("Ampoules",      "normal combination dry",           "brightening dark-spots hydration"),
+ "Madagascar Centella Toning Toner":                   ("Toners",        "normal combination oily sensitive","soothing brightening"),
+ "Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++":       ("Sunscreens",    "normal combination dry",           "daily-protection hydration"),
+ "Acne Foam Cleanser":                                 ("Face Cleansers","combination oily",                 "blemishes"),
+ "Deep Clean Foam Cleanser \u2013 Sedum Hyaluron":       ("Face Cleansers","normal combination oily",          "hydration"),
+ "PDRN Pink Niacinamide Whip Cleanser":                ("Face Cleansers","normal combination oily",          "brightening"),
+ "Green Tea Fresh Toner":                              ("Toners",        "combination oily",                 "hydration soothing"),
+ "Niacinamide 10% + TXA 4% Serum":                     ("Serums",        "normal combination oily",          "brightening dark-spots"),
+ "Azelaic Acid 10 + Hyaluron Redness Soothing Serum":  ("Serums",        "combination oily",                 "soothing blemishes brightening"),
+ "Glow Deep Serum: Rice + Alpha Arbutin":              ("Serums",        "normal combination dry",           "brightening dark-spots"),
+ "Dark Spot Correcting Glow Serum":                    ("Serums",        "normal combination oily",          "dark-spots brightening"),
+ "Relief Sun: Rice + Probiotics":                      ("Sunscreens",    "normal combination dry",           "daily-protection hydration"),
+ "Collagen Jelly Cream":                               ("Moisturisers",  "normal combination dry",           "hydration"),
+ "Advanced Snail 92 All in One Cream":                 ("Moisturisers",  "normal combination dry",           "hydration"),
+ "147 Barrier Cream":                                  ("Moisturisers",  "normal dry",                       "hydration soothing"),
+ "Seoul 1988 Cream: Snail Mucin 93% + Rice":           ("Moisturisers",  "normal combination dry",           "hydration"),
+ "Collagen Gel Mask \u2013 Sedum Jelly":                 ("Face Masks",   "normal combination dry",           "hydration"),
+ "Deep Peptide Radiance Mask":                         ("Face Masks",   "normal combination dry",           "hydration brightening"),
+ "Collagen Radiance Mask":                             ("Face Masks",   "normal combination dry oily sensitive", "hydration brightening"),
+ "Collagen Night Wrapping Mask":                       ("Face Masks",   "normal combination dry",           "hydration"),
+ "Bouncy Day Collagen Glow Up Hydrogel Mask":          ("Face Masks",   "normal combination dry",           "hydration brightening"),
+ "Kojic Acid Turmeric Brightening Gel Mask":           ("Face Masks",   "normal combination dry oily sensitive", "brightening dark-spots"),
+ "PDRN Pink Collagen Gel Mask":                        ("Face Masks",   "normal combination dry",           "hydration"),
+ "Zero Pore Blackhead Mud Mask":                       ("Face Masks",   "combination oily",                 "blemishes"),
+}
+
+DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
+
+
 def card(imglabel, brand, name, price="R___"):
     """Product card. Brand sits above the product name; the rating comes from
     RATINGS so each product carries its own score."""
     href = PRODUCT_PAGES.get(name, "product.html")
-    return f'''<a class="pcard" href="{href}">
+    cat, skin, concern = FACETS.get(name, DEFAULT_FACET)
+    return f'''<a class="pcard" href="{href}" data-brand="{brand}" data-cat="{cat}" data-skin="{skin}" data-concern="{concern}" data-stock="in">
 <div class="pcard__media">
 <div class="pcard__tools">
 <button type="button" aria-label="Add to wishlist"><span class="material-symbols-outlined" style="font-size:17px">favorite</span></button>
