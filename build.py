@@ -33,7 +33,7 @@ IMAGES = {
  "About Image 3":                        "cosrx-advanced-snail-92-cream-beige",
  "About Image 4":                        "medicube-collagen-radiance-mask-beige",
  "About Feature Image":                  "skin1004-madagascar-centella-poremizing-fresh-ampoule",
- "Contact Page Image":                   "dr-althea-147-barrier-cream",
+ "Contact Page Image":                   "contact-photo",
  "Skincare Essentials Image 1":          "skin1004-madagascar-centella-ampoule-beige",
  "Skincare Essentials Image 2":          "isntree-green-tea-fresh-toner-beige",
 
