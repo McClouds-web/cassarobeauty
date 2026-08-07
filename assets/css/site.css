@@ -1030,7 +1030,21 @@ img.ph--promo { position: absolute; inset: 0; z-index: 0; }
 .brandcard__media .ph-img, .brandcard__media .ph { width: 100%; height: 100%; object-fit: cover; }
 .brandcard h3 { font-size: 18px; margin-bottom: 8px; }
 .brandcard p { font-size: 13px; margin-bottom: 14px; }
-.brandcard--soon { display: flex; flex-direction: column; justify-content: center; text-align: center; background: var(--section); border-style: dashed; }
+/* The "More Brands" card keeps the dashed, tinted treatment that marks it as
+   an invitation rather than a stocked brand, but now carries a product image
+   so it sits in the same rhythm as the cards beside it. */
+.brandcard--soon {
+  display: flex; flex-direction: column; text-align: center;
+  background: var(--section); border-style: dashed;
+}
+.brandcard--soon .brandcard__media { background: var(--shot); }
+.brandcard--soon .brandcard__tag {
+  display: inline-block; align-self: center;
+  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.brandcard--soon p { flex: 1 0 auto; }
+.brandcard--soon .btn { align-self: center; }
 
 /* -------------------------------------------------------------------------
    Hero — dark cover variant
