@@ -295,11 +295,11 @@ p  { margin: 0; color: var(--body); }
 .pagehead--cover {
   position: relative; overflow: hidden;
   padding: 0; text-align: left;
-  /* The band tracks the photo's own 16:9 so `cover` has little left to crop;
-     capped so it stays a header rather than a hero on wide screens. */
-  height: 38vw;
-  min-height: 320px;
-  max-height: 560px;
+  /* Same band as the homepage hero cover (.hero--cover) so page covers and the
+     homepage read at one scale. */
+  height: 53.35vw;
+  min-height: 520px;
+  max-height: 720px;
   display: flex; align-items: center;
   background: #5F311A;
 }
@@ -309,11 +309,6 @@ p  { margin: 0; color: var(--body); }
   /* Anchor the top so the crop takes from the shoulders, never the face. */
   object-position: right top;
 }
-.pagehead--cover::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(90deg,
-    rgba(95,49,26,.88) 0%, rgba(95,49,26,.62) 34%, rgba(95,49,26,0) 62%);
-}
 .pagehead--cover .wrap { position: relative; z-index: 2; }
 .pagehead--cover h1 { color: #fff; }
 .pagehead--cover .crumb,
@@ -321,10 +316,7 @@ p  { margin: 0; color: var(--body); }
 .pagehead--cover .crumb b { color: #fff; }
 .pagehead--cover .crumb a:hover { color: var(--gold-light); }
 @media (max-width: 760px) {
-  .pagehead--cover { height: 62vw; min-height: 260px; }
-  .pagehead--cover::after {
-    background: linear-gradient(90deg, rgba(95,49,26,.92) 0%, rgba(95,49,26,.55) 70%);
-  }
+  .pagehead--cover { height: 76vw; min-height: 360px; }
 }
 
 /* ---------- Forms ---------- */
