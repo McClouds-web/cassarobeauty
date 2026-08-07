@@ -1992,11 +1992,59 @@ body:has(.hero--dark) .hero--dark[class] {
   .arrivals__feature--shot > img.ph--promo { aspect-ratio: 3 / 4; }
 }
 
-/* Studio credit sits with the copyright line, quieter than it but with the
-   link in the brand gold so it still reads as a link. */
-.footer__credit { margin-left: 10px; opacity: .75; }
-.footer__credit a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
-.footer__credit a:hover { color: #fff; }
+/* =========================================================================
+   Studio credit
+   A small pill that sits between the copyright and the locale switcher. It
+   reads as a considered mark rather than a line of small print: the label
+   stays quiet, the studio name carries the weight, and the whole chip warms
+   to gold on hover with the arrow stepping out as it goes.
+   ========================================================================= */
+.credit {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 8px 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--card);
+  font-size: 12px; line-height: 1;
+  white-space: nowrap;
+  transition: border-color .25s, background .25s, box-shadow .25s, transform .25s;
+}
+.credit__label { color: var(--muted); letter-spacing: .02em; }
+.credit__brand {
+  font-weight: 700; color: var(--ink); letter-spacing: .01em;
+  position: relative;
+}
+/* a gold hairline under the name, drawn on hover */
+.credit__brand::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform .3s cubic-bezier(.22,.61,.36,1);
+}
+.credit__arrow {
+  font-size: 15px; color: var(--gold);
+  width: 22px; height: 22px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(184,137,79,.12);
+  transition: transform .25s cubic-bezier(.22,.61,.36,1), background .25s, color .25s;
+}
+.credit:hover {
+  border-color: var(--gold);
+  box-shadow: 0 6px 18px rgba(36,24,18,.10);
+  transform: translateY(-1px);
+}
+.credit:hover .credit__brand::after { transform: scaleX(1); }
+.credit:hover .credit__arrow {
+  transform: translate(2px, -2px);
+  background: var(--gold); color: #fff;
+}
+.credit:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .credit, .credit__arrow, .credit__brand::after { transition: none; }
+  .credit:hover { transform: none; }
+  .credit:hover .credit__arrow { transform: none; }
+}
+
 @media (max-width: 620px) {
-  .footer__credit { display: block; margin: 6px 0 0; }
+  .credit { order: 3; }
 }
