@@ -295,12 +295,19 @@ p  { margin: 0; color: var(--body); }
 .pagehead--cover {
   position: relative; overflow: hidden;
   padding: 0; text-align: left;
-  min-height: 300px; display: flex; align-items: center;
+  /* The band tracks the photo's own 16:9 so `cover` has little left to crop;
+     capped so it stays a header rather than a hero on wide screens. */
+  height: 38vw;
+  min-height: 320px;
+  max-height: 560px;
+  display: flex; align-items: center;
   background: #5F311A;
 }
 .pagehead--cover .pagehead__bg {
   position: absolute; inset: 0; z-index: 0;
-  width: 100%; height: 100%; object-fit: cover; object-position: right center;
+  width: 100%; height: 100%; object-fit: cover;
+  /* Anchor the top so the crop takes from the shoulders, never the face. */
+  object-position: right top;
 }
 .pagehead--cover::after {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -314,7 +321,7 @@ p  { margin: 0; color: var(--body); }
 .pagehead--cover .crumb b { color: #fff; }
 .pagehead--cover .crumb a:hover { color: var(--gold-light); }
 @media (max-width: 760px) {
-  .pagehead--cover { min-height: 220px; }
+  .pagehead--cover { height: 62vw; min-height: 260px; }
   .pagehead--cover::after {
     background: linear-gradient(90deg, rgba(95,49,26,.92) 0%, rgba(95,49,26,.55) 70%);
   }
