@@ -9,11 +9,10 @@ import os, re, json, shutil
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, "dist")
 
-NAV_KEYS = ["home", "shop", "skin", "makeup", "fragrance", "brands", "about", "journal", "contact"]
+NAV_KEYS = ["home", "shop", "skin", "brands", "about", "contact"]
 
-MARQUEE_ITEMS = ["Skincare", "Serums", "Face Cleansers", "Sunscreens", "Toners",
-                 "Moisturisers", "Face Masks", "Makeup", "Fragrance", "Body Care",
-                 "Accessories", "Gift Sets"]
+MARQUEE_ITEMS = ["Skincare", "Serums", "Ampoules", "Face Cleansers",
+                 "Sunscreens", "Toners", "Moisturisers", "Face Masks"]
 
 
 def marquee():

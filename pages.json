@@ -3,7 +3,7 @@
   "file": "index",
   "title": "Home",
   "nav": "home",
-  "desc": "Carefully selected skincare, makeup and beauty essentials from trusted international brands."
+  "desc": "Carefully selected skincare and beauty essentials from trusted international brands."
  },
  {
   "file": "shop",
@@ -196,18 +196,6 @@
   "title": "Skincare",
   "nav": "skin",
   "desc": "Carefully selected skincare from trusted international brands."
- },
- {
-  "file": "makeup",
-  "title": "Makeup",
-  "nav": "makeup",
-  "desc": "Makeup coming soon to Cassaro Beauty."
- },
- {
-  "file": "fragrance",
-  "title": "Fragrance",
-  "nav": "fragrance",
-  "desc": "Fragrance and body care coming soon to Cassaro Beauty."
  },
  {
   "file": "brands",
