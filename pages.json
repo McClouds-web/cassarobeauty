@@ -264,18 +264,6 @@
   "desc": "Cassaro Beauty is a premium online destination for carefully selected skincare and cosmetics."
  },
  {
-  "file": "blogs",
-  "title": "Beauty Journal",
-  "nav": "journal",
-  "desc": "Skincare guides and beauty product information from Cassaro Beauty."
- },
- {
-  "file": "blog-details",
-  "title": "Beauty Journal",
-  "nav": "journal",
-  "desc": "Skincare guides from the Cassaro Beauty Journal."
- },
- {
   "file": "contact",
   "title": "Contact Us",
   "nav": "contact",

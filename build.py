@@ -53,7 +53,6 @@ IMAGES = {
  "Korean Skincare Banner Image":         "korean-skincare-banner",
  "New Arrivals Feature Image":           "new-arrivals-feature",
  "Shop Promotion Image":                 "k-secret-seoul-1988-cream",
- "Journal Promotion Image":              "skin1004-hyalu-cica-water-fit-sun-serum",
 
  # product cards
  "SKIN1004 Madagascar Centella Ampoule Image":       "skin1004-madagascar-centella-ampoule-beige",
@@ -236,15 +235,6 @@ def card(imglabel, brand, name, price="R___"):
 </a>'''
 
 
-def post(imglabel, cat, title):
-    return f'''<a class="post" href="blog-details.html">
-<div class="post__media"><span class="badge">{cat}</span>{ph(imglabel)}</div>
-<div class="post__meta">Cassaro Beauty Editorial</div>
-<h3 class="post__title">{title}</h3>
-<span class="link-underline">Read More</span>
-</a>'''
-
-
 def faq(question, answer, state="closed"):
     open_cls = " is-open" if state == "open" else ""
     sign = "\u2212" if state == "open" else "+"
@@ -260,7 +250,6 @@ def expand(html):
     html = re.sub(r"\{\{CARD\|([^}]*)\}\}", lambda m: card(*m.group(1).split("|")), html)
     html = re.sub(r"\{\{RATING\|([^}]*)\}\}", lambda m: rating_block(m.group(1)), html)
     html = re.sub(r"\{\{STARS\|([^}]*)\}\}", lambda m: rating_inline(m.group(1)), html)
-    html = re.sub(r"\{\{POST\|([^}]*)\}\}", lambda m: post(*m.group(1).split("|")), html)
     html = re.sub(r"\{\{FAQ\|([^}]*)\}\}", lambda m: faq(*m.group(1).split("|")), html)
     return html
 
