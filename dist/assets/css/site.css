@@ -1741,11 +1741,21 @@ body:has(.hero--dark) .hero--dark[class] {
 .filters__clear { width: 100%; margin-bottom: 22px; }
 .filters__empty { padding: 40px 0; text-align: center; color: var(--body); font-size: 14px; }
 
-/* The Shop and Skincare covers are portraits, so they anchor to the top to
-   protect the face. A product-group shot is the opposite: everything of value
-   sits along the bottom edge, and the top is empty wall. This one is also 3:2
-   against a wider band, so it has more to give up — anchor it to the bottom so
-   the crop comes off the wall instead of the products. */
+/* Anchoring alone cannot save this one. The band is 53.35vw (~1.87:1) to match
+   the Shop and Skincare portraits, but this shot is 3:2, so `cover` always had
+   height to throw away — off the bottom when anchored top, off the top when
+   anchored bottom. The band now takes the photo's own 3:2 shape with no cap,
+   so the whole frame shows and there is nothing to crop. */
+.pagehead--cover.pagehead--cover-bottom {
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: 1536 / 1024;
+}
 .pagehead--cover.pagehead--cover-bottom .pagehead__bg {
-  object-position: center bottom;
+  object-position: center center;
+}
+@media (max-width: 1024px) {
+  .pagehead--cover.pagehead--cover-bottom { aspect-ratio: auto; min-height: 420px; }
+  .pagehead--cover.pagehead--cover-bottom .pagehead__bg { object-position: center bottom; }
 }
