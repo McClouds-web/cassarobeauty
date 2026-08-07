@@ -338,8 +338,8 @@ body:has(.pagehead--cover) .header { z-index: 60; }
 .pagehead--cover .crumb a { color: rgba(255,255,255,.78); }
 .pagehead--cover .crumb b { color: #fff; }
 .pagehead--cover .crumb a:hover { color: var(--gold-light); }
-@media (max-width: 760px) {
-  .pagehead--cover { height: 76vw; min-height: 360px; }
+@media (max-width: 1024px) {
+  .pagehead--cover { height: 62vw; min-height: 380px; max-height: 560px; }
 }
 
 /* ---------- Forms ---------- */
@@ -1771,8 +1771,9 @@ body:has(.hero--dark) .hero--dark[class] {
    ========================================================================= */
 .filters__toggle { display: none; }
 
-@media (max-width: 900px) {
-  /* Filters: collapsed by default so products are reachable immediately */
+@media (max-width: 1024px) {
+  /* Filters: collapsed by default so products are reachable immediately.
+     Matches the width at which .shop-layout stops being a sidebar. */
   .filters__toggle {
     display: inline-flex; align-items: center; gap: 8px;
     width: 100%; justify-content: center; margin-bottom: 16px;
