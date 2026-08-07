@@ -1587,8 +1587,10 @@ body:has(.hero--dark) .hero--dark[class] {
 .arrivals__feature--shot > img.ph--promo {
   opacity: 1; object-fit: cover; object-position: center;
 }
-.arrivals__feature--shot h3,
-.arrivals__feature--shot .link-underline {
+.arrivals__feature--shot h3 {
   color: var(--ink);
   text-shadow: 0 1px 10px rgba(251,247,240,.9), 0 1px 3px rgba(251,247,240,1);
 }
+/* The card is itself an <a>, so the call to action is a styled span rather
+   than a nested link. */
+.arrivals__feature--shot .btn { display: inline-flex; align-items: center; gap: 6px; }
