@@ -47,8 +47,8 @@
 
     <div class="icons">
       <a href="shop.html" aria-label="Search"><span class="material-symbols-outlined">search</span></a>
-      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span></a>
-      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span></a>
+      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span><span class="cbadge" data-wish-count hidden>0</span></a>
+      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><span class="cbadge" data-cart-count hidden>0</span></a>
       <a href="account.html" aria-label="Account"><span class="material-symbols-outlined">person</span></a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
         <span class="burger__box"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></span>
@@ -112,21 +112,11 @@
         <a class="acctnav__item" href="account-logout.html">Logout</a>
     </nav>
     <div class="acct__panel">
-      <p style="font-size:13px;margin-bottom:20px">Saved payment methods will appear here. Available options will be confirmed once the payment gateway is finalised.</p>
+      <p style="font-size:13px;margin-bottom:20px">Cassaro Beauty accepts payment by direct bank transfer / EFT. No card details are stored on this website.</p>
 
-      <div class="paymethod paymethod--card">
-        <label class="paymethod__head"><input type="radio" name="pm"/> <b class="pm-logo pm-logo--card"><span class="material-symbols-outlined" style="font-size:16px">add_card</span></b> Add New Card</label>
-        <div class="paymethod__body">
-          <div class="field"><label>Card Holder Name <span class="req">*</span></label><input class="input" placeholder="Name on card"/></div>
-          <div class="field"><label>Card Number <span class="req">*</span></label><input class="input" placeholder="Card number"/></div>
-          <div class="row2">
-            <div class="field"><label>Expiry Date <span class="req">*</span></label><input class="input" placeholder="MM/YY"/></div>
-            <div class="field"><label>CVV <span class="req">*</span></label><input class="input" placeholder="CVV"/></div>
-          </div>
-          <label class="check"><input type="checkbox"/> Save card for future payments</label>
-          <button class="btn btn--primary" style="margin-top:12px">Add Card</button>
-        </div>
-      </div>
+      <label class="paymethod"><input type="radio" name="pm" checked/> <b class="pm-logo pm-logo--cod"><span class="material-symbols-outlined" style="font-size:16px">account_balance</span></b> Bank Transfer / EFT</label>
+
+      <p style="font-size:13px;margin-top:18px">After you submit an order on WhatsApp, our team confirms availability and delivery details and sends the banking information required to complete your payment. Proof of payment can be sent back in the same WhatsApp conversation.</p>
     </div>
   </div>
 </section>
@@ -141,11 +131,11 @@
     </div>
     <div class="trust__item">
       <span class="ico material-symbols-outlined">lock</span>
-      <div><strong>Secure Payments</strong><small>Protected payment options at checkout.</small></div>
+      <div><strong>Secure Ordering</strong><small>Confirm your order directly with our team on WhatsApp.</small></div>
     </div>
     <div class="trust__item">
-      <span class="ico material-symbols-outlined">support_agent</span>
-      <div><strong>Customer Support</strong><small>Contact our team for order and product assistance.</small></div>
+      <span class="ico material-symbols-outlined">account_balance</span>
+      <div><strong>Bank Transfer</strong><small>Payment details are provided after your order is confirmed.</small></div>
     </div>
   </div>
 </section>
@@ -230,6 +220,9 @@
   </div>
 </footer>
 
+<script src="assets/js/config.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/checkout.js"></script>
 </body>
 </html>

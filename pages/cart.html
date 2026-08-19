@@ -8,59 +8,36 @@
 <section class="section">
   <div class="wrap cart-layout">
     <div>
-      <table class="linetable">
+      <table class="linetable" data-cart-table>
         <thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Subtotal</th></tr></thead>
-        <tbody>
-          <tr>
-            <td class="linetable__prod">
-              <button class="rm" aria-label="Remove">&times;</button>
-              {{PH|SKIN1004 Madagascar Centella Ampoule Image}}
-              <div><strong>Madagascar Centella Ampoule</strong><small>SKIN1004</small></div>
-            </td>
-            <td data-label="Price">R___</td>
-            <td data-label="Quantity"><div class="qty" data-qty><button type="button">&minus;</button><input value="1"/><button type="button">+</button></div></td>
-            <td class="strong" data-label="Subtotal">R___</td>
-          </tr>
-          <tr>
-            <td class="linetable__prod">
-              <button class="rm" aria-label="Remove">&times;</button>
-              {{PH|Beauty of Joseon Relief Sun Image}}
-              <div><strong>Relief Sun: Rice + Probiotics</strong><small>Beauty of Joseon</small></div>
-            </td>
-            <td data-label="Price">R___</td>
-            <td data-label="Quantity"><div class="qty" data-qty><button type="button">&minus;</button><input value="1"/><button type="button">+</button></div></td>
-            <td class="strong" data-label="Subtotal">R___</td>
-          </tr>
-          <tr>
-            <td class="linetable__prod">
-              <button class="rm" aria-label="Remove">&times;</button>
-              {{PH|Abib Acne Foam Cleanser Image}}
-              <div><strong>Acne Foam Cleanser</strong><small>Abib</small></div>
-            </td>
-            <td data-label="Price">R___</td>
-            <td data-label="Quantity"><div class="qty" data-qty><button type="button">&minus;</button><input value="1"/><button type="button">+</button></div></td>
-            <td class="strong" data-label="Subtotal">R___</td>
-          </tr>
-        </tbody>
+        <tbody data-cart-rows></tbody>
       </table>
 
-      <div class="cart-actions">
+      <div class="emptystate" data-cart-empty hidden>
+        <span class="ico material-symbols-outlined">shopping_bag</span>
+        <h3>Your cart is empty</h3>
+        <p>Add the products you would like and we will confirm availability and delivery with you on WhatsApp.</p>
+        <a class="btn btn--primary" href="shop.html">Continue Shopping</a>
+      </div>
+
+      <div class="cart-actions" data-cart-tools>
         <input class="input" style="max-width:230px" placeholder="Coupon Code"/>
-        <button class="btn btn--primary">Apply Coupon</button>
-        <a class="link-underline" href="cart.html">Clear Shopping Cart</a>
+        <button class="btn btn--primary" type="button" data-coupon-apply>Apply Coupon</button>
+        <a class="link-underline" href="cart.html" data-cart-clear>Clear Shopping Cart</a>
       </div>
     </div>
 
     <aside class="summary">
       <h3>Order Summary</h3>
       <dl>
-        <div><dt>Items</dt><dd>3</dd></div>
-        <div><dt>Sub Total</dt><dd>R___</dd></div>
-        <div><dt>Shipping</dt><dd>Calculated at checkout</dd></div>
-        <div><dt>Coupon Discount</dt><dd>R___</dd></div>
+        <div><dt>Items</dt><dd data-sum-items>0</dd></div>
+        <div><dt>Sub Total</dt><dd data-sum-subtotal>R___</dd></div>
+        <div><dt>Delivery</dt><dd>To be confirmed</dd></div>
+        <div><dt>Payment</dt><dd>Bank Transfer / EFT</dd></div>
       </dl>
-      <div class="summary__total"><span>Total</span><b>R___</b></div>
-      <a class="btn btn--primary btn--block" href="checkout-billing.html">Proceed to Checkout</a>
+      <div class="summary__total"><span>Total</span><b data-sum-total>R___</b></div>
+      <a class="btn btn--primary btn--block" href="checkout-billing.html" data-checkout-start>Proceed to Checkout</a>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px">Delivery cost and the final amount are confirmed by our team on WhatsApp before you pay.</p>
     </aside>
   </div>
 </section>

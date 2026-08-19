@@ -47,8 +47,8 @@
 
     <div class="icons">
       <a href="shop.html" aria-label="Search"><span class="material-symbols-outlined">search</span></a>
-      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span></a>
-      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span></a>
+      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span><span class="cbadge" data-wish-count hidden>0</span></a>
+      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><span class="cbadge" data-cart-count hidden>0</span></a>
       <a href="account.html" aria-label="Account"><span class="material-symbols-outlined">person</span></a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
         <span class="burger__box"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></span>
@@ -130,7 +130,7 @@
 </div>
       <div class="acc">
 <button class="acc__head" type="button">How long does delivery take?<span class="acc__sign">+</span></button>
-<div class="acc__body"><p>Delivery timeframes will be confirmed once our delivery partners are finalised. Estimated timeframes will be shown at checkout.</p></div>
+<div class="acc__body"><p>Delivery timeframes and the delivery cost for your area are confirmed by our team on WhatsApp when your order is confirmed.</p></div>
 </div>
       <div class="acc">
 <button class="acc__head" type="button">Do you deliver across South Africa?<span class="acc__sign">+</span></button>
@@ -142,11 +142,23 @@
 </div>
       <div class="acc">
 <button class="acc__head" type="button">How do I track my order?<span class="acc__sign">+</span></button>
-<div class="acc__body"><p>Use the Track Your Order page and enter your order number together with the email address used at checkout.</p></div>
+<div class="acc__body"><p>Use the Track Your Order page and enter the order reference shown when you submitted your order. You can also ask our team for an update in your WhatsApp conversation.</p></div>
 </div>
       <div class="acc">
-<button class="acc__head" type="button">What payment methods do you accept?<span class="acc__sign">+</span></button>
-<div class="acc__body"><p>Accepted payment methods will be confirmed once our payment gateway is finalised, and will be shown at checkout.</p></div>
+<button class="acc__head" type="button">How do I pay for my order?<span class="acc__sign">+</span></button>
+<div class="acc__body"><p>Cassaro Beauty currently accepts payment by direct bank transfer / EFT. After you submit your order through WhatsApp, our team will confirm your order and provide the banking details required for payment.</p></div>
+</div>
+      <div class="acc">
+<button class="acc__head" type="button">Is my order confirmed when I click Order via WhatsApp?<span class="acc__sign">+</span></button>
+<div class="acc__body"><p>No. Your order is submitted for confirmation. Cassaro Beauty will confirm product availability, delivery details and the final amount before payment.</p></div>
+</div>
+      <div class="acc">
+<button class="acc__head" type="button">How do I send proof of payment?<span class="acc__sign">+</span></button>
+<div class="acc__body"><p>Proof of payment can be sent directly to Cassaro Beauty through the same WhatsApp conversation used to place your order.</p></div>
+</div>
+      <div class="acc">
+<button class="acc__head" type="button">When will my order be processed?<span class="acc__sign">+</span></button>
+<div class="acc__body"><p>Orders are processed after payment has been confirmed.</p></div>
 </div>
       <div class="acc">
 <button class="acc__head" type="button">How can I contact customer support?<span class="acc__sign">+</span></button>
@@ -166,11 +178,11 @@
     </div>
     <div class="trust__item">
       <span class="ico material-symbols-outlined">lock</span>
-      <div><strong>Secure Payments</strong><small>Protected payment options at checkout.</small></div>
+      <div><strong>Secure Ordering</strong><small>Confirm your order directly with our team on WhatsApp.</small></div>
     </div>
     <div class="trust__item">
-      <span class="ico material-symbols-outlined">support_agent</span>
-      <div><strong>Customer Support</strong><small>Contact our team for order and product assistance.</small></div>
+      <span class="ico material-symbols-outlined">account_balance</span>
+      <div><strong>Bank Transfer</strong><small>Payment details are provided after your order is confirmed.</small></div>
     </div>
   </div>
 </section>
@@ -255,6 +267,9 @@
   </div>
 </footer>
 
+<script src="assets/js/config.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/checkout.js"></script>
 </body>
 </html>

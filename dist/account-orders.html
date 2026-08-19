@@ -47,8 +47,8 @@
 
     <div class="icons">
       <a href="shop.html" aria-label="Search"><span class="material-symbols-outlined">search</span></a>
-      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span></a>
-      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span></a>
+      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span><span class="cbadge" data-wish-count hidden>0</span></a>
+      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><span class="cbadge" data-cart-count hidden>0</span></a>
       <a href="account.html" aria-label="Account"><span class="material-symbols-outlined">person</span></a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
         <span class="burger__box"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></span>
@@ -114,11 +114,16 @@
     <div class="acct__panel">
       <div class="shop-bar">
         <h3>My Orders</h3>
-        <label class="sortby">Sort by : <select class="input input--sm"><option>All</option><option>Delivered</option><option>In Progress</option></select></label>
       </div>
-      
-      <p style="font-size:13px;margin-top:14px">Once you place an order it will appear here with its status, tracking and invoice.</p>
-      <a class="btn btn--primary btn--sm" style="margin-top:18px" href="shop.html">Start Shopping</a>
+
+      <table class="linetable linetable--plain" style="margin-top:14px">
+        <thead><tr><th>Order</th><th>Items</th><th>Status</th><th></th></tr></thead>
+        <tbody data-orders-list></tbody>
+      </table>
+
+      <div data-orders-empty hidden>
+        <p style="font-size:13px;margin-top:14px">Once you submit an order it will appear here with its reference and current status.</p>
+        <a class="btn btn--primary btn--sm" style="margin-top:18px" href="shop.html">Start Shopping</a>
       </div>
     </div>
   </div>
@@ -134,11 +139,11 @@
     </div>
     <div class="trust__item">
       <span class="ico material-symbols-outlined">lock</span>
-      <div><strong>Secure Payments</strong><small>Protected payment options at checkout.</small></div>
+      <div><strong>Secure Ordering</strong><small>Confirm your order directly with our team on WhatsApp.</small></div>
     </div>
     <div class="trust__item">
-      <span class="ico material-symbols-outlined">support_agent</span>
-      <div><strong>Customer Support</strong><small>Contact our team for order and product assistance.</small></div>
+      <span class="ico material-symbols-outlined">account_balance</span>
+      <div><strong>Bank Transfer</strong><small>Payment details are provided after your order is confirmed.</small></div>
     </div>
   </div>
 </section>
@@ -223,6 +228,9 @@
   </div>
 </footer>
 
+<script src="assets/js/config.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/checkout.js"></script>
 </body>
 </html>

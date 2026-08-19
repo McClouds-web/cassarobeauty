@@ -223,9 +223,9 @@
  },
  {
   "file": "order-completed",
-  "title": "Order Completed",
+  "title": "Order Submitted",
   "nav": "",
-  "desc": "Your order is complete."
+  "desc": "Your Cassaro Beauty order reference and the next steps to complete payment by bank transfer on WhatsApp."
  },
  {
   "file": "wishlist",
@@ -237,7 +237,7 @@
   "file": "track-order",
   "title": "Track Your Order",
   "nav": "",
-  "desc": "Track your Cassaro Beauty order."
+  "desc": "Track a Cassaro Beauty order using the order reference from your WhatsApp order message."
  },
  {
   "file": "order-status",

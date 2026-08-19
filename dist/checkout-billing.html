@@ -47,8 +47,8 @@
 
     <div class="icons">
       <a href="shop.html" aria-label="Search"><span class="material-symbols-outlined">search</span></a>
-      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span></a>
-      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span></a>
+      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span><span class="cbadge" data-wish-count hidden>0</span></a>
+      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><span class="cbadge" data-cart-count hidden>0</span></a>
       <a href="account.html" aria-label="Account"><span class="material-symbols-outlined">person</span></a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
         <span class="burger__box"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></span>
@@ -103,49 +103,51 @@
 
 <section class="section">
   <div class="wrap cart-layout">
-    <form onsubmit="event.preventDefault();location.href='checkout-payment.html'">
-      <h3 style="margin-bottom:22px">Billing Details</h3>
+    <form data-checkout-form>
+      <h3 style="margin-bottom:22px">Delivery Details</h3>
       <div class="row2">
-        <div class="field"><label>First Name <span class="req">*</span></label><input class="input" placeholder="First name" required/></div>
-        <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" placeholder="Last name" required/></div>
+        <div class="field"><label>First Name <span class="req">*</span></label><input class="input" name="firstName" placeholder="First name" required/></div>
+        <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" name="lastName" placeholder="Last name" required/></div>
       </div>
-      <div class="field"><label>Company Name (Optional)</label><input class="input" placeholder="Company name"/></div>
+      <div class="field"><label>Company Name (Optional)</label><input class="input" name="company" placeholder="Company name"/></div>
       <div class="field"><label>Country <span class="req">*</span></label>
-        <select class="input" required><option value="">Select Country</option><option selected>South Africa</option></select>
+        <select class="input" name="country" required><option value="">Select Country</option><option selected>South Africa</option></select>
       </div>
-      <div class="field"><label>Street Address <span class="req">*</span></label><input class="input" placeholder="Street address" required/></div>
-      <div class="field"><label>City <span class="req">*</span></label><input class="input" placeholder="City" required/></div>
+      <div class="field"><label>Street Address <span class="req">*</span></label><input class="input" name="street" placeholder="Street address" required/></div>
+      <div class="field"><label>City / Suburb <span class="req">*</span></label><input class="input" name="city" placeholder="City or suburb" required/></div>
       <div class="field"><label>Province <span class="req">*</span></label>
-        <select class="input" required>
+        <select class="input" name="province" required>
           <option value="">Select Province</option>
           <option>Eastern Cape</option><option>Free State</option><option>Gauteng</option>
           <option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option>
           <option>Northern Cape</option><option>North West</option><option>Western Cape</option>
         </select>
       </div>
-      <div class="field"><label>Postal Code <span class="req">*</span></label><input class="input" placeholder="Postal code" required/></div>
-      <div class="field"><label>Phone <span class="req">*</span></label><input class="input" placeholder="Phone number" required/></div>
-      <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" placeholder="Email address" required/></div>
+      <div class="field"><label>Postal Code <span class="req">*</span></label><input class="input" name="postal" placeholder="Postal code" required/></div>
+      <div class="field"><label>Phone <span class="req">*</span></label><input class="input" name="phone" type="tel" placeholder="Phone number" required/></div>
+      <div class="field"><label>Email <span class="req">*</span></label><input class="input" name="email" type="email" placeholder="Email address" required/></div>
       <div class="field">
         <label>Delivery Address <span class="req">*</span></label>
         <div class="radios">
-          <label class="radio"><input type="radio" name="addr" checked/> Same as billing address</label>
-          <label class="radio"><input type="radio" name="addr"/> Use a different delivery address</label>
+          <label class="radio"><input type="radio" name="deliverySame" value="same" checked/> Same as the address above</label>
+          <label class="radio"><input type="radio" name="deliverySame" value="different"/> I will confirm a different delivery address on WhatsApp</label>
         </div>
       </div>
+      <div class="field"><label>Order Notes (Optional)</label><input class="input" name="notes" placeholder="Anything our team should know about this order"/></div>
       <button class="btn btn--primary" type="submit" hidden>Continue</button>
     </form>
 
     <aside class="summary">
       <h3>Order Summary</h3>
       <dl>
-        <div><dt>Items</dt><dd>3</dd></div>
-        <div><dt>Sub Total</dt><dd>R___</dd></div>
-        <div><dt>Shipping</dt><dd>Calculated at next step</dd></div>
-        <div><dt>Coupon Discount</dt><dd>R___</dd></div>
+        <div><dt>Items</dt><dd data-sum-items>0</dd></div>
+        <div><dt>Sub Total</dt><dd data-sum-subtotal>R___</dd></div>
+        <div><dt>Delivery</dt><dd>To be confirmed</dd></div>
+        <div><dt>Payment</dt><dd>Bank Transfer / EFT</dd></div>
       </dl>
-      <div class="summary__total"><span>Total</span><b>R___</b></div>
-      <a class="btn btn--primary btn--block" href="checkout-payment.html">Proceed to Payment</a>
+      <div class="summary__total"><span>Total</span><b data-sum-total>R___</b></div>
+      <a class="btn btn--primary btn--block" href="checkout-payment.html" data-checkout-continue>Continue to Review</a>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px">Your details are only used to prepare the order message you send us on WhatsApp.</p>
     </aside>
   </div>
 </section>
@@ -160,11 +162,11 @@
     </div>
     <div class="trust__item">
       <span class="ico material-symbols-outlined">lock</span>
-      <div><strong>Secure Payments</strong><small>Protected payment options at checkout.</small></div>
+      <div><strong>Secure Ordering</strong><small>Confirm your order directly with our team on WhatsApp.</small></div>
     </div>
     <div class="trust__item">
-      <span class="ico material-symbols-outlined">support_agent</span>
-      <div><strong>Customer Support</strong><small>Contact our team for order and product assistance.</small></div>
+      <span class="ico material-symbols-outlined">account_balance</span>
+      <div><strong>Bank Transfer</strong><small>Payment details are provided after your order is confirmed.</small></div>
     </div>
   </div>
 </section>
@@ -249,6 +251,9 @@
   </div>
 </footer>
 
+<script src="assets/js/config.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/checkout.js"></script>
 </body>
 </html>

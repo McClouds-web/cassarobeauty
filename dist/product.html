@@ -47,8 +47,8 @@
 
     <div class="icons">
       <a href="shop.html" aria-label="Search"><span class="material-symbols-outlined">search</span></a>
-      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span></a>
-      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span></a>
+      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span><span class="cbadge" data-wish-count hidden>0</span></a>
+      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><span class="cbadge" data-cart-count hidden>0</span></a>
       <a href="account.html" aria-label="Account"><span class="material-symbols-outlined">person</span></a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
         <span class="burger__box"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></span>
@@ -268,11 +268,11 @@
     </div>
     <div class="trust__item">
       <span class="ico material-symbols-outlined">lock</span>
-      <div><strong>Secure Payments</strong><small>Protected payment options at checkout.</small></div>
+      <div><strong>Secure Ordering</strong><small>Confirm your order directly with our team on WhatsApp.</small></div>
     </div>
     <div class="trust__item">
-      <span class="ico material-symbols-outlined">support_agent</span>
-      <div><strong>Customer Support</strong><small>Contact our team for order and product assistance.</small></div>
+      <span class="ico material-symbols-outlined">account_balance</span>
+      <div><strong>Bank Transfer</strong><small>Payment details are provided after your order is confirmed.</small></div>
     </div>
   </div>
 </section>
@@ -357,6 +357,9 @@
   </div>
 </footer>
 
+<script src="assets/js/config.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/checkout.js"></script>
 </body>
 </html>

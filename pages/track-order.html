@@ -7,11 +7,12 @@
 
 <section class="section">
   <div class="wrap">
-    <p style="margin-bottom:26px">To track your order, enter your order number in the box below and select Track Order. Your order number is included on your receipt and in your order confirmation email.</p>
-    <form onsubmit="event.preventDefault();location.href='order-status.html'">
-      <div class="field"><label>Order Number <span class="req">*</span></label><input class="input" placeholder="Enter your order number" required/></div>
-      <div class="field"><label>Billing Email <span class="req">*</span></label><input class="input" type="email" placeholder="Enter your email address" required/></div>
+    <p style="margin-bottom:26px">To track your order, enter the order reference in the box below and select Track Order. Your reference looks like CAS-000123 and is shown when you submit your order, as well as in the WhatsApp message you send us.</p>
+    <form data-track-form>
+      <div class="field"><label>Order Reference <span class="req">*</span></label><input class="input" name="ref" placeholder="CAS-000123" required/></div>
+      <div class="field"><label>Email Address <span class="req">*</span></label><input class="input" type="email" placeholder="Enter your email address" required/></div>
       <button class="btn btn--primary" type="submit">Track Order</button>
     </form>
+    <p style="font-size:12px;color:var(--muted);margin-top:20px">Order progress is kept on the device the order was placed from. If you are on another device, message us on WhatsApp with your reference and we will update you.</p>
   </div>
 </section>

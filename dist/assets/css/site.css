@@ -705,9 +705,9 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
   width: 32px; height: 22px; border-radius: 4px; display: grid; place-items: center;
   font-size: 10px; font-weight: 700; color: #fff;
 }
-.pm-logo--paypal { background: #003087; } .pm-logo--visa { background: #1A1F71; font-size: 8px; }
-.pm-logo--g { background: #fff; color: #4285F4; border: 1px solid var(--line); }
-.pm-logo--cod, .pm-logo--card { background: var(--green); }
+/* Card-scheme and wallet badges were removed with the card checkout: this
+   site takes bank transfer / EFT only and must not imply otherwise. */
+.pm-logo--cod { background: var(--green); }
 
 .tickmark {
   width: 62px; height: 62px; border-radius: 50%; background: var(--gold); color: #fff;
@@ -2203,3 +2203,47 @@ body:has(.hero--dark) .hero--dark[class] {
   }
   .drawer__close:hover { transform: none; }
 }
+
+/* =========================================================================
+   Ordering flow — cart count, add-to-cart feedback, saved-to-wishlist state.
+   Additive only: no existing rule is changed by this block.
+   ========================================================================= */
+
+/* Several components set an explicit display, which beats the browser's own
+   rule for [hidden]. Empty states rely on that attribute, so make it win. */
+[hidden] { display: none !important; }
+
+/* Count on the header cart / wishlist icons */
+.cbadge {
+  position: absolute; top: -6px; right: -8px;
+  min-width: 17px; height: 17px; padding: 0 4px;
+  border-radius: var(--radius-pill, 999px);
+  background: var(--gold); color: #fff;
+  font-size: 10px; font-weight: 600; line-height: 17px;
+  text-align: center; pointer-events: none;
+}
+
+/* Wishlist heart, once the product is saved */
+.iconbtn.is-on { border-color: var(--gold); color: var(--gold); }
+
+/* Brief confirmation after adding to cart or wishlist */
+.toast {
+  position: fixed; left: 50%; bottom: 26px; z-index: 120;
+  transform: translate(-50%, 14px);
+  max-width: min(440px, calc(100vw - 32px));
+  padding: 13px 22px; border-radius: var(--radius-pill, 999px);
+  background: var(--green-dark); color: var(--white);
+  font-size: 13px; text-align: center;
+  box-shadow: 0 12px 30px rgba(36, 24, 18, .22);
+  opacity: 0; visibility: hidden;
+  transition: opacity .24s ease, transform .24s ease, visibility .24s;
+}
+.toast.is-on { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+
+/* Empty states for cart / wishlist / orders */
+.emptystate { text-align: center; padding: 46px 20px 52px; }
+.emptystate .ico { font-size: 42px; color: var(--gold); }
+.emptystate h3 { margin: 14px 0 8px; }
+.emptystate p { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }

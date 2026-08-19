@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Order Completed — Cassaro Beauty</title>
-<meta name="description" content="Your order is complete."/>
+<title>Order Submitted — Cassaro Beauty</title>
+<meta name="description" content="Your Cassaro Beauty order reference and the next steps to complete payment by bank transfer on WhatsApp."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Sacramento&amp;display=swap" rel="stylesheet"/>
@@ -47,8 +47,8 @@
 
     <div class="icons">
       <a href="shop.html" aria-label="Search"><span class="material-symbols-outlined">search</span></a>
-      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span></a>
-      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span></a>
+      <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span><span class="cbadge" data-wish-count hidden>0</span></a>
+      <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><span class="cbadge" data-cart-count hidden>0</span></a>
       <a href="account.html" aria-label="Account"><span class="material-symbols-outlined">person</span></a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
         <span class="burger__box"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></span>
@@ -96,24 +96,29 @@
 
 <section class="pagehead">
   <div class="wrap">
-    <h1>Order Completed</h1>
-    <p class="crumb"><a href="index.html">Home</a> / <b>Order Completed</b></p>
+    <h1>Order Submitted</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>Order Submitted</b></p>
   </div>
 </section>
 
-<section class="section">
+<section class="section" data-order-complete>
   <div class="wrap">
     <div class="center" style="margin-bottom:36px">
       <span class="tickmark material-symbols-outlined">check</span>
-      <h2 style="margin:18px 0 8px">Your order is complete</h2>
-      <p>Thank you. Your order has been received.</p>
+      <h2 style="margin:18px 0 8px">Your order reference is <span class="gold" data-order="ref">—</span></h2>
+      <p>Send the message that opened in WhatsApp and our team will confirm availability, delivery cost and the banking details for payment.</p>
+      <div class="cart-actions" style="justify-content:center;margin-top:22px">
+        <a class="btn btn--primary" href="#" data-order-sent>I have sent my order on WhatsApp</a>
+        <a class="btn btn--white" href="#" data-whatsapp-resend>Open WhatsApp again</a>
+      </div>
+      <p class="gold" style="margin-top:16px" data-order-ack hidden>Thank you. Your cart has been cleared and your order is now awaiting payment confirmation.</p>
     </div>
 
     <div class="orderbar">
-      <div><small>Order Number</small><strong>To be generated</strong></div>
-      <div><small>Payment Method</small><strong>To be confirmed</strong></div>
-      <div><small>Order Total</small><strong>R___</strong></div>
-      <div><small>Estimated Delivery</small><strong>To be confirmed</strong></div>
+      <div><small>Order Reference</small><strong data-order="ref">—</strong></div>
+      <div><small>Payment Method</small><strong data-order="payment">Bank Transfer / EFT</strong></div>
+      <div><small>Order Status</small><strong data-order="status">Pending WhatsApp Confirmation</strong></div>
+      <div><small>Delivery</small><strong data-order="delivery">To be confirmed</strong></div>
       <a class="btn btn--white" href="order-status.html">View Order Status</a>
     </div>
 
@@ -121,15 +126,9 @@
       <h3 class="panel__head">Order Details</h3>
       <table class="linetable linetable--plain">
         <thead><tr><th>Products</th><th style="text-align:right">Sub Total</th></tr></thead>
-        <tbody>
-          <tr><td class="linetable__prod"><img class="ph-img" src="assets/products/skin1004-madagascar-centella-ampoule-beige.jpg" alt="SKIN1004 Madagascar Centella Ampoule Image" width="1254" height="1254" loading="lazy" decoding="async"/><div><strong>Madagascar Centella Ampoule</strong><small>SKIN1004</small></div></td><td style="text-align:right">R___</td></tr>
-          <tr><td class="linetable__prod"><img class="ph-img" src="assets/products/beauty-of-joseon-relief-sun-beige.jpg" alt="Beauty of Joseon Relief Sun Image" width="1254" height="1254" loading="lazy" decoding="async"/><div><strong>Relief Sun: Rice + Probiotics</strong><small>Beauty of Joseon</small></div></td><td style="text-align:right">R___</td></tr>
-          <tr><td class="linetable__prod"><img class="ph-img" src="assets/products/abib-acne-foam-cleanser-beige.jpg" alt="Abib Acne Foam Cleanser Image" width="1254" height="1254" loading="lazy" decoding="async"/><div><strong>Acne Foam Cleanser</strong><small>Abib</small></div></td><td style="text-align:right">R___</td></tr>
-          <tr><td>Shipping</td><td style="text-align:right">R___</td></tr>
-          <tr><td>Coupon Discount</td><td style="text-align:right">R___</td></tr>
-          <tr class="linetable__total"><td>Total</td><td style="text-align:right">R___</td></tr>
-        </tbody>
+        <tbody data-order-rows></tbody>
       </table>
+      <p style="font-size:12px;padding:0 26px 22px;color:var(--muted)">This website does not process payment. Payment is made by bank transfer / EFT once our team has confirmed your order and sent the banking details on WhatsApp.</p>
     </div>
   </div>
 </section>
@@ -144,11 +143,11 @@
     </div>
     <div class="trust__item">
       <span class="ico material-symbols-outlined">lock</span>
-      <div><strong>Secure Payments</strong><small>Protected payment options at checkout.</small></div>
+      <div><strong>Secure Ordering</strong><small>Confirm your order directly with our team on WhatsApp.</small></div>
     </div>
     <div class="trust__item">
-      <span class="ico material-symbols-outlined">support_agent</span>
-      <div><strong>Customer Support</strong><small>Contact our team for order and product assistance.</small></div>
+      <span class="ico material-symbols-outlined">account_balance</span>
+      <div><strong>Bank Transfer</strong><small>Payment details are provided after your order is confirmed.</small></div>
     </div>
   </div>
 </section>
@@ -233,6 +232,9 @@
   </div>
 </footer>
 
+<script src="assets/js/config.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/checkout.js"></script>
 </body>
 </html>
