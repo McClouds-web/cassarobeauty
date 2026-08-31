@@ -4,7 +4,7 @@ window.CASSARO_CONFIG = {
   /* WhatsApp number in international format, digits only, no + and no spaces.
      This is the number already published in the header, footer and Contact
      page. Change it HERE and the whole ordering flow follows. */
-  whatsappNumber: '27765222387',
+  whatsappNumber: '27690634793',
 
   storeName: 'Cassaro Beauty',
 
@@ -18,5 +18,13 @@ window.CASSARO_CONFIG = {
   pricePlaceholder: 'R___',
 
   /* Wording used when an amount has not been established. */
-  tbc: 'To be confirmed'
+  tbc: 'To be confirmed',
+
+  /* Where the order is recorded and the owner alert is raised. The endpoint
+     is a Supabase edge function; the key below is the project's publishable
+     key, which is safe in a static page — the orders table is unreadable
+     without the service role. Leave orderEndpoint empty to disable the
+     backend and fall back to the WhatsApp draft alone. */
+  orderEndpoint: 'https://cijeetlvkellnsqhsuxo.supabase.co/functions/v1/cassaro_order',
+  orderEndpointKey: 'sb_publishable_5NYstW3JOY7b270BbZM-Kg_A6QNcM9V'
 };

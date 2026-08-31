@@ -179,6 +179,57 @@
       '?text=' + encodeURIComponent(messageFor(order, compact, count));
   }
 
+  /* ------------------------------------------------------- order submission */
+  /* The WhatsApp draft only reaches the team if the customer presses send, so
+     the order is also posted to the backend, which records it and alerts the
+     owner with the customer's WhatsApp number and email. Failures are logged
+     and never block the customer — the draft remains the fallback path. */
+  function submitOrder(order) {
+    var url = CFG.orderEndpoint;
+    if (!url) return;
+
+    var d = order.customer || {};
+    var payload = {
+      ref: order.ref,
+      name: d.name,
+      phone: d.phone,
+      whatsapp: d.phone,
+      email: d.email,
+      address: d.address,
+      city: d.city,
+      province: d.province,
+      postal: d.postal,
+      country: details().country || 'South Africa',
+      notes: d.notes,
+      subtotal: order.subtotal,
+      items: (order.items || []).map(function (i) {
+        return { name: i.name, brand: i.brand, variant: i.variant, qty: i.qty, price: i.price };
+      })
+    };
+
+    var headers = { 'Content-Type': 'application/json' };
+    if (CFG.orderEndpointKey) {
+      headers.apikey = CFG.orderEndpointKey;
+      headers.Authorization = 'Bearer ' + CFG.orderEndpointKey;
+    }
+
+    try {
+      /* keepalive lets the request finish after this page navigates away. */
+      fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).then(function (res) {
+        if (!res.ok) console.warn('Order submission failed with status', res.status);
+      }).catch(function (err) {
+        console.warn('Order submission failed', err);
+      });
+    } catch (e) {
+      console.warn('Order submission failed', e);
+    }
+  }
+
   /* Opening in a new tab keeps the store — and the cart — where the customer
      left it. If the browser blocks that, this tab goes to WhatsApp instead. */
   function openWhatsApp(url) {
@@ -283,6 +334,9 @@
       C.track('whatsapp_checkout_click', {
         order_reference: order.ref, items: order.items.length
       });
+      /* Posted before the tab may navigate, so the owner is alerted even if
+         the customer abandons the WhatsApp draft. */
+      submitOrder(order);
       /* The cart is deliberately left intact — it is cleared only when the
          customer confirms on the next page that the message was sent. */
       if (openWhatsApp(url)) location.href = 'order-completed.html';

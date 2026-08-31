@@ -55,6 +55,7 @@ IMAGES = {
  "More Brands Image":                    "new-arrivals-banner",
  "About Collection Image":               "about-collection",
  "Brands Cover Image":                   "brands-cover",
+ "Cart Cover Image":                     "cassaro-hero-centella",
  "New Arrivals Feature Image":           "new-arrivals-feature",
  "Shop Promotion Image":                 "k-secret-seoul-1988-cream",
 
