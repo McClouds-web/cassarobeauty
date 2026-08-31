@@ -108,45 +108,47 @@
 
       <div class="filters__group">
         <h4>By Product</h4>
-        <label class="check"><input type="checkbox"/> Serums</label>
-        <label class="check"><input type="checkbox"/> Ampoules</label>
-        <label class="check"><input type="checkbox"/> Face Cleansers</label>
-        <label class="check"><input type="checkbox"/> Toners</label>
-        <label class="check"><input type="checkbox"/> Moisturisers</label>
-        <label class="check"><input type="checkbox"/> Sunscreens</label>
-        <label class="check"><input type="checkbox"/> Face Masks</label>
+        <label class="check"><input type="checkbox" data-facet="cat" value="Serums"/> Serums</label>
+        <label class="check"><input type="checkbox" data-facet="cat" value="Ampoules"/> Ampoules</label>
+        <label class="check"><input type="checkbox" data-facet="cat" value="Face Cleansers"/> Face Cleansers</label>
+        <label class="check"><input type="checkbox" data-facet="cat" value="Toners"/> Toners</label>
+        <label class="check"><input type="checkbox" data-facet="cat" value="Moisturisers"/> Moisturisers</label>
+        <label class="check"><input type="checkbox" data-facet="cat" value="Sunscreens"/> Sunscreens</label>
+        <label class="check"><input type="checkbox" data-facet="cat" value="Face Masks"/> Face Masks</label>
       </div>
 
       <div class="filters__group">
         <h4>By Brand</h4>
-        <label class="check"><input type="checkbox"/> Abib</label>
-        <label class="check"><input type="checkbox"/> Anua</label>
-        <label class="check"><input type="checkbox"/> AXIS-Y</label>
-        <label class="check"><input type="checkbox"/> Beauty of Joseon</label>
-        <label class="check"><input type="checkbox"/> COSRX</label>
-        <label class="check"><input type="checkbox"/> Isntree</label>
-        <label class="check"><input type="checkbox"/> Medicube</label>
-        <label class="check"><input type="checkbox"/> SKIN1004</label>
+        <label class="check"><input type="checkbox" data-facet="brand" value="Abib"/> Abib</label>
+        <label class="check"><input type="checkbox" data-facet="brand" value="Anua"/> Anua</label>
+        <label class="check"><input type="checkbox" data-facet="brand" value="AXIS-Y"/> AXIS-Y</label>
+        <label class="check"><input type="checkbox" data-facet="brand" value="Beauty of Joseon"/> Beauty of Joseon</label>
+        <label class="check"><input type="checkbox" data-facet="brand" value="COSRX"/> COSRX</label>
+        <label class="check"><input type="checkbox" data-facet="brand" value="Isntree"/> Isntree</label>
+        <label class="check"><input type="checkbox" data-facet="brand" value="Medicube"/> Medicube</label>
+        <label class="check"><input type="checkbox" data-facet="brand" value="SKIN1004"/> SKIN1004</label>
       </div>
 
       <div class="filters__group">
         <h4>By Skin Type</h4>
-        <label class="check"><input type="checkbox"/> Normal</label>
-        <label class="check"><input type="checkbox"/> Oily</label>
-        <label class="check"><input type="checkbox"/> Dry</label>
-        <label class="check"><input type="checkbox"/> Combination</label>
-        <label class="check"><input type="checkbox"/> Sensitive</label>
+        <label class="check"><input type="checkbox" data-facet="skin" value="normal"/> Normal</label>
+        <label class="check"><input type="checkbox" data-facet="skin" value="oily"/> Oily</label>
+        <label class="check"><input type="checkbox" data-facet="skin" value="dry"/> Dry</label>
+        <label class="check"><input type="checkbox" data-facet="skin" value="combination"/> Combination</label>
+        <label class="check"><input type="checkbox" data-facet="skin" value="sensitive"/> Sensitive</label>
       </div>
 
       <div class="filters__group">
         <h4>By Concern</h4>
-        <label class="check"><input type="checkbox"/> Hydration</label>
-        <label class="check"><input type="checkbox"/> Brightening</label>
-        <label class="check"><input type="checkbox"/> Blemishes</label>
-        <label class="check"><input type="checkbox"/> Dark Spots</label>
-        <label class="check"><input type="checkbox"/> Daily Protection</label>
-        <label class="check"><input type="checkbox"/> Soothing</label>
+        <label class="check"><input type="checkbox" data-facet="concern" value="hydration"/> Hydration</label>
+        <label class="check"><input type="checkbox" data-facet="concern" value="brightening"/> Brightening</label>
+        <label class="check"><input type="checkbox" data-facet="concern" value="blemishes"/> Blemishes</label>
+        <label class="check"><input type="checkbox" data-facet="concern" value="dark-spots"/> Dark Spots</label>
+        <label class="check"><input type="checkbox" data-facet="concern" value="daily-protection"/> Daily Protection</label>
+        <label class="check"><input type="checkbox" data-facet="concern" value="soothing"/> Soothing</label>
       </div>
+
+      <button class="btn btn--ghost btn--sm filters__clear" type="button" data-filter-clear hidden>Clear all filters</button>
 
       <div class="ask">
         <span class="bubble material-symbols-outlined">forum</span>
@@ -158,7 +160,7 @@
 
     <div>
       <div class="shop-bar">
-        <span>Showing 29 products</span>
+        <span data-result-count>Showing 29 products</span>
         <label class="sortby">Sort by :
           <select class="input input--sm">
             <option>Default Sorting</option>
@@ -168,7 +170,7 @@
         </label>
       </div>
 
-      <div class="grid grid--3">
+      <div class="grid grid--3" data-product-grid>
         <a class="pcard" href="skin1004-madagascar-centella-ampoule.html" data-brand="SKIN1004" data-cat="Ampoules" data-skin="normal combination dry sensitive" data-concern="soothing hydration" data-stock="in">
 <div class="pcard__media">
 <div class="pcard__tools">
