@@ -76,11 +76,18 @@
     <div>
       <div class="shop-bar">
         <span data-result-count>Showing 29 products</span>
+        <label class="shopsearch">
+          <span class="sr-only">Search products</span>
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <input class="input input--sm" type="search" name="q" data-product-search
+                 placeholder="Search products or brands" autocomplete="off"/>
+        </label>
         <label class="sortby">Sort by :
-          <select class="input input--sm">
-            <option>Default Sorting</option>
-            <option>Newest First</option>
-            <option>Brand: A to Z</option>
+          <select class="input input--sm" data-product-sort>
+            <option value="default">Default Sorting</option>
+            <option value="name-asc">Name: A to Z</option>
+            <option value="name-desc">Name: Z to A</option>
+            <option value="brand-asc">Brand: A to Z</option>
           </select>
         </label>
       </div>

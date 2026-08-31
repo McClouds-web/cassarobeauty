@@ -69,7 +69,7 @@
     </nav>
 
     <div class="icons">
-      <a href="shop.html" aria-label="Search"><span class="material-symbols-outlined">search</span></a>
+      <a href="shop.html#search" aria-label="Search products"><span class="material-symbols-outlined">search</span></a>
       <a href="wishlist.html" aria-label="Wishlist"><span class="material-symbols-outlined">favorite</span><span class="cbadge" data-wish-count hidden>0</span></a>
       <a href="cart.html" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><span class="cbadge" data-cart-count hidden>0</span></a>
       <a href="account.html" aria-label="Account"><span class="material-symbols-outlined">person</span></a>
@@ -194,11 +194,18 @@
     <div>
       <div class="shop-bar">
         <span data-result-count>Showing 29 products</span>
+        <label class="shopsearch">
+          <span class="sr-only">Search products</span>
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <input class="input input--sm" type="search" name="q" data-product-search
+                 placeholder="Search products or brands" autocomplete="off"/>
+        </label>
         <label class="sortby">Sort by :
-          <select class="input input--sm">
-            <option>Default Sorting</option>
-            <option>Newest First</option>
-            <option>Brand: A to Z</option>
+          <select class="input input--sm" data-product-sort>
+            <option value="default">Default Sorting</option>
+            <option value="name-asc">Name: A to Z</option>
+            <option value="name-desc">Name: Z to A</option>
+            <option value="brand-asc">Brand: A to Z</option>
           </select>
         </label>
       </div>

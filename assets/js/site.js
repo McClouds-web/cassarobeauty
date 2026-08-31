@@ -174,7 +174,48 @@
   var cards   = Array.prototype.slice.call(grid.querySelectorAll('.pcard'));
   var counter = document.querySelector('[data-result-count]');
   var clear   = document.querySelector('[data-filter-clear]');
+  var search  = document.querySelector('[data-product-search]');
+  var sorter  = document.querySelector('[data-product-sort]');
   var empty   = null;
+
+  /* The order the page was built in, so "Default Sorting" can return to it. */
+  cards.forEach(function (card, i) { card.dataset.order = i; });
+
+  function cardText(card) {
+    var brand = card.getAttribute('data-brand') || '';
+    var title = card.querySelector('.pcard__name, h3, h4');
+    return (brand + ' ' + (title ? title.textContent : '') + ' ' +
+            (card.getAttribute('data-cat') || '')).toLowerCase();
+  }
+
+  function matchesSearch(card) {
+    var q = (search && search.value || '').trim().toLowerCase();
+    if (!q) return true;
+    /* Every word must appear somewhere, so "anua serum" narrows rather than
+       widening the way an OR would. */
+    return q.split(/\s+/).every(function (word) {
+      return cardText(card).indexOf(word) !== -1;
+    });
+  }
+
+  function sortCards() {
+    if (!sorter) return;
+    var mode = sorter.value;
+    var titleOf = function (c) {
+      var t = c.querySelector('.pcard__name, h3, h4');
+      return (t ? t.textContent : '').trim().toLowerCase();
+    };
+    var brandOf = function (c) { return (c.getAttribute('data-brand') || '').toLowerCase(); };
+
+    var sorted = cards.slice().sort(function (a, b) {
+      if (mode === 'name-asc')  return titleOf(a).localeCompare(titleOf(b));
+      if (mode === 'name-desc') return titleOf(b).localeCompare(titleOf(a));
+      if (mode === 'brand-asc') return brandOf(a).localeCompare(brandOf(b)) ||
+                                       titleOf(a).localeCompare(titleOf(b));
+      return Number(a.dataset.order) - Number(b.dataset.order);
+    });
+    sorted.forEach(function (c) { grid.appendChild(c); });
+  }
 
   function selected() {
     var by = {};
@@ -204,7 +245,7 @@
     var shown = 0;
 
     cards.forEach(function (card) {
-      var ok = !active || matches(card, by);
+      var ok = (!active || matches(card, by)) && matchesSearch(card);
       card.hidden = !ok;
       if (ok) shown++;
     });
@@ -212,13 +253,13 @@
     if (counter) {
       counter.textContent = 'Showing ' + shown + ' product' + (shown === 1 ? '' : 's');
     }
-    if (clear) clear.hidden = !active;
+    if (clear) clear.hidden = !active && !(search && search.value.trim());
 
     if (!shown) {
       if (!empty) {
         empty = document.createElement('p');
         empty.className = 'filters__empty';
-        empty.textContent = 'No products match those filters. Try removing one.';
+        empty.textContent = 'Nothing matched. Try a different word or remove a filter.';
         grid.parentNode.insertBefore(empty, grid.nextSibling);
       }
       empty.hidden = false;
@@ -228,12 +269,36 @@
   }
 
   boxes.forEach(function (b) { b.addEventListener('change', apply); });
+
+  if (search) {
+    search.addEventListener('input', apply);
+    /* Enter in a lone search field would otherwise submit and reload. */
+    search.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') e.preventDefault();
+    });
+  }
+
+  if (sorter) {
+    sorter.addEventListener('change', function () { sortCards(); apply(); });
+  }
+
   if (clear) {
     clear.addEventListener('click', function () {
       boxes.forEach(function (b) { b.checked = false; });
+      if (search) search.value = '';
       apply();
     });
   }
+
+  /* A search term can arrive from the header, which has no input of its own. */
+  if (location.hash === '#search' && search) {
+    search.focus();
+    search.scrollIntoView({ block: 'center' });
+  }
+
+  var initial = new URLSearchParams(location.search).get('q');
+  if (initial && search) { search.value = initial; }
+  if (initial || (search && search.value)) apply();
 })();
 
 /* Shop filters collapse behind a toggle on small screens, where the sidebar
