@@ -959,9 +959,9 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
 
 /* background-style slots: image sits behind the copy, dimmed for legibility */
 img.ph--promo { position: absolute; inset: 0; z-index: 0; }
-.promo:not(.promo--dark) > img.ph--promo { opacity: .5; object-position: right center; }
-.promo--dark > img.ph--promo, .arrivals__feature > img.ph--promo,
-.sidepromo > img.ph--promo, .mega__promo > img.ph--promo { opacity: .32; }
+.promo:not(.promo--dark)  img.ph--promo { opacity: .5; object-position: right center; }
+.promo--dark  img.ph--promo, .arrivals__feature  img.ph--promo,
+.sidepromo  img.ph--promo, .mega__promo  img.ph--promo { opacity: .32; }
 .promo--dark, .arrivals__feature, .sidepromo { background-color: var(--green); }
 .mega__promo { background-color: var(--gold); }
 
@@ -1603,7 +1603,7 @@ body:has(.hero--dark) .hero--dark[class] {
    purpose-shot banner also shows whole rather than cropped: `contain` keeps
    every product in frame and the container ground is sampled from the file,
    so the letterbox is invisible. */
-.promo:not(.promo--dark).promo--banner > img.ph--promo {
+.promo:not(.promo--dark).promo--banner  img.ph--promo {
   opacity: 1;
   object-fit: contain;
   object-position: right center;
@@ -1622,7 +1622,7 @@ body:has(.hero--dark) .hero--dark[class] {
   min-height: 260px;
   align-items: center;
 }
-.promo:not(.promo--dark).promo--korean > img.ph--promo {
+.promo:not(.promo--dark).promo--korean  img.ph--promo {
   object-fit: cover;
   object-position: right center;
 }
@@ -1645,7 +1645,7 @@ body:has(.hero--dark) .hero--dark[class] {
 .arrivals:has(.arrivals__feature--shot) { align-items: stretch; }
 .arrivals__feature--shot,
 .arrivals__feature--shot .ph--promo,
-.arrivals__feature--shot > img.ph--promo {
+.arrivals__feature--shot  img.ph--promo {
   /* Three separate rules paint this card cocoa: the container background at
      :906, the image's own background at :880, and the .32 wash at :904. Clear
      all of them so nothing but the photo shows. */
@@ -1657,7 +1657,7 @@ body:has(.hero--dark) .hero--dark[class] {
   min-height: 420px;
   border-radius: var(--radius-card);
 }
-.arrivals__feature--shot > img.ph--promo {
+.arrivals__feature--shot  img.ph--promo {
   opacity: 1; object-fit: cover; object-position: center;
 }
 .arrivals__feature--shot h3 {
@@ -1834,8 +1834,8 @@ body:has(.hero--dark) .hero--dark[class] {
     padding: 0;
     overflow: hidden;
   }
-  .promo.promo--banner > img.ph--promo,
-  .promo.promo--korean > img.ph--promo {
+  .promo.promo--banner  img.ph--promo,
+  .promo.promo--korean  img.ph--promo {
     position: relative;
     inset: auto;
     width: 100%;
@@ -1861,7 +1861,7 @@ body:has(.hero--dark) .hero--dark[class] {
     min-height: 0;
     padding: 0;
   }
-  .arrivals__feature--shot > img.ph--promo {
+  .arrivals__feature--shot  img.ph--promo {
     position: relative;
     inset: auto;
     width: 100%;
@@ -1981,7 +1981,7 @@ body:has(.hero--dark) .hero--dark[class] {
 
   /* New In feature card — the photo is a tall 800x1800 stack, so a wide box
      threw away two of the three jars */
-  .arrivals__feature--shot > img.ph--promo { aspect-ratio: 3 / 4; }
+  .arrivals__feature--shot  img.ph--promo { aspect-ratio: 3 / 4; }
 }
 
 /* =========================================================================

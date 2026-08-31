@@ -141,8 +141,15 @@ def ph(label, extra=""):
         dim = f' width="{size[0]}" height="{size[1]}"' if size else ""
         eager = any(c in extra for c in EAGER_CLASSES)
         load = ' fetchpriority="high"' if eager else ' loading="lazy" decoding="async"'
-        return (f'<img class="{img_cls}" src="assets/products/{slug}.jpg"'
-                f' alt="{label}"{dim}{load}/>')
+        img = (f'<img class="{img_cls}" src="assets/products/{slug}.jpg"'
+               f' alt="{label}"{dim}{load}/>')
+        # WebP roughly halves the bytes; the jpeg stays as the fallback so
+        # nothing depends on browser support.
+        if os.path.exists(os.path.join(ROOT, "assets", "products", slug + ".webp")):
+            return ('<picture>'
+                    f'<source srcset="assets/products/{slug}.webp" type="image/webp"/>'
+                    f'{img}</picture>')
+        return img
     return f'<div class="{cls}"><span>{label}</span></div>'
 
 
