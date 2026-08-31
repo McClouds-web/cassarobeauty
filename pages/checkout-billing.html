@@ -1,5 +1,9 @@
 <section class="pagehead pagehead--cover pagehead--cover-bottom">
   {{PH|Brands Cover Image|pagehead__bg}}
+  <div class="wrap">
+    <h1>Delivery Details</h1>
+    <p class="crumb"><a href="cart.html">Cart</a> / <b>Delivery Details</b></p>
+  </div>
 </section>
 
 <section class="section">
@@ -7,26 +11,24 @@
     <form data-checkout-form>
       <h3 style="margin-bottom:22px">Delivery Details</h3>
       <div class="row2">
-        <div class="field"><label>First Name <span class="req">*</span></label><input class="input" name="firstName" placeholder="First name" required/></div>
-        <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" name="lastName" placeholder="Last name" required/></div>
+        <div class="field"><label for="first-name">First Name<span class="req">*</span></label><input class="input" name="firstName" placeholder="First name" required id="first-name"/></div>
+        <div class="field"><label for="last-name">Last Name<span class="req">*</span></label><input class="input" name="lastName" placeholder="Last name" required id="last-name"/></div>
       </div>
-      <div class="field"><label>Company Name (Optional)</label><input class="input" name="company" placeholder="Company name"/></div>
-      <div class="field"><label>Country <span class="req">*</span></label>
-        <select class="input" name="country" required><option value="">Select Country</option><option selected>South Africa</option></select>
+      <div class="field"><label for="company-name-optional">Company Name (Optional)</label><input class="input" name="company" placeholder="Company name" id="company-name-optional"/></div>
+      <div class="field"><label for="country">Country<span class="req">*</span></label><select class="input" name="country" required id="country"><option value="">Select Country</option><option selected>South Africa</option></select>
       </div>
-      <div class="field"><label>Street Address <span class="req">*</span></label><input class="input" name="street" placeholder="Street address" required/></div>
-      <div class="field"><label>City / Suburb <span class="req">*</span></label><input class="input" name="city" placeholder="City or suburb" required/></div>
-      <div class="field"><label>Province <span class="req">*</span></label>
-        <select class="input" name="province" required>
+      <div class="field"><label for="street-address">Street Address<span class="req">*</span></label><input class="input" name="street" placeholder="Street address" required id="street-address"/></div>
+      <div class="field"><label for="city-suburb">City / Suburb<span class="req">*</span></label><input class="input" name="city" placeholder="City or suburb" required id="city-suburb"/></div>
+      <div class="field"><label for="province">Province<span class="req">*</span></label><select class="input" name="province" required id="province">
           <option value="">Select Province</option>
           <option>Eastern Cape</option><option>Free State</option><option>Gauteng</option>
           <option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option>
           <option>Northern Cape</option><option>North West</option><option>Western Cape</option>
         </select>
       </div>
-      <div class="field"><label>Postal Code <span class="req">*</span></label><input class="input" name="postal" placeholder="Postal code" required/></div>
-      <div class="field"><label>WhatsApp Number <span class="req">*</span></label><input class="input" name="phone" type="tel" placeholder="WhatsApp number" required/><small class="hint">We confirm your order and send banking details on this number.</small></div>
-      <div class="field"><label>Email <span class="req">*</span></label><input class="input" name="email" type="email" placeholder="Email address" required/></div>
+      <div class="field"><label for="postal-code">Postal Code<span class="req">*</span></label><input class="input" name="postal" placeholder="Postal code" required id="postal-code"/></div>
+      <div class="field"><label for="whatsapp-number">WhatsApp Number<span class="req">*</span></label><input class="input" name="phone" type="tel" placeholder="WhatsApp number" required id="whatsapp-number"/><small class="hint">We confirm your order and send banking details on this number.</small></div>
+      <div class="field"><label for="email">Email<span class="req">*</span></label><input class="input" name="email" type="email" placeholder="Email address" required id="email"/></div>
       <div class="field">
         <label>Delivery Address <span class="req">*</span></label>
         <div class="radios">
@@ -34,7 +36,7 @@
           <label class="radio"><input type="radio" name="deliverySame" value="different"/> I will confirm a different delivery address on WhatsApp</label>
         </div>
       </div>
-      <div class="field"><label>Order Notes (Optional)</label><input class="input" name="notes" placeholder="Anything our team should know about this order"/></div>
+      <div class="field"><label for="order-notes-optional">Order Notes (Optional)</label><input class="input" name="notes" placeholder="Anything our team should know about this order" id="order-notes-optional"/></div>
       <button class="btn btn--primary" type="submit" hidden>Continue</button>
     </form>
 

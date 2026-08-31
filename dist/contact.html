@@ -118,6 +118,10 @@
 
 <section class="pagehead pagehead--cover">
   <img class="ph-img pagehead__bg" src="assets/products/skincare-cover.jpg" alt="Skincare Cover Image" width="1672" height="941" fetchpriority="high"/>
+  <div class="wrap">
+    <h1>Contact Us</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>Contact</b></p>
+  </div>
 </section>
 
 <div class="marquee"><div class="marquee__track"><span>Skincare</span><span class="leaf material-symbols-outlined">eco</span><span>Serums</span><span class="leaf material-symbols-outlined">eco</span><span>Ampoules</span><span class="leaf material-symbols-outlined">eco</span><span>Face Cleansers</span><span class="leaf material-symbols-outlined">eco</span><span>Sunscreens</span><span class="leaf material-symbols-outlined">eco</span><span>Toners</span><span class="leaf material-symbols-outlined">eco</span><span>Moisturisers</span><span class="leaf material-symbols-outlined">eco</span><span>Face Masks</span><span class="leaf material-symbols-outlined">eco</span><span>Skincare</span><span class="leaf material-symbols-outlined">eco</span><span>Serums</span><span class="leaf material-symbols-outlined">eco</span><span>Ampoules</span><span class="leaf material-symbols-outlined">eco</span><span>Face Cleansers</span><span class="leaf material-symbols-outlined">eco</span><span>Sunscreens</span><span class="leaf material-symbols-outlined">eco</span><span>Toners</span><span class="leaf material-symbols-outlined">eco</span><span>Moisturisers</span><span class="leaf material-symbols-outlined">eco</span><span>Face Masks</span><span class="leaf material-symbols-outlined">eco</span></div></div>
@@ -126,15 +130,15 @@
   <div class="wrap contact-layout">
     <form data-contact-form>
       <div class="row2">
-        <div class="field"><label>First Name <span class="req">*</span></label><input class="input" name="firstName" autocomplete="given-name" placeholder="First name" required/></div>
-        <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" name="lastName" autocomplete="family-name" placeholder="Last name" required/></div>
+        <div class="field"><label for="first-name">First Name<span class="req">*</span></label><input class="input" name="firstName" autocomplete="given-name" placeholder="First name" required id="first-name"/></div>
+        <div class="field"><label for="last-name">Last Name<span class="req">*</span></label><input class="input" name="lastName" autocomplete="family-name" placeholder="Last name" required id="last-name"/></div>
       </div>
       <div class="row2">
-        <div class="field"><label>Email <span class="req">*</span></label><input class="input" name="email" autocomplete="email" type="email" placeholder="Email address" required/></div>
-        <div class="field"><label>Phone <span class="req">*</span></label><input class="input" name="phone" autocomplete="tel" placeholder="Phone number" required/></div>
+        <div class="field"><label for="email">Email<span class="req">*</span></label><input class="input" name="email" autocomplete="email" type="email" placeholder="Email address" required id="email"/></div>
+        <div class="field"><label for="phone">Phone<span class="req">*</span></label><input class="input" name="phone" autocomplete="tel" placeholder="Phone number" required id="phone"/></div>
       </div>
-      <div class="field"><label>Subject <span class="req">*</span></label><input class="input" name="subject"  placeholder="Subject" required/></div>
-      <div class="field"><label>Your Message <span class="req">*</span></label><textarea class="input" name="message" placeholder="How can we help?" required></textarea></div>
+      <div class="field"><label for="subject">Subject<span class="req">*</span></label><input class="input" name="subject"  placeholder="Subject" required id="subject"/></div>
+      <div class="field"><label for="your-message">Your Message<span class="req">*</span></label><textarea class="input" name="message" placeholder="How can we help?" required id="your-message"></textarea></div>
       <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
       <button class="btn btn--primary" type="submit">Send a Message</button>
     </form>

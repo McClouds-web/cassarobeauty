@@ -129,8 +129,7 @@
 
 <section class="pagehead">
   <div class="wrap">
-    <h1>Shop</h1>
-    <p class="crumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <a href="skincare.html">Skincare</a> / <b>Hyalu-Cica Water-Fit Sun Serum</b></p>
+        <p class="crumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <a href="skincare.html">Skincare</a> / <b>Hyalu-Cica Water-Fit Sun Serum</b></p>
   </div>
 </section>
 
@@ -144,10 +143,10 @@
         <button class="pdp__arrow pdp__arrow--next" aria-label="Next">&rsaquo;</button>
       </div>
       <div class="pdp__thumbs">
-        <button class="is-active"><img class="ph-img" src="assets/products/skin1004-hyalu-cica-water-fit-sun-serum.jpg" alt="SKIN1004 Hyalu-Cica Water-Fit Sun Serum Image" width="1254" height="1254" loading="lazy" decoding="async"/></button>
-        <button><div class="ph"><span>SKIN1004 Sun Serum Image 2</span></div></button>
-        <button><div class="ph"><span>SKIN1004 Sun Serum Image 3</span></div></button>
-        <button><div class="ph"><span>SKIN1004 Sun Serum Image 4</span></div></button>
+        <button class="is-active" aria-label="Show image 1"><img class="ph-img" src="assets/products/skin1004-hyalu-cica-water-fit-sun-serum.jpg" alt="SKIN1004 Hyalu-Cica Water-Fit Sun Serum Image" width="1254" height="1254" loading="lazy" decoding="async"/></button>
+        <button aria-label="Show image 2"><div class="ph"><span>SKIN1004 Sun Serum Image 2</span></div></button>
+        <button aria-label="Show image 3"><div class="ph"><span>SKIN1004 Sun Serum Image 3</span></div></button>
+        <button aria-label="Show image 4"><div class="ph"><span>SKIN1004 Sun Serum Image 4</span></div></button>
       </div>
     </div>
 
@@ -167,9 +166,9 @@
 
       <div class="pdp__actions">
         <div class="qty" data-qty>
-          <button type="button" aria-label="Decrease">&minus;</button>
-          <input type="text" value="1" inputmode="numeric"/>
-          <button type="button" aria-label="Increase">+</button>
+          <button type="button" aria-label="Decrease" aria-label="Decrease quantity">&minus;</button>
+          <input type="text" value="1" inputmode="numeric" aria-label="Quantity"/>
+          <button type="button" aria-label="Increase" aria-label="Increase quantity">+</button>
         </div>
         <a class="btn btn--primary" href="cart.html">Add To Cart</a>
         <a class="btn btn--gold" href="checkout-billing.html">Buy Now</a>
@@ -264,11 +263,11 @@
         <p style="font-size:13px;margin-bottom:20px">Your email address will not be published. Required fields are marked *</p>
         <form data-review-form="Madagascar Centella Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++">
           <div class="row2">
-            <div class="field"><label>Name <span class="req">*</span></label><input class="input" name="name" autocomplete="name" placeholder="Your name" required/></div>
-            <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" name="email" autocomplete="email" placeholder="Your email address" required/></div>
+            <div class="field"><label for="name">Name<span class="req">*</span></label><input class="input" name="name" autocomplete="name" placeholder="Your name" required id="name"/></div>
+            <div class="field"><label for="email">Email<span class="req">*</span></label><input class="input" type="email" name="email" autocomplete="email" placeholder="Your email address" required id="email"/></div>
           </div>
-          <div class="field"><label>Review Title <span class="req">*</span></label><input class="input" name="subject" placeholder="Write a title" required/></div>
-          <div class="field"><label>Your Review <span class="req">*</span></label><textarea class="input" name="message" placeholder="Write your review" required></textarea></div>
+          <div class="field"><label for="review-title">Review Title<span class="req">*</span></label><input class="input" name="subject" placeholder="Write a title" required id="review-title"/></div>
+          <div class="field"><label for="your-review">Your Review<span class="req">*</span></label><textarea class="input" name="message" placeholder="Write your review" required id="your-review"></textarea></div>
           <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
           <button class="btn btn--primary" type="submit">Submit</button>
         </form>
