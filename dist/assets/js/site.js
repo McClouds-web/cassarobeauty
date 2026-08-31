@@ -359,3 +359,81 @@
     }
   });
 })();
+
+
+/* -------------------------------------------------------------------------
+   Product gallery
+   The thumbnails and the arrows were markup only — nothing ever listened to
+   them. It went unnoticed while three of the four thumbnails were empty
+   placeholders; with real photographs in place the stage has to follow.
+
+   Each image is wrapped in <picture> with a WebP <source>, so swapping the
+   img src alone changes nothing: the source still matches and the browser
+   keeps showing the old file. Both have to move together.
+   ------------------------------------------------------------------------- */
+(function () {
+  var stage = document.querySelector('.pdp__stage');
+  if (!stage) return;
+
+  var stageImg = stage.querySelector('img');
+  var stageSource = stage.querySelector('source');
+  var thumbs = Array.prototype.slice.call(
+    document.querySelectorAll('.pdp__thumbs button'));
+  if (!stageImg || thumbs.length < 1) return;
+
+  var shots = thumbs.map(function (b) {
+    var im = b.querySelector('img');
+    var so = b.querySelector('source');
+    return {
+      src: im ? im.getAttribute('src') : '',
+      webp: so ? so.getAttribute('srcset') : '',
+      alt: im ? im.getAttribute('alt') : ''
+    };
+  }).filter(function (s) { return s.src; });
+
+  if (!shots.length) return;
+  var index = 0;
+
+  function show(next) {
+    index = (next + shots.length) % shots.length;
+    var shot = shots[index];
+    /* Source first: if the img loaded before the source updated, the browser
+       would briefly show the previous photograph. */
+    if (stageSource) {
+      if (shot.webp) stageSource.setAttribute('srcset', shot.webp);
+      else stageSource.removeAttribute('srcset');
+    }
+    stageImg.setAttribute('src', shot.src);
+    stageImg.setAttribute('alt', shot.alt || stageImg.getAttribute('alt') || '');
+
+    thumbs.forEach(function (b, i) {
+      b.classList.toggle('is-active', i === index);
+      b.setAttribute('aria-current', i === index ? 'true' : 'false');
+    });
+  }
+
+  thumbs.forEach(function (b, i) {
+    b.addEventListener('click', function (e) { e.preventDefault(); show(i); });
+  });
+
+  var prev = stage.querySelector('.pdp__arrow--prev');
+  var next = stage.querySelector('.pdp__arrow--next');
+  if (prev) prev.addEventListener('click', function (e) { e.preventDefault(); show(index - 1); });
+  if (next) next.addEventListener('click', function (e) { e.preventDefault(); show(index + 1); });
+
+  /* A single photograph needs no controls at all. */
+  if (shots.length < 2) {
+    [prev, next].forEach(function (b) { if (b) b.hidden = true; });
+    var strip = document.querySelector('.pdp__thumbs');
+    if (strip) strip.hidden = true;
+  }
+
+  /* Arrow keys move the gallery when it has focus, which is what a keyboard
+     user expects of a carousel. */
+  stage.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+  });
+
+  show(0);
+})();
