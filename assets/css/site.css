@@ -943,6 +943,12 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
 .mega__promo small, .mega__promo strong, .mega__promo .btn { position: relative; z-index: 2; }
 
 /* Real imagery drops into the same slots the placeholders occupied. */
+/* Images are wrapped in <picture> to offer a WebP source. A picture box is
+   inline and shrink-wraps, which would leave every .ph-img sizing against it
+   instead of the card, thumbnail or hero it is meant to fill. display:contents
+   removes that box from layout so the img stays a child of its real container. */
+picture { display: contents; }
+
 .ph-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cat .ph-img { height: auto; aspect-ratio: 1/1; border-radius: 50%; margin-bottom: 14px; }
 .hero__media .ph-img { height: 430px; }
