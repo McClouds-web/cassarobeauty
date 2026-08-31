@@ -323,6 +323,18 @@ def expand(html):
     return html
 
 
+# The contact number lives in assets/js/config.js, which the ordering flow
+# already reads at runtime. Parsing it here means the markup and the WhatsApp
+# hand-off can never disagree about which number the shop answers on.
+def config_value(key, default=""):
+    src = open(os.path.join(ROOT, "assets", "js", "config.js"), encoding="utf-8").read()
+    m = re.search(r"%s:\s*'([^']*)'" % re.escape(key), src)
+    return m.group(1) if m else default
+
+
+WA_NUMBER = config_value("whatsappNumber")
+WA_DISPLAY = config_value("whatsappDisplay")
+
 layout = open(os.path.join(ROOT, "layout", "base.html"), encoding="utf-8").read()
 pages = json.load(open(os.path.join(ROOT, "pages.json")))
 
@@ -349,6 +361,7 @@ for p in pages:
     content = open(src, encoding="utf-8").read()
     doc = layout.replace("{{CONTENT}}", content)
     doc = doc.replace("{{TITLE}}", p["title"]).replace("{{DESC}}", p["desc"])
+    doc = doc.replace("{{WA_NUMBER}}", WA_NUMBER).replace("{{WA_DISPLAY}}", WA_DISPLAY)
     for k in NAV_KEYS:
         doc = doc.replace("{{N_%s}}" % k.upper(), "is-active" if p.get("nav") == k else "")
     doc = expand(doc)

@@ -6,6 +6,11 @@ window.CASSARO_CONFIG = {
      page. Change it HERE and the whole ordering flow follows. */
   whatsappNumber: '27690634793',
 
+  /* The same number as it is written on screen. build.py reads both values
+     from this file, so the header, drawer, footer and contact page cannot
+     drift out of step with the number the ordering flow actually uses. */
+  whatsappDisplay: '+27 69 063 4793',
+
   storeName: 'Cassaro Beauty',
 
   /* Order references look like CAS-483920. */
