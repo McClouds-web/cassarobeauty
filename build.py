@@ -425,6 +425,7 @@ for p in pages:
     doc = layout.replace("{{CONTENT}}", content)
     doc = doc.replace("{{TITLE}}", p["title"]).replace("{{DESC}}", p["desc"])
     doc = doc.replace("{{WA_NUMBER}}", WA_NUMBER).replace("{{WA_DISPLAY}}", WA_DISPLAY)
+    doc = doc.replace("{{WA_LINK}}", "https://wa.me/" + WA_NUMBER)
     doc = doc.replace("{{SITE_URL}}", SITE_URL).replace("{{FILE}}", p["file"])
     doc = doc.replace("{{OG_TYPE}}", "product" if p.get("product") else
                       ("website" if p["file"] == "index" else "article"))

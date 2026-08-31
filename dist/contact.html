@@ -124,17 +124,18 @@
 
 <section class="section">
   <div class="wrap contact-layout">
-    <form onsubmit="event.preventDefault();this.reset();alert('Thank you. Your message has been sent.')">
+    <form data-contact-form>
       <div class="row2">
-        <div class="field"><label>First Name <span class="req">*</span></label><input class="input" placeholder="First name" required/></div>
-        <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" placeholder="Last name" required/></div>
+        <div class="field"><label>First Name <span class="req">*</span></label><input class="input" name="firstName" autocomplete="given-name" placeholder="First name" required/></div>
+        <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" name="lastName" autocomplete="family-name" placeholder="Last name" required/></div>
       </div>
       <div class="row2">
-        <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" placeholder="Email address" required/></div>
-        <div class="field"><label>Phone <span class="req">*</span></label><input class="input" placeholder="Phone number" required/></div>
+        <div class="field"><label>Email <span class="req">*</span></label><input class="input" name="email" autocomplete="email" type="email" placeholder="Email address" required/></div>
+        <div class="field"><label>Phone <span class="req">*</span></label><input class="input" name="phone" autocomplete="tel" placeholder="Phone number" required/></div>
       </div>
-      <div class="field"><label>Subject <span class="req">*</span></label><input class="input" placeholder="Subject" required/></div>
-      <div class="field"><label>Your Message <span class="req">*</span></label><textarea class="input" placeholder="How can we help?" required></textarea></div>
+      <div class="field"><label>Subject <span class="req">*</span></label><input class="input" name="subject"  placeholder="Subject" required/></div>
+      <div class="field"><label>Your Message <span class="req">*</span></label><textarea class="input" name="message" placeholder="How can we help?" required></textarea></div>
+      <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
       <button class="btn btn--primary" type="submit">Send a Message</button>
     </form>
     <div class="contact-photo"><img class="ph-img" src="assets/products/contact-photo.jpg" alt="Contact Page Image" width="1448" height="1086" loading="lazy" decoding="async"/></div>
@@ -173,11 +174,12 @@
   <div class="wrap">
     <h2>Join the <span class="gold">Cassaro Beauty Community</span></h2>
     <p>Receive new product updates, skincare guides and exclusive offers.</p>
-    <form class="subscribe" onsubmit="event.preventDefault();this.reset();this.nextElementSibling.hidden=false">
-      <input type="email" placeholder="Enter Email Address" required/>
+    <form class="subscribe" data-subscribe-form>
+      <label class="sr-only" for="subscribe-email">Email address</label>
+      <input id="subscribe-email" name="email" type="email" placeholder="Enter Email Address" autocomplete="email" required/>
+      <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
       <button class="btn btn--primary" type="submit">Subscribe</button>
     </form>
-    <p class="gold" style="margin-top:14px" hidden>Thank you — you are subscribed.</p>
   </div>
 </section>
 
@@ -251,5 +253,6 @@
 <script src="assets/js/site.js"></script>
 <script src="assets/js/shop.js"></script>
 <script src="assets/js/checkout.js"></script>
+<script src="assets/js/forms.js"></script>
 </body>
 </html>

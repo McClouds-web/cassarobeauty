@@ -262,13 +262,14 @@
       <div class="addreview">
         <h3>Add your review</h3>
         <p style="font-size:13px;margin-bottom:20px">Your email address will not be published. Required fields are marked *</p>
-        <form onsubmit="event.preventDefault();this.reset();alert('Thank you for your review.')">
+        <form data-review-form="Madagascar Centella Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++">
           <div class="row2">
-            <div class="field"><label>Name <span class="req">*</span></label><input class="input" placeholder="Your name" required/></div>
-            <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" placeholder="Your email address" required/></div>
+            <div class="field"><label>Name <span class="req">*</span></label><input class="input" name="name" autocomplete="name" placeholder="Your name" required/></div>
+            <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" name="email" autocomplete="email" placeholder="Your email address" required/></div>
           </div>
-          <div class="field"><label>Review Title <span class="req">*</span></label><input class="input" placeholder="Write a title" required/></div>
-          <div class="field"><label>Your Review <span class="req">*</span></label><textarea class="input" placeholder="Write your review" required></textarea></div>
+          <div class="field"><label>Review Title <span class="req">*</span></label><input class="input" name="subject" placeholder="Write a title" required/></div>
+          <div class="field"><label>Your Review <span class="req">*</span></label><textarea class="input" name="message" placeholder="Write your review" required></textarea></div>
+          <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
           <button class="btn btn--primary" type="submit">Submit</button>
         </form>
       </div>
@@ -362,11 +363,12 @@
   <div class="wrap">
     <h2>Join the <span class="gold">Cassaro Beauty Community</span></h2>
     <p>Receive new product updates, skincare guides and exclusive offers.</p>
-    <form class="subscribe" onsubmit="event.preventDefault();this.reset();this.nextElementSibling.hidden=false">
-      <input type="email" placeholder="Enter Email Address" required/>
+    <form class="subscribe" data-subscribe-form>
+      <label class="sr-only" for="subscribe-email">Email address</label>
+      <input id="subscribe-email" name="email" type="email" placeholder="Enter Email Address" autocomplete="email" required/>
+      <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
       <button class="btn btn--primary" type="submit">Subscribe</button>
     </form>
-    <p class="gold" style="margin-top:14px" hidden>Thank you — you are subscribed.</p>
   </div>
 </section>
 
@@ -440,5 +442,6 @@
 <script src="assets/js/site.js"></script>
 <script src="assets/js/shop.js"></script>
 <script src="assets/js/checkout.js"></script>
+<script src="assets/js/forms.js"></script>
 </body>
 </html>

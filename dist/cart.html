@@ -181,11 +181,12 @@
   <div class="wrap">
     <h2>Join the <span class="gold">Cassaro Beauty Community</span></h2>
     <p>Receive new product updates, skincare guides and exclusive offers.</p>
-    <form class="subscribe" onsubmit="event.preventDefault();this.reset();this.nextElementSibling.hidden=false">
-      <input type="email" placeholder="Enter Email Address" required/>
+    <form class="subscribe" data-subscribe-form>
+      <label class="sr-only" for="subscribe-email">Email address</label>
+      <input id="subscribe-email" name="email" type="email" placeholder="Enter Email Address" autocomplete="email" required/>
+      <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
       <button class="btn btn--primary" type="submit">Subscribe</button>
     </form>
-    <p class="gold" style="margin-top:14px" hidden>Thank you — you are subscribed.</p>
   </div>
 </section>
 
@@ -259,5 +260,6 @@
 <script src="assets/js/site.js"></script>
 <script src="assets/js/shop.js"></script>
 <script src="assets/js/checkout.js"></script>
+<script src="assets/js/forms.js"></script>
 </body>
 </html>

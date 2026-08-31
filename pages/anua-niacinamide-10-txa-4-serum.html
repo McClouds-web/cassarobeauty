@@ -131,13 +131,14 @@
       <div class="addreview">
         <h3>Add your review</h3>
         <p style="font-size:13px;margin-bottom:20px">Your email address will not be published. Required fields are marked *</p>
-        <form onsubmit="event.preventDefault();this.reset();alert('Thank you for your review.')">
+        <form data-review-form="Niacinamide 10% + TXA 4% Serum">
           <div class="row2">
-            <div class="field"><label>Name <span class="req">*</span></label><input class="input" placeholder="Your name" required/></div>
-            <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" placeholder="Your email address" required/></div>
+            <div class="field"><label>Name <span class="req">*</span></label><input class="input" name="name" autocomplete="name" placeholder="Your name" required/></div>
+            <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" name="email" autocomplete="email" placeholder="Your email address" required/></div>
           </div>
-          <div class="field"><label>Review Title <span class="req">*</span></label><input class="input" placeholder="Write a title" required/></div>
-          <div class="field"><label>Your Review <span class="req">*</span></label><textarea class="input" placeholder="Write your review" required></textarea></div>
+          <div class="field"><label>Review Title <span class="req">*</span></label><input class="input" name="subject" placeholder="Write a title" required/></div>
+          <div class="field"><label>Your Review <span class="req">*</span></label><textarea class="input" name="message" placeholder="Write your review" required></textarea></div>
+          <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
           <button class="btn btn--primary" type="submit">Submit</button>
         </form>
       </div>

@@ -415,39 +415,15 @@
  },
  {
   "file": "account",
-  "title": "My Account",
+  "title": "Your Orders",
   "nav": "",
-  "desc": "Personal information."
+  "desc": "Orders you have placed from this device, and how to pick up an order placed elsewhere."
  },
  {
   "file": "account-orders",
   "title": "Order History",
   "nav": "",
   "desc": "My orders."
- },
- {
-  "file": "account-address",
-  "title": "Delivery Addresses",
-  "nav": "",
-  "desc": "Manage addresses."
- },
- {
-  "file": "account-payment",
-  "title": "Payment Preferences",
-  "nav": "",
-  "desc": "Payment methods."
- },
- {
-  "file": "account-password",
-  "title": "Change Password",
-  "nav": "",
-  "desc": "Password manager."
- },
- {
-  "file": "account-logout",
-  "title": "Sign Out",
-  "nav": "",
-  "desc": "Log out."
  },
  {
   "file": "404",

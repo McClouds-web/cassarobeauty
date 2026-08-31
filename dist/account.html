@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>My Account — Cassaro Beauty</title>
-<meta name="description" content="Personal information."/>
+<title>Your Orders — Cassaro Beauty</title>
+<meta name="description" content="Orders you have placed from this device, and how to pick up an order placed elsewhere."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Sacramento&amp;display=swap" rel="stylesheet"/>
@@ -16,16 +16,16 @@
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Cassaro Beauty"/>
 <meta property="og:locale" content="en_ZA"/>
-<meta property="og:title" content="My Account — Cassaro Beauty"/>
-<meta property="og:description" content="Personal information."/>
+<meta property="og:title" content="Your Orders — Cassaro Beauty"/>
+<meta property="og:description" content="Orders you have placed from this device, and how to pick up an order placed elsewhere."/>
 <meta property="og:url" content="https://mcclouds-web.github.io/cassarobeauty/account.html"/>
 <meta property="og:image" content="https://mcclouds-web.github.io/cassarobeauty/assets/products/cassaro-cover-1.jpg"/>
 <meta property="og:image:width" content="1774"/>
 <meta property="og:image:height" content="887"/>
-<meta property="og:image:alt" content="My Account — Cassaro Beauty"/>
+<meta property="og:image:alt" content="Your Orders — Cassaro Beauty"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="My Account — Cassaro Beauty"/>
-<meta name="twitter:description" content="Personal information."/>
+<meta name="twitter:title" content="Your Orders — Cassaro Beauty"/>
+<meta name="twitter:description" content="Orders you have placed from this device, and how to pick up an order placed elsewhere."/>
 <meta name="twitter:image" content="https://mcclouds-web.github.io/cassarobeauty/assets/products/cassaro-cover-1.jpg"/>
 
 <meta name="theme-color" content="#6F4A34"/>
@@ -118,38 +118,37 @@
 
 <section class="pagehead">
   <div class="wrap">
-    <h1>My Account</h1>
-    <p class="crumb"><a href="index.html">Home</a> / <b>My Account</b></p>
+    <h1>Your Orders</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>Your Orders</b></p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap acct">
     <nav class="acctnav">
-        <a class="acctnav__item is-active" href="account.html">Personal Information</a>
-        <a class="acctnav__item" href="account-orders.html">My Orders</a>
-        <a class="acctnav__item" href="account-address.html">Manage Address</a>
-        <a class="acctnav__item" href="account-payment.html">Payment Method</a>
-        <a class="acctnav__item" href="account-password.html">Password Manager</a>
-        <a class="acctnav__item" href="account-logout.html">Logout</a>
+        <a class="acctnav__item is-active" href="account.html">Your Orders</a>
+        <a class="acctnav__item" href="track-order.html">Track an Order</a>
+        <a class="acctnav__item" href="wishlist.html">Wishlist</a>
+        <a class="acctnav__item" href="contact.html">Contact Us</a>
     </nav>
+
     <div class="acct__panel">
-      <div class="avatar-edit">
-        <div class="ph"><span>Profile Photo</span></div>
-        <button aria-label="Change photo"><span class="material-symbols-outlined" style="font-size:16px">edit</span></button>
-      </div>
-      <form onsubmit="event.preventDefault();alert('Profile updated.')">
-        <div class="row2">
-          <div class="field"><label>First Name <span class="req">*</span></label><input class="input" placeholder="First name"/></div>
-          <div class="field"><label>Last Name <span class="req">*</span></label><input class="input" placeholder="Last name"/></div>
-        </div>
-        <div class="field"><label>Email <span class="req">*</span></label><input class="input" type="email" placeholder="Email address"/></div>
-        <div class="field"><label>Phone <span class="req">*</span></label><input class="input" placeholder="Phone number"/></div>
-        <div class="field"><label>Gender</label>
-          <select class="input"><option>Prefer not to say</option><option>Female</option><option>Male</option></select>
-        </div>
-        <button class="btn btn--primary" type="submit">Update Changes</button>
-      </form>
+      <h2 style="margin-top:0">Orders from this device</h2>
+      <p>Cassaro Beauty does not ask you to create an account. Every order is confirmed
+        with our team on WhatsApp, so there is no password to remember and nothing of
+        yours stored on our website beyond this browser.</p>
+
+      <div data-orders-list></div>
+      <p data-orders-empty hidden>No orders yet from this device. Once you place one it
+        will appear here with its reference.</p>
+
+      <h2>Looking for an order placed on another device?</h2>
+      <p>Order references travel with the WhatsApp conversation, so the quickest route is
+        to message us with your reference and we will pick up where we left off.</p>
+      <p>
+        <a class="btn btn--primary" href="https://wa.me/27690634793" target="_blank" rel="noopener">Message us on WhatsApp</a>
+        <a class="btn btn--ghost" href="track-order.html">Track by reference</a>
+      </p>
     </div>
   </div>
 </section>
@@ -178,11 +177,12 @@
   <div class="wrap">
     <h2>Join the <span class="gold">Cassaro Beauty Community</span></h2>
     <p>Receive new product updates, skincare guides and exclusive offers.</p>
-    <form class="subscribe" onsubmit="event.preventDefault();this.reset();this.nextElementSibling.hidden=false">
-      <input type="email" placeholder="Enter Email Address" required/>
+    <form class="subscribe" data-subscribe-form>
+      <label class="sr-only" for="subscribe-email">Email address</label>
+      <input id="subscribe-email" name="email" type="email" placeholder="Enter Email Address" autocomplete="email" required/>
+      <p class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"/></label></p>
       <button class="btn btn--primary" type="submit">Subscribe</button>
     </form>
-    <p class="gold" style="margin-top:14px" hidden>Thank you — you are subscribed.</p>
   </div>
 </section>
 
@@ -256,5 +256,6 @@
 <script src="assets/js/site.js"></script>
 <script src="assets/js/shop.js"></script>
 <script src="assets/js/checkout.js"></script>
+<script src="assets/js/forms.js"></script>
 </body>
 </html>

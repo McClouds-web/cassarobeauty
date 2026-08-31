@@ -31,5 +31,9 @@ window.CASSARO_CONFIG = {
      without the service role. Leave orderEndpoint empty to disable the
      backend and fall back to the WhatsApp draft alone. */
   orderEndpoint: 'https://cijeetlvkellnsqhsuxo.supabase.co/functions/v1/cassaro_order',
+
+  /* Contact enquiries, newsletter signups and product reviews. Same project,
+     same publishable key; the endpoint decides what to do with each kind. */
+  messageEndpoint: 'https://cijeetlvkellnsqhsuxo.supabase.co/functions/v1/cassaro_message',
   orderEndpointKey: 'sb_publishable_5NYstW3JOY7b270BbZM-Kg_A6QNcM9V'
 };
