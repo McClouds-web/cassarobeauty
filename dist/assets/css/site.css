@@ -2273,3 +2273,16 @@ body:has(.hero--dark) .hero--dark[class] {
   .shopsearch { width: 100%; }
   .shopsearch input { width: 100%; min-width: 0; }
 }
+
+/* Legal pages read like documents, so they get a narrow measure
+   ------------------------------------------------------------------------- */
+.legal { max-width: 760px; }
+.legal h2 { font-size: 20px; margin: 34px 0 10px; }
+.legal p, .legal li { color: var(--body, #5C5C5C); line-height: 1.75; }
+.legal ul, .legal ol { margin: 0 0 16px 20px; }
+.legal li { margin-bottom: 8px; }
+.legal a { color: var(--cocoa, #6F4A34); text-decoration: underline; }
+.legal__updated {
+  font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--muted, #5C5C5C); margin-bottom: 26px;
+}

@@ -397,6 +397,7 @@ def jsonld(page):
 
 WA_NUMBER = config_value("whatsappNumber")
 WA_DISPLAY = config_value("whatsappDisplay")
+CONTACT_EMAIL = config_value("contactEmail", "cassarobeauty.za@gmail.com")
 
 layout = open(os.path.join(ROOT, "layout", "base.html"), encoding="utf-8").read()
 pages = json.load(open(os.path.join(ROOT, "pages.json")))
@@ -426,6 +427,8 @@ for p in pages:
     doc = doc.replace("{{TITLE}}", p["title"]).replace("{{DESC}}", p["desc"])
     doc = doc.replace("{{WA_NUMBER}}", WA_NUMBER).replace("{{WA_DISPLAY}}", WA_DISPLAY)
     doc = doc.replace("{{WA_LINK}}", "https://wa.me/" + WA_NUMBER)
+    doc = doc.replace("{{CONTACT_EMAIL}}", CONTACT_EMAIL)
+    doc = doc.replace("{{TODAY}}", datetime.date.today().strftime("%d %B %Y"))
     doc = doc.replace("{{SITE_URL}}", SITE_URL).replace("{{FILE}}", p["file"])
     doc = doc.replace("{{OG_TYPE}}", "product" if p.get("product") else
                       ("website" if p["file"] == "index" else "article"))

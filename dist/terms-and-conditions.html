@@ -3,29 +3,29 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Checkout: Delivery Details — Cassaro Beauty</title>
-<meta name="description" content="Billing details."/>
+<title>Terms and Conditions — Cassaro Beauty</title>
+<meta name="description" content="The terms that apply when you order from Cassaro Beauty, including how ordering, pricing and payment work."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Sacramento&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
-<link rel="canonical" href="https://mcclouds-web.github.io/cassarobeauty/checkout-billing.html"/>
+<link rel="canonical" href="https://mcclouds-web.github.io/cassarobeauty/terms-and-conditions.html"/>
 
 <!-- Shared on WhatsApp, Instagram and TikTok the page needs a title, blurb and
      image of its own, or it previews as a bare link. -->
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Cassaro Beauty"/>
 <meta property="og:locale" content="en_ZA"/>
-<meta property="og:title" content="Checkout: Delivery Details — Cassaro Beauty"/>
-<meta property="og:description" content="Billing details."/>
-<meta property="og:url" content="https://mcclouds-web.github.io/cassarobeauty/checkout-billing.html"/>
+<meta property="og:title" content="Terms and Conditions — Cassaro Beauty"/>
+<meta property="og:description" content="The terms that apply when you order from Cassaro Beauty, including how ordering, pricing and payment work."/>
+<meta property="og:url" content="https://mcclouds-web.github.io/cassarobeauty/terms-and-conditions.html"/>
 <meta property="og:image" content="https://mcclouds-web.github.io/cassarobeauty/assets/products/cassaro-cover-1.jpg"/>
 <meta property="og:image:width" content="1774"/>
 <meta property="og:image:height" content="887"/>
-<meta property="og:image:alt" content="Checkout: Delivery Details — Cassaro Beauty"/>
+<meta property="og:image:alt" content="Terms and Conditions — Cassaro Beauty"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Checkout: Delivery Details — Cassaro Beauty"/>
-<meta name="twitter:description" content="Billing details."/>
+<meta name="twitter:title" content="Terms and Conditions — Cassaro Beauty"/>
+<meta name="twitter:description" content="The terms that apply when you order from Cassaro Beauty, including how ordering, pricing and payment work."/>
 <meta name="twitter:image" content="https://mcclouds-web.github.io/cassarobeauty/assets/products/cassaro-cover-1.jpg"/>
 
 <meta name="theme-color" content="#6F4A34"/>
@@ -116,60 +116,72 @@
   </div>
 </nav>
 
-<section class="pagehead pagehead--cover pagehead--cover-bottom">
-  <img class="ph-img pagehead__bg" src="assets/products/brands-cover.jpg" alt="Brands Cover Image" width="1536" height="1024" fetchpriority="high"/>
+<section class="pagehead">
   <div class="wrap">
-    <h1>Delivery Details</h1>
-    <p class="crumb"><a href="cart.html">Cart</a> / <b>Delivery Details</b></p>
+    <h1>Terms and Conditions</h1>
+    <p class="crumb"><a href="index.html">Home</a> / <b>Terms and Conditions</b></p>
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap cart-layout">
-    <form data-checkout-form>
-      <h3 style="margin-bottom:22px">Delivery Details</h3>
-      <div class="row2">
-        <div class="field"><label for="first-name">First Name<span class="req">*</span></label><input class="input" name="firstName" placeholder="First name" required id="first-name"/></div>
-        <div class="field"><label for="last-name">Last Name<span class="req">*</span></label><input class="input" name="lastName" placeholder="Last name" required id="last-name"/></div>
-      </div>
-      <div class="field"><label for="company-name-optional">Company Name (Optional)</label><input class="input" name="company" placeholder="Company name" id="company-name-optional"/></div>
-      <div class="field"><label for="country">Country<span class="req">*</span></label><select class="input" name="country" required id="country"><option value="">Select Country</option><option selected>South Africa</option></select>
-      </div>
-      <div class="field"><label for="street-address">Street Address<span class="req">*</span></label><input class="input" name="street" placeholder="Street address" required id="street-address"/></div>
-      <div class="field"><label for="city-suburb">City / Suburb<span class="req">*</span></label><input class="input" name="city" placeholder="City or suburb" required id="city-suburb"/></div>
-      <div class="field"><label for="province">Province<span class="req">*</span></label><select class="input" name="province" required id="province">
-          <option value="">Select Province</option>
-          <option>Eastern Cape</option><option>Free State</option><option>Gauteng</option>
-          <option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option>
-          <option>Northern Cape</option><option>North West</option><option>Western Cape</option>
-        </select>
-      </div>
-      <div class="field"><label for="postal-code">Postal Code<span class="req">*</span></label><input class="input" name="postal" placeholder="Postal code" required id="postal-code"/></div>
-      <div class="field"><label for="whatsapp-number">WhatsApp Number<span class="req">*</span></label><input class="input" name="phone" type="tel" placeholder="WhatsApp number" required id="whatsapp-number"/><small class="hint">We confirm your order and send banking details on this number.</small></div>
-      <div class="field"><label for="email">Email<span class="req">*</span></label><input class="input" name="email" type="email" placeholder="Email address" required id="email"/></div>
-      <div class="field">
-        <label>Delivery Address <span class="req">*</span></label>
-        <div class="radios">
-          <label class="radio"><input type="radio" name="deliverySame" value="same" checked/> Same as the address above</label>
-          <label class="radio"><input type="radio" name="deliverySame" value="different"/> I will confirm a different delivery address on WhatsApp</label>
-        </div>
-      </div>
-      <div class="field"><label for="order-notes-optional">Order Notes (Optional)</label><input class="input" name="notes" placeholder="Anything our team should know about this order" id="order-notes-optional"/></div>
-      <button class="btn btn--primary" type="submit" hidden>Continue</button>
-    </form>
+  <div class="wrap legal">
+    <p class="legal__updated">Last updated: 31 August 2026</p>
 
-    <aside class="summary">
-      <h3>Order Summary</h3>
-      <dl>
-        <div><dt>Items</dt><dd data-sum-items>0</dd></div>
-        <div><dt>Sub Total</dt><dd data-sum-subtotal>R___</dd></div>
-        <div><dt>Delivery</dt><dd>To be confirmed</dd></div>
-        <div><dt>Payment</dt><dd>Bank Transfer / EFT</dd></div>
-      </dl>
-      <div class="summary__total"><span>Total</span><b data-sum-total>R___</b></div>
-      <a class="btn btn--primary btn--block" href="checkout-payment.html" data-checkout-continue>Continue to Review</a>
-      <p style="font-size:12px;color:var(--muted);margin-top:14px">Your details are only used to prepare the order message you send us on WhatsApp.</p>
-    </aside>
+    <p>These terms govern your use of the Cassaro Beauty website and any order you
+      place through it. They are written to meet the disclosure requirements of the
+      Consumer Protection Act 68 of 2008 and the Electronic Communications and
+      Transactions Act 25 of 2002.</p>
+
+    <h2>Who you are dealing with</h2>
+    <p>Cassaro Beauty, an online retailer of skincare and beauty products based in
+      South Africa. WhatsApp +27 69 063 4793, email
+      <a href="mailto:cassarobeauty.za@gmail.com">cassarobeauty.za@gmail.com</a>.</p>
+
+    <h2>How ordering works</h2>
+    <p>This website does not take payment. When you complete the checkout, your order
+      is prepared as a WhatsApp message and sent to our team. We then confirm stock,
+      quote the delivery cost and send you our banking details.</p>
+    <p>An order becomes a contract only once we have confirmed it in writing on
+      WhatsApp. Until then it is a request, and we may decline it — for example if an
+      item has sold out or we cannot deliver to your area.</p>
+
+    <h2>Prices</h2>
+    <p>Prices are quoted in South African Rand and confirmed on WhatsApp before you
+      pay. Delivery is quoted separately and depends on your address. If a price is
+      displayed incorrectly through an obvious error, we will tell you before taking
+      payment and you are free to cancel.</p>
+
+    <h2>Payment</h2>
+    <p>Payment is by bank transfer or EFT to the account we send you. We do not accept
+      card payments on this website and will never ask for your card number, PIN or
+      online banking password. Goods are dispatched once payment reflects.</p>
+
+    <h2>Delivery</h2>
+    <p>See our <a href="shipping-policy.html">Shipping Policy</a> for timeframes and
+      costs. Risk in the goods passes to you on delivery.</p>
+
+    <h2>Returns and cancellation</h2>
+    <p>Your rights to return goods are set out in our
+      <a href="returns-policy.html">Returns Policy</a>, including the cooling-off right
+      that applies to electronic transactions under South African law.</p>
+
+    <h2>Product information</h2>
+    <p>We describe products as accurately as we can, using information from the brands
+      themselves. Colours vary between screens. Skincare affects people differently:
+      nothing on this site is medical advice, and you should patch test new products
+      and speak to a professional about a condition or a concern.</p>
+
+    <h2>Our liability</h2>
+    <p>Nothing in these terms limits any right you have under the Consumer Protection
+      Act. Beyond those rights, we are not liable for indirect or consequential loss
+      arising from use of the site.</p>
+
+    <h2>Governing law</h2>
+    <p>These terms are governed by the laws of the Republic of South Africa.</p>
+
+    <h2>Changes</h2>
+    <p>We may update these terms. The version in force is the one published here on
+      the day you place your order.</p>
   </div>
 </section>
 

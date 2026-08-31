@@ -436,5 +436,35 @@
   "title": "Coming Soon",
   "nav": "",
   "desc": "Cassaro Beauty is launching soon."
+ },
+ {
+  "file": "privacy-policy",
+  "title": "Privacy Policy",
+  "nav": "",
+  "desc": "How Cassaro Beauty collects, uses and protects your personal information, in line with POPIA."
+ },
+ {
+  "file": "terms-and-conditions",
+  "title": "Terms and Conditions",
+  "nav": "",
+  "desc": "The terms that apply when you order from Cassaro Beauty, including how ordering, pricing and payment work."
+ },
+ {
+  "file": "shipping-policy",
+  "title": "Shipping Policy",
+  "nav": "",
+  "desc": "Where Cassaro Beauty delivers, what delivery costs, how long it takes and how to track your order."
+ },
+ {
+  "file": "returns-policy",
+  "title": "Returns Policy",
+  "nav": "",
+  "desc": "When you can return a Cassaro Beauty order, including your cooling-off right and the hygiene exception on opened cosmetics."
+ },
+ {
+  "file": "cookie-policy",
+  "title": "Cookie Policy",
+  "nav": "",
+  "desc": "What Cassaro Beauty stores in your browser, and why there is no cookie banner."
  }
 ]

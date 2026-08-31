@@ -11,6 +11,9 @@ window.CASSARO_CONFIG = {
      drift out of step with the number the ordering flow actually uses. */
   whatsappDisplay: '+27 69 063 4793',
 
+  /* The address printed on the site and used as a reply-to. */
+  contactEmail: 'cassarobeauty.za@gmail.com',
+
   storeName: 'Cassaro Beauty',
 
   /* Order references look like CAS-483920. */
