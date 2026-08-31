@@ -129,6 +129,27 @@ def _dims(slug):
 EAGER_CLASSES = ("hero__cover", "hero__backdrop", "pagehead__bg")
 
 
+def img_direct(slug, alt, extra=""):
+    """Render a known image file. ph() maps a human label to a file; galleries
+    instead need to name the file, because which variants exist differs per
+    product."""
+    img_cls = ("ph-img " + extra).strip()
+    size = _dims(slug)
+    dim = f' width="{size[0]}" height="{size[1]}"' if size else ""
+    # The gallery's main photo is the largest thing above the fold, so it must
+    # not be deferred; thumbnails and everything else can wait.
+    eager = "eager" in extra
+    img_cls = img_cls.replace("eager", "").strip()
+    load = ' fetchpriority="high"' if eager else ' loading="lazy" decoding="async"'
+    img = (f'<img class="{img_cls}" src="assets/products/{slug}.jpg"'
+           f' alt="{alt}"{dim}{load}/>')
+    if os.path.exists(os.path.join(ROOT, "assets", "products", slug + ".webp")):
+        return ('<picture>'
+                f'<source srcset="assets/products/{slug}.webp" type="image/webp"/>'
+                f'{img}</picture>')
+    return img
+
+
 def ph(label, extra=""):
     """Real image when we have one for this label, otherwise a labelled
     placeholder. Either way it fills the same container, so the box, ratio
@@ -327,6 +348,8 @@ def expand(html):
     html = re.sub(r"\{\{RATING\|([^}]*)\}\}", lambda m: rating_block(m.group(1)), html)
     html = re.sub(r"\{\{STARS\|([^}]*)\}\}", lambda m: rating_inline(m.group(1)), html)
     html = re.sub(r"\{\{FAQ\|([^}]*)\}\}", lambda m: faq(*m.group(1).split("|")), html)
+    html = re.sub(r"\{\{IMG\|([^}]*)\}\}",
+                  lambda m: img_direct(*(m.group(1).split("|") + ["", ""])[:3]), html)
     return html
 
 
