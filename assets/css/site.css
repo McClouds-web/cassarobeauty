@@ -1229,11 +1229,13 @@ body:has(.hero--dark) .hero--dark .hero__seal { top: 172px; right: 44px; }
 .linetable__prod .ph-img,
 .recent .ph-img {
   object-fit: contain;
-  background: #fff;
+  /* The packshots carry their own backdrop. A white background here showed as
+     a bright seam wherever the photograph did not reach the frame, because the
+     frames are cream; matching the frame makes any letterbox invisible. */
+  background: var(--shot);
 }
-.pcard__media .ph-img { padding: 6px; }
-.pdp__stage .ph-img { padding: 12px; }
-.brandcard__media .ph-img { padding: 8px; }
+/* No padding: it inset every photograph from its frame, and with the white
+   background above that inset read as a border drawn inside each card. */
 .pcard:hover .pcard__media .ph-img { transform: scale(1.04); }
 
 /* =========================================================================
