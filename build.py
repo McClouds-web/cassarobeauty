@@ -4,7 +4,7 @@
 Pages use small macros for the repeating components of the reference design
 ({{CARD}}, {{POST}}, {{FAQ}}, {{MARQUEE}}...) so a product card is defined once.
 """
-import os, re, json, shutil
+import os, re, json, shutil, datetime
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, "dist")
@@ -332,6 +332,69 @@ def config_value(key, default=""):
     return m.group(1) if m else default
 
 
+# Absolute URLs are required for canonical and Open Graph tags. GitHub Pages is
+# the live home until cassarobeauty.co.za is registered and pointed.
+SITE_URL = os.environ.get("CASSARO_SITE_URL", "https://mcclouds-web.github.io/cassarobeauty")
+DEFAULT_OG_IMAGE = "assets/products/cassaro-cover-1.jpg"
+
+
+def image_dims(rel_path):
+    """Real pixel size of an OG image. Declaring dimensions that do not match
+    the file makes scrapers fetch it anyway and sometimes skip the preview."""
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(ROOT, rel_path)) as im:
+            return im.size
+    except Exception:
+        return (1200, 630)
+
+
+def jsonld(page):
+    """Organisation on the home page, Product on product pages.
+
+    Price is deliberately omitted while the catalogue has none: an offer with a
+    missing or zero price is worse than no offer markup, because Google will
+    surface it.
+    """
+    org = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Cassaro Beauty",
+        "url": SITE_URL + "/",
+        "logo": SITE_URL + "/assets/logo.svg",
+        "email": config_value("contactEmail", "cassarobeauty.za@gmail.com"),
+        "telephone": "+" + WA_NUMBER,
+        "areaServed": "ZA",
+        "sameAs": [
+            "https://www.instagram.com/cassaro_beauty",
+            "https://www.tiktok.com/@cassaro.beauty7",
+        ],
+    }
+    blocks = []
+    if page["file"] == "index":
+        blocks.append(org)
+        blocks.append({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Cassaro Beauty",
+            "url": SITE_URL + "/",
+        })
+    elif page.get("product"):
+        blocks.append({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": page["product"]["name"],
+            "brand": {"@type": "Brand", "name": page["product"]["brand"]},
+            "description": page["desc"],
+            "image": SITE_URL + "/" + page["product"]["image"],
+            "url": SITE_URL + "/" + page["file"] + ".html",
+        })
+    if not blocks:
+        return ""
+    body = json.dumps(blocks[0] if len(blocks) == 1 else blocks, indent=1)
+    return '<script type="application/ld+json">%s</script>' % body
+
+
 WA_NUMBER = config_value("whatsappNumber")
 WA_DISPLAY = config_value("whatsappDisplay")
 
@@ -362,10 +425,47 @@ for p in pages:
     doc = layout.replace("{{CONTENT}}", content)
     doc = doc.replace("{{TITLE}}", p["title"]).replace("{{DESC}}", p["desc"])
     doc = doc.replace("{{WA_NUMBER}}", WA_NUMBER).replace("{{WA_DISPLAY}}", WA_DISPLAY)
+    doc = doc.replace("{{SITE_URL}}", SITE_URL).replace("{{FILE}}", p["file"])
+    doc = doc.replace("{{OG_TYPE}}", "product" if p.get("product") else
+                      ("website" if p["file"] == "index" else "article"))
+    og_image = p.get("og_image") or (p["product"]["image"] if p.get("product") else DEFAULT_OG_IMAGE)
+    ow, oh = image_dims(og_image)
+    doc = doc.replace("{{OG_IMAGE}}", og_image)
+    doc = doc.replace("{{OG_W}}", str(ow)).replace("{{OG_H}}", str(oh))
+    doc = doc.replace("{{JSONLD}}", jsonld(p))
     for k in NAV_KEYS:
         doc = doc.replace("{{N_%s}}" % k.upper(), "is-active" if p.get("nav") == k else "")
     doc = expand(doc)
     open(os.path.join(DIST, p["file"] + ".html"), "w", encoding="utf-8").write(doc)
+
+# robots.txt and a sitemap so the shop is crawlable, and so the pages that
+# should never appear in results (checkout steps, order status) stay out.
+NOINDEX = {"checkout-billing", "checkout-payment", "order-completed", "order-status",
+           "cart", "wishlist", "account", "account-address", "account-orders",
+           "account-password", "account-payment", "account-logout", "404",
+           "coming-soon", "product"}
+
+with open(os.path.join(DIST, "robots.txt"), "w", encoding="utf-8") as f:
+    f.write("User-agent: *\nAllow: /\n")
+    for p in pages:
+        if p["file"] in NOINDEX:
+            f.write("Disallow: /%s.html\n" % p["file"])
+    f.write("\nSitemap: %s/sitemap.xml\n" % SITE_URL)
+
+today = datetime.date.today().isoformat()
+with open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8") as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    f.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+    for p in pages:
+        if p["file"] in NOINDEX:
+            continue
+        if not os.path.exists(os.path.join(ROOT, "pages", p["file"] + ".html")):
+            continue
+        loc = "%s/%s" % (SITE_URL, "" if p["file"] == "index" else p["file"] + ".html")
+        priority = "1.0" if p["file"] == "index" else ("0.8" if p.get("product") else "0.6")
+        f.write("  <url><loc>%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>\n"
+                % (loc, today, priority))
+    f.write("</urlset>\n")
 
 built = sum(1 for p in pages if os.path.exists(os.path.join(ROOT, "pages", p["file"] + ".html")))
 print(f"built {built}/{len(pages)} pages -> dist/")

@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /product.html
+Disallow: /cart.html
+Disallow: /checkout-billing.html
+Disallow: /checkout-payment.html
+Disallow: /order-completed.html
+Disallow: /wishlist.html
+Disallow: /order-status.html
+Disallow: /account.html
+Disallow: /account-orders.html
+Disallow: /account-address.html
+Disallow: /account-payment.html
+Disallow: /account-password.html
+Disallow: /account-logout.html
+Disallow: /404.html
+Disallow: /coming-soon.html
+
+Sitemap: https://mcclouds-web.github.io/cassarobeauty/sitemap.xml
