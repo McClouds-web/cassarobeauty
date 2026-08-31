@@ -4,7 +4,7 @@
 Pages use small macros for the repeating components of the reference design
 ({{CARD}}, {{POST}}, {{FAQ}}, {{MARQUEE}}...) so a product card is defined once.
 """
-import os, re, json, shutil, datetime
+import os, re, json, shutil, datetime, hashlib
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, "dist")
@@ -406,6 +406,21 @@ WA_NUMBER = config_value("whatsappNumber")
 WA_DISPLAY = config_value("whatsappDisplay")
 CONTACT_EMAIL = config_value("contactEmail", "cassarobeauty.za@gmail.com")
 
+
+def asset_version(rel_path):
+    """Short content hash for a stylesheet or script.
+
+    GitHub Pages serves these with no version in the URL, so a browser that
+    has seen the old file keeps using it and a deploy looks like it did
+    nothing. Hashing the contents into the query string means the URL changes
+    whenever the file does, and never otherwise.
+    """
+    try:
+        with open(os.path.join(ROOT, rel_path), "rb") as fh:
+            return hashlib.sha256(fh.read()).hexdigest()[:8]
+    except OSError:
+        return "0"
+
 layout = open(os.path.join(ROOT, "layout", "base.html"), encoding="utf-8").read()
 pages = json.load(open(os.path.join(ROOT, "pages.json")))
 
@@ -435,6 +450,9 @@ for p in pages:
     doc = doc.replace("{{WA_NUMBER}}", WA_NUMBER).replace("{{WA_DISPLAY}}", WA_DISPLAY)
     doc = doc.replace("{{WA_LINK}}", "https://wa.me/" + WA_NUMBER)
     doc = doc.replace("{{CONTACT_EMAIL}}", CONTACT_EMAIL)
+    for asset in ("assets/css/site.css", "assets/js/config.js", "assets/js/site.js",
+                  "assets/js/shop.js", "assets/js/checkout.js", "assets/js/forms.js"):
+        doc = doc.replace('"%s"' % asset, '"%s?v=%s"' % (asset, asset_version(asset)))
     doc = doc.replace("{{TODAY}}", datetime.date.today().strftime("%d %B %Y"))
     doc = doc.replace("{{SITE_URL}}", SITE_URL).replace("{{FILE}}", p["file"])
     doc = doc.replace("{{OG_TYPE}}", "product" if p.get("product") else
