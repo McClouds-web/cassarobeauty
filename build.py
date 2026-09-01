@@ -318,6 +318,7 @@ DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
 # WhatsApp message or Google ever seeing a half-priced product.
 PRICES = {
  "Collagen Jelly Cream": 590.00,
+ "Collagen Night Wrapping Mask": 650.00,
 }
 
 CURRENCY = "ZAR"
