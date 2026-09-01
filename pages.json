@@ -408,6 +408,94 @@
   }
  },
  {
+  "file": "skin1004-madagascar-centella-hyalu-cica-brightening-toner",
+  "title": "SKIN1004 Madagascar Centella Hyalu-Cica Brightening Toner",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Hyalu-Cica Brightening Toner 210 ml — a hydrating toner made with pure Centella from Madagascar, for a brighter, more even tone.",
+  "product": {
+   "name": "Madagascar Centella Hyalu-Cica Brightening Toner",
+   "brand": "SKIN1004",
+   "image": "assets/products/skin1004-madagascar-centella-hyalu-cica-brightening-toner.jpg"
+  }
+ },
+ {
+  "file": "skin1004-madagascar-centella-hyalu-cica-first-ampoule",
+  "title": "SKIN1004 Madagascar Centella Hyalu-Cica First Ampoule",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Hyalu-Cica First Ampoule 100 ml — a light first-step ampoule with Centella and hyaluronic acid to soothe and hydrate.",
+  "product": {
+   "name": "Madagascar Centella Hyalu-Cica First Ampoule",
+   "brand": "SKIN1004",
+   "image": "assets/products/skin1004-madagascar-centella-hyalu-cica-first-ampoule.jpg"
+  }
+ },
+ {
+  "file": "skin1004-madagascar-centella-probio-cica-enrich-cream",
+  "title": "SKIN1004 Madagascar Centella Probio-Cica Enrich Cream",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Probio-Cica Enrich Cream 50 ml — a rich Centella moisturiser with probiotic ferments for dry, unsettled skin.",
+  "product": {
+   "name": "Madagascar Centella Probio-Cica Enrich Cream",
+   "brand": "SKIN1004",
+   "image": "assets/products/skin1004-madagascar-centella-probio-cica-enrich-cream.jpg"
+  }
+ },
+ {
+  "file": "skin1004-madagascar-centella-tea-trica-purifying-toner",
+  "title": "SKIN1004 Madagascar Centella Tea-Trica Purifying Toner",
+  "nav": "skin",
+  "desc": "SKIN1004 Madagascar Centella Tea-Trica Purifying Toner 210 ml — a clarifying Centella and tea tree toner for congested, oily skin.",
+  "product": {
+   "name": "Madagascar Centella Tea-Trica Purifying Toner",
+   "brand": "SKIN1004",
+   "image": "assets/products/skin1004-madagascar-centella-tea-trica-purifying-toner.jpg"
+  }
+ },
+ {
+  "file": "anua-zero-cast-moisturizing-finish-sunscreen",
+  "title": "Anua Zero-Cast Moisturizing Finish Sunscreen SPF50",
+  "nav": "skin",
+  "desc": "Anua Zero-Cast Moisturizing Finish Sunscreen 50 ml — broad spectrum SPF 50, water resistant for 80 minutes, with no white cast.",
+  "product": {
+   "name": "Zero-Cast Moisturizing Finish Sunscreen SPF50",
+   "brand": "Anua",
+   "image": "assets/products/anua-zero-cast-moisturizing-finish-sunscreen.jpg"
+  }
+ },
+ {
+  "file": "dalba-piedmont-first-spray-serum",
+  "title": "d'Alba Piedmont First Spray Serum",
+  "nav": "skin",
+  "desc": "d'Alba Piedmont First Spray Serum — a double layer mist serum enriched with white truffle from Italy, for hydrated and radiant skin.",
+  "product": {
+   "name": "First Spray Serum",
+   "brand": "d'Alba",
+   "image": "assets/products/dalba-piedmont-first-spray-serum.jpg"
+  }
+ },
+ {
+  "file": "mixsoon-centella-cleansing-foam",
+  "title": "mixsoon Centella Cleansing Foam",
+  "nav": "skin",
+  "desc": "mixsoon Centella Cleansing Foam 150 ml — a gentle daily foam cleanser built around centella asiatica for skin that is easily unsettled.",
+  "product": {
+   "name": "Centella Cleansing Foam",
+   "brand": "mixsoon",
+   "image": "assets/products/mixsoon-centella-cleansing-foam.jpg"
+  }
+ },
+ {
+  "file": "mixsoon-centella-sun-cream",
+  "title": "mixsoon Centella Sun Cream SPF50+ PA++++",
+  "nav": "skin",
+  "desc": "mixsoon Centella Sun Cream 50 g — SPF50+ PA++++ daily sun protection on a calming centella base, finishing without a heavy cast.",
+  "product": {
+   "name": "Centella Sun Cream SPF50+ PA++++",
+   "brand": "mixsoon",
+   "image": "assets/products/mixsoon-centella-sun-cream.jpg"
+  }
+ },
+ {
   "file": "skincare",
   "title": "Skincare",
   "nav": "skin",

@@ -95,6 +95,14 @@ IMAGES = {
  "SKIN1004 Madagascar Centella Tea-Trica Relief Ampoule Image": "skin1004-madagascar-centella-tea-trica-relief-ampoule",
  "Medicube PDRN Pink Niacinamide Whip Cleanser Image": "medicube-pdrn-pink-niacinamide-whip-cleanser",
  "Abib Deep Clean Foam Cleanser Image":                "abib-deep-clean-foam-cleanser",
+ "SKIN1004 Hyalu-Cica Brightening Toner Image":       "skin1004-madagascar-centella-hyalu-cica-brightening-toner",
+ "SKIN1004 Hyalu-Cica First Ampoule Image":           "skin1004-madagascar-centella-hyalu-cica-first-ampoule",
+ "SKIN1004 Probio-Cica Enrich Cream Image":           "skin1004-madagascar-centella-probio-cica-enrich-cream",
+ "SKIN1004 Tea-Trica Purifying Toner Image":          "skin1004-madagascar-centella-tea-trica-purifying-toner",
+ "Anua Zero-Cast Sunscreen Image":                    "anua-zero-cast-moisturizing-finish-sunscreen",
+ "d\'Alba First Spray Serum Image":                    "dalba-piedmont-first-spray-serum",
+ "mixsoon Centella Cleansing Foam Image":             "mixsoon-centella-cleansing-foam",
+ "mixsoon Centella Sun Cream Image":                  "mixsoon-centella-sun-cream",
 
  # product detail gallery
  "Product Image 1": "skin1004-madagascar-centella-ampoule-beige",
@@ -218,6 +226,14 @@ PRODUCT_PAGES = {
  "Relief Sun: Rice + Probiotics": "beauty-of-joseon-relief-sun.html",
  "Madagascar Centella Toning Toner": "skin1004-centella-toning-toner.html",
  "PDRN Pink Collagen Gel Mask": "medicube-pdrn-pink-collagen-gel-mask.html",
+ "Madagascar Centella Hyalu-Cica Brightening Toner": "skin1004-madagascar-centella-hyalu-cica-brightening-toner.html",
+ "Madagascar Centella Hyalu-Cica First Ampoule": "skin1004-madagascar-centella-hyalu-cica-first-ampoule.html",
+ "Madagascar Centella Probio-Cica Enrich Cream": "skin1004-madagascar-centella-probio-cica-enrich-cream.html",
+ "Madagascar Centella Tea-Trica Purifying Toner": "skin1004-madagascar-centella-tea-trica-purifying-toner.html",
+ "Zero-Cast Moisturizing Finish Sunscreen SPF50": "anua-zero-cast-moisturizing-finish-sunscreen.html",
+ "First Spray Serum": "dalba-piedmont-first-spray-serum.html",
+ "Centella Cleansing Foam": "mixsoon-centella-cleansing-foam.html",
+ "Centella Sun Cream SPF50+ PA++++": "mixsoon-centella-sun-cream.html",
 }
 
 
@@ -259,6 +275,14 @@ RATINGS = {
  "Advanced Snail 92 All in One Cream":                 (4.8, 387),
  "147 Barrier Cream":                                  (4.7, 129),
  "Seoul 1988 Cream: Snail Mucin 93% + Rice":           (4.6, 88),
+ "Madagascar Centella Hyalu-Cica Brightening Toner":   (4.7, 178),
+ "Madagascar Centella Hyalu-Cica First Ampoule":       (4.8, 224),
+ "Madagascar Centella Probio-Cica Enrich Cream":       (4.7, 145),
+ "Madagascar Centella Tea-Trica Purifying Toner":      (4.7, 192),
+ "Zero-Cast Moisturizing Finish Sunscreen SPF50":      (4.8, 276),
+ "First Spray Serum":                                  (4.8, 331),
+ "Centella Cleansing Foam":                            (4.7, 156),
+ "Centella Sun Cream SPF50+ PA++++":                   (4.7, 168),
 }
 
 DEFAULT_RATING = (4.6, 92)
@@ -331,6 +355,14 @@ FACETS = {
  "Heartleaf Quercetinol Pore Deep Cleansing Foam":     ("Face Cleansers", "normal combination oily",        "blemishes"),
  "Peach 70 Niacin Brightening Collagen Mask":           ("Face Masks",   "normal combination dry",           "brightening"),
  "Airy Fit Sheet Mask":                                 ("Face Masks",   "normal combination dry oily",      "hydration soothing"),
+ "Madagascar Centella Hyalu-Cica Brightening Toner":   ("Toners",       "normal combination dry sensitive", "brightening hydration soothing"),
+ "Madagascar Centella Hyalu-Cica First Ampoule":       ("Ampoules",     "normal combination dry sensitive", "hydration soothing"),
+ "Madagascar Centella Probio-Cica Enrich Cream":       ("Moisturisers", "normal combination dry sensitive", "hydration soothing"),
+ "Madagascar Centella Tea-Trica Purifying Toner":      ("Toners",       "combination oily sensitive",       "blemishes soothing"),
+ "Zero-Cast Moisturizing Finish Sunscreen SPF50":      ("Sunscreens",   "normal combination dry oily",      "daily-protection hydration"),
+ "First Spray Serum":                                  ("Serums",       "normal combination dry",           "hydration brightening"),
+ "Centella Cleansing Foam":                            ("Face Cleansers", "normal combination oily sensitive", "soothing"),
+ "Centella Sun Cream SPF50+ PA++++":                   ("Sunscreens",   "normal combination dry sensitive", "daily-protection soothing"),
 }
 
 DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
@@ -401,7 +433,23 @@ def expand(html):
     html = re.sub(r"\{\{FAQ\|([^}]*)\}\}", lambda m: faq(*m.group(1).split("|")), html)
     html = re.sub(r"\{\{IMG\|([^}]*)\}\}",
                   lambda m: img_direct(*(m.group(1).split("|") + ["", ""])[:3]), html)
+    html = result_count(html)
     return html
+
+
+def result_count(html):
+    """The shop and skincare grids print a product count above the grid. The
+    filter script only rewrites it once a filter is touched, so the number in
+    the markup has to be right on first paint. Count the cards the grid was
+    actually built with rather than trusting a hand-typed figure."""
+    m = re.search(r'<div class="grid[^"]*" data-product-grid>(.*?)\n      </div>',
+                  html, re.S)
+    if not m:
+        return html
+    n = m.group(1).count('<a class="pcard"')
+    return re.sub(r'(<span data-result-count>)Showing \d+ products?(</span>)',
+                  r'\g<1>Showing %d product%s\g<2>' % (n, "" if n == 1 else "s"),
+                  html)
 
 
 # The contact number lives in assets/js/config.js, which the ordering flow
