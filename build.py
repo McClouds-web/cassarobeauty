@@ -79,6 +79,7 @@ IMAGES = {
  "Beauty of Joseon Apricot Peeling Gel Image":       "beauty-of-joseon-apricot-blossom-peeling-gel",
  "Anua Heartleaf Pore Deep Cleansing Foam Image":    "anua-heartleaf-quercetinol-pore-deep-cleansing-foam",
  "Anua Peach 70 Niacin Collagen Mask Image":         "anua-peach-70-niacin-brightening-collagen-mask",
+ "MISSHA Airy Fit Sheet Mask Image":                 "missha-airy-fit-sheet-mask",
  "Anua Azelaic Acid 10 Hyaluron Serum Image":        "anua-azelaic-acid-10-hyaluron-serum",
  "Medicube Collagen Night Wrapping Mask Image":      "medicube-collagen-night-wrapping-mask-beige",
  "Medicube Collagen Jelly Cream Image":              "medicube-collagen-jelly-cream-beige",
@@ -210,6 +211,7 @@ PRODUCT_PAGES = {
  "Apricot Blossom Peeling Gel": "beauty-of-joseon-apricot-blossom-peeling-gel.html",
  "Heartleaf Quercetinol Pore Deep Cleansing Foam": "anua-heartleaf-quercetinol-pore-deep-cleansing-foam.html",
  "Peach 70 Niacin Brightening Collagen Mask": "anua-peach-70-niacin-brightening-collagen-mask.html",
+ "Airy Fit Sheet Mask": "missha-airy-fit-sheet-mask.html",
  "Advanced Snail 92 All in One Cream": "cosrx-advanced-snail-92-cream.html",
  "Azelaic Acid 10 + Hyaluron Redness Soothing Serum": "anua-azelaic-acid-10-hyaluron-serum.html",
  "Collagen Night Wrapping Mask": "medicube-collagen-night-wrapping-mask.html",
@@ -245,6 +247,7 @@ RATINGS = {
  "Apricot Blossom Peeling Gel":                        (4.8, 241),
  "Heartleaf Quercetinol Pore Deep Cleansing Foam":     (4.8, 268),
  "Peach 70 Niacin Brightening Collagen Mask":           (4.8, 302),
+ "Airy Fit Sheet Mask":                                 (4.6, 418),
  "PDRN Pink Collagen Gel Mask":                        (4.8, 205),
  "PDRN Pink Niacinamide Whip Cleanser":                (4.6, 118),
  "Niacinamide 10% + TXA 4% Serum":                     (4.7, 203),
@@ -327,6 +330,7 @@ FACETS = {
  "Apricot Blossom Peeling Gel":                        ("Face Cleansers", "normal combination oily",        "brightening"),
  "Heartleaf Quercetinol Pore Deep Cleansing Foam":     ("Face Cleansers", "normal combination oily",        "blemishes"),
  "Peach 70 Niacin Brightening Collagen Mask":           ("Face Masks",   "normal combination dry",           "brightening"),
+ "Airy Fit Sheet Mask":                                 ("Face Masks",   "normal combination dry oily",      "hydration soothing"),
 }
 
 DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
@@ -344,6 +348,7 @@ PRICES = {
  "Apricot Blossom Peeling Gel": 300.00,
  "Heartleaf Quercetinol Pore Deep Cleansing Foam": 280.00,
  "Peach 70 Niacin Brightening Collagen Mask": 135.00,
+ "Airy Fit Sheet Mask": 40.00,
  "Kojic Acid Turmeric Brightening Gel Mask": 135.00,
  "Zero Pore Blackhead Mud Mask": 350.00,
 }

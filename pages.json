@@ -342,6 +342,17 @@
   }
  },
  {
+  "file": "missha-airy-fit-sheet-mask",
+  "title": "MISSHA Airy Fit Sheet Mask",
+  "nav": "skin",
+  "desc": "MISSHA Airy Fit Sheet Mask 21 g — a close-fitting sheet mask with a light water essence, in Lemon, Tea Tree and Green Tea.",
+  "product": {
+   "name": "Airy Fit Sheet Mask",
+   "brand": "MISSHA",
+   "image": "assets/products/missha-airy-fit-sheet-mask.jpg"
+  }
+ },
+ {
   "file": "medicube-collagen-night-wrapping-mask",
   "title": "Medicube Collagen Night Wrapping Mask",
   "nav": "skin",
