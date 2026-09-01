@@ -287,6 +287,17 @@
   }
  },
  {
+  "file": "medicube-zero-pore-pad",
+  "title": "Medicube Zero Pore Pad",
+  "nav": "skin",
+  "desc": "Medicube Zero Pore Pad 155 g, 70 pads — a pre-soaked toner pad with AHA, BHA, panthenol, allantoin and sodium hyaluronate for clearer-looking pores.",
+  "product": {
+   "name": "Zero Pore Pad",
+   "brand": "Medicube",
+   "image": "assets/products/medicube-zero-pore-pad.jpg"
+  }
+ },
+ {
   "file": "cosrx-advanced-snail-92-cream",
   "title": "COSRX Advanced Snail 92 All in One Cream",
   "nav": "skin",

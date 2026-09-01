@@ -74,6 +74,7 @@ IMAGES = {
  "Medicube Kojic Acid Turmeric Brightening Gel Mask Image": "medicube-kojic-acid-turmeric-brightening-gel-mask",
  "Medicube PDRN Pink Collagen Gel Mask Image":       "medicube-pdrn-pink-collagen-gel-mask",
  "Medicube Zero Pore Blackhead Mud Mask Image":      "medicube-zero-pore-blackhead-mud-mask",
+ "Medicube Zero Pore Pad Image":                     "medicube-zero-pore-pad",
  "Anua Azelaic Acid 10 Hyaluron Serum Image":        "anua-azelaic-acid-10-hyaluron-serum",
  "Medicube Collagen Night Wrapping Mask Image":      "medicube-collagen-night-wrapping-mask-beige",
  "Medicube Collagen Jelly Cream Image":              "medicube-collagen-jelly-cream-beige",
@@ -200,6 +201,7 @@ PRODUCT_PAGES = {
  "Bouncy Day Collagen Glow Up Hydrogel Mask": "eqqualberry-collagen-glow-up-hydrogel-mask.html",
  "Kojic Acid Turmeric Brightening Gel Mask": "medicube-kojic-acid-turmeric-brightening-gel-mask.html",
  "Zero Pore Blackhead Mud Mask": "medicube-zero-pore-blackhead-mud-mask.html",
+ "Zero Pore Pad": "medicube-zero-pore-pad.html",
  "Advanced Snail 92 All in One Cream": "cosrx-advanced-snail-92-cream.html",
  "Azelaic Acid 10 + Hyaluron Redness Soothing Serum": "anua-azelaic-acid-10-hyaluron-serum.html",
  "Collagen Night Wrapping Mask": "medicube-collagen-night-wrapping-mask.html",
@@ -230,6 +232,7 @@ RATINGS = {
  "Bouncy Day Collagen Glow Up Hydrogel Mask":          (4.7, 134),
  "Kojic Acid Turmeric Brightening Gel Mask":           (4.6, 161),
  "Zero Pore Blackhead Mud Mask":                       (4.7, 147),
+ "Zero Pore Pad":                                      (4.7, 186),
  "PDRN Pink Collagen Gel Mask":                        (4.8, 205),
  "PDRN Pink Niacinamide Whip Cleanser":                (4.6, 118),
  "Niacinamide 10% + TXA 4% Serum":                     (4.7, 203),
@@ -307,6 +310,7 @@ FACETS = {
  "Kojic Acid Turmeric Brightening Gel Mask":           ("Face Masks",   "normal combination dry oily sensitive", "brightening dark-spots"),
  "PDRN Pink Collagen Gel Mask":                        ("Face Masks",   "normal combination dry",           "hydration"),
  "Zero Pore Blackhead Mud Mask":                       ("Face Masks",   "combination oily",                 "blemishes"),
+ "Zero Pore Pad":                                      ("Toners",       "combination oily",                 "blemishes brightening"),
 }
 
 DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
@@ -319,6 +323,7 @@ DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
 PRICES = {
  "Collagen Jelly Cream": 590.00,
  "Collagen Night Wrapping Mask": 650.00,
+ "Zero Pore Pad": 580.00,
 }
 
 CURRENCY = "ZAR"
