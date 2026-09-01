@@ -289,6 +289,57 @@ p  { margin: 0; color: var(--body); }
 .crumb a:hover { color: var(--green); }
 .crumb b { font-weight: 500; color: var(--ink); }
 
+/* A product pagehead announces the product instead of repeating the path that
+   led to it. The plain .pagehead carries an h1 on every other inner page, but
+   product pages kept their title down in the buy column, which left this band
+   holding nothing but a breadcrumb. The brand sits above the name in the
+   signature script the rest of the site already uses for flourishes, and the
+   name itself is the page's h1 — .pdp__title below it is an h2, so the
+   document still has exactly one. */
+.pagehead--product {
+  padding: 58px 0 52px;
+  background:
+    radial-gradient(120% 140% at 50% 0%, #FBF3E9 0%, var(--section) 62%);
+  border-bottom: 1px solid var(--line);
+}
+/* Wide-tracked caps, not the Sacramento script used elsewhere: the catalogue's
+   brands include SKIN1004, COSRX and AXIS-Y, and acronyms and digits set in a
+   handwriting face are close to unreadable. Caps also match the brand book's
+   own display treatment. */
+.pagehead--product .pagehead__brand {
+  font-size: 13px; line-height: 1;
+  font-weight: 500;
+  letter-spacing: .34em;
+  text-indent: .34em;          /* the last letter's tracking, re-centred */
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.pagehead--product .pagehead__name {
+  /* Long names (Madagascar Centella Poremizing Deep Cleansing Foam) have to
+     stay on two lines at the top of the scale, so the size is fluid and the
+     measure is capped rather than the font being sized for the worst case. */
+  font-size: clamp(30px, 4.4vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--ink);
+  max-width: 18ch;
+  margin: 0 auto;
+  text-wrap: balance;
+}
+/* A short gilt rule closes the block so the band reads as composed rather than
+   as a heading that ran out of page. */
+.pagehead--product .pagehead__rule {
+  width: 54px; height: 2px; margin: 20px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+@media (max-width: 768px) {
+  .pagehead--product { padding: 34px 0 30px; }
+  .pagehead--product .pagehead__brand { font-size: 11px; margin-bottom: 12px; }
+  .pagehead--product .pagehead__rule { margin-top: 14px; }
+}
+
 /* A cover pagehead runs a photograph edge to edge behind the title. The shot
    carries its own empty left third, so the copy sits there over a scrim in the
    photo's own brown rather than a flat band. */
