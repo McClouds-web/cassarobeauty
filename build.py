@@ -312,9 +312,27 @@ FACETS = {
 DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
 
 
-def card(imglabel, brand, name, price="R___"):
+# Retail price in rand, keyed by product name. A product absent from this table
+# still renders "R___" everywhere and is left out of the JSON-LD offer block,
+# so the catalogue can be priced one product at a time without the cart, the
+# WhatsApp message or Google ever seeing a half-priced product.
+PRICES = {
+ "Collagen Jelly Cream": 590.00,
+}
+
+CURRENCY = "ZAR"
+
+
+def price_of(name):
+    """Formatted price for a product name, or the R___ placeholder."""
+    amount = PRICES.get(name)
+    return f"R{amount:,.2f}" if amount is not None else "R___"
+
+
+def card(imglabel, brand, name, price=None):
     """Product card. Brand sits above the product name; the rating comes from
     RATINGS so each product carries its own score."""
+    price = price or price_of(name)
     href = PRODUCT_PAGES.get(name, "product.html")
     cat, skin, concern = FACETS.get(name, DEFAULT_FACET)
     return f'''<a class="pcard" href="{href}" data-brand="{brand}" data-cat="{cat}" data-skin="{skin}" data-concern="{concern}" data-stock="in">
@@ -410,7 +428,7 @@ def jsonld(page):
             "url": SITE_URL + "/",
         })
     elif page.get("product"):
-        blocks.append({
+        product = {
             "@context": "https://schema.org",
             "@type": "Product",
             "name": page["product"]["name"],
@@ -418,7 +436,17 @@ def jsonld(page):
             "description": page["desc"],
             "image": SITE_URL + "/" + page["product"]["image"],
             "url": SITE_URL + "/" + page["file"] + ".html",
-        })
+        }
+        amount = PRICES.get(page["product"]["name"])
+        if amount is not None:
+            product["offers"] = {
+                "@type": "Offer",
+                "price": f"{amount:.2f}",
+                "priceCurrency": CURRENCY,
+                "availability": "https://schema.org/InStock",
+                "url": SITE_URL + "/" + page["file"] + ".html",
+            }
+        blocks.append(product)
     if not blocks:
         return ""
     body = json.dumps(blocks[0] if len(blocks) == 1 else blocks, indent=1)
