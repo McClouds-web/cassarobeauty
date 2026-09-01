@@ -344,6 +344,7 @@ PRICES = {
  "Apricot Blossom Peeling Gel": 300.00,
  "Heartleaf Quercetinol Pore Deep Cleansing Foam": 280.00,
  "Peach 70 Niacin Brightening Collagen Mask": 135.00,
+ "Kojic Acid Turmeric Brightening Gel Mask": 135.00,
  "Zero Pore Blackhead Mud Mask": 350.00,
 }
 
