@@ -77,6 +77,7 @@ IMAGES = {
  "Medicube Zero Pore Pad Image":                     "medicube-zero-pore-pad",
  "Beauty of Joseon Red Bean Pore Mask Image":        "beauty-of-joseon-red-bean-refreshing-pore-mask",
  "Beauty of Joseon Apricot Peeling Gel Image":       "beauty-of-joseon-apricot-blossom-peeling-gel",
+ "Anua Heartleaf Pore Deep Cleansing Foam Image":    "anua-heartleaf-quercetinol-pore-deep-cleansing-foam",
  "Anua Azelaic Acid 10 Hyaluron Serum Image":        "anua-azelaic-acid-10-hyaluron-serum",
  "Medicube Collagen Night Wrapping Mask Image":      "medicube-collagen-night-wrapping-mask-beige",
  "Medicube Collagen Jelly Cream Image":              "medicube-collagen-jelly-cream-beige",
@@ -206,6 +207,7 @@ PRODUCT_PAGES = {
  "Zero Pore Pad": "medicube-zero-pore-pad.html",
  "Red Bean Refreshing Pore Mask": "beauty-of-joseon-red-bean-refreshing-pore-mask.html",
  "Apricot Blossom Peeling Gel": "beauty-of-joseon-apricot-blossom-peeling-gel.html",
+ "Heartleaf Quercetinol Pore Deep Cleansing Foam": "anua-heartleaf-quercetinol-pore-deep-cleansing-foam.html",
  "Advanced Snail 92 All in One Cream": "cosrx-advanced-snail-92-cream.html",
  "Azelaic Acid 10 + Hyaluron Redness Soothing Serum": "anua-azelaic-acid-10-hyaluron-serum.html",
  "Collagen Night Wrapping Mask": "medicube-collagen-night-wrapping-mask.html",
@@ -239,6 +241,7 @@ RATINGS = {
  "Zero Pore Pad":                                      (4.7, 186),
  "Red Bean Refreshing Pore Mask":                      (4.8, 213),
  "Apricot Blossom Peeling Gel":                        (4.8, 241),
+ "Heartleaf Quercetinol Pore Deep Cleansing Foam":     (4.8, 268),
  "PDRN Pink Collagen Gel Mask":                        (4.8, 205),
  "PDRN Pink Niacinamide Whip Cleanser":                (4.6, 118),
  "Niacinamide 10% + TXA 4% Serum":                     (4.7, 203),
@@ -319,6 +322,7 @@ FACETS = {
  "Zero Pore Pad":                                      ("Toners",       "combination oily",                 "blemishes brightening"),
  "Red Bean Refreshing Pore Mask":                      ("Face Masks",   "combination oily",                 "blemishes"),
  "Apricot Blossom Peeling Gel":                        ("Face Cleansers", "normal combination oily",        "brightening"),
+ "Heartleaf Quercetinol Pore Deep Cleansing Foam":     ("Face Cleansers", "normal combination oily",        "blemishes"),
 }
 
 DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
@@ -334,6 +338,7 @@ PRICES = {
  "Zero Pore Pad": 580.00,
  "Red Bean Refreshing Pore Mask": 480.00,
  "Apricot Blossom Peeling Gel": 300.00,
+ "Heartleaf Quercetinol Pore Deep Cleansing Foam": 280.00,
  "Zero Pore Blackhead Mud Mask": 350.00,
 }
 
