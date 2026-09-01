@@ -353,6 +353,17 @@
   }
  },
  {
+  "file": "beauty-of-joseon-apricot-blossom-peeling-gel",
+  "title": "Beauty of Joseon Apricot Blossom Peeling Gel",
+  "nav": "skin",
+  "desc": "Beauty of Joseon Apricot Blossom Peeling Gel — a gel exfoliator with a rolling texture, formulated with cellulose and apricot flower water.",
+  "product": {
+   "name": "Apricot Blossom Peeling Gel",
+   "brand": "Beauty of Joseon",
+   "image": "assets/products/beauty-of-joseon-apricot-blossom-peeling-gel.jpg"
+  }
+ },
+ {
   "file": "skin1004-centella-toning-toner",
   "title": "SKIN1004 Madagascar Centella Toning Toner",
   "nav": "skin",
