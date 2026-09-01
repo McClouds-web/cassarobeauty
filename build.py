@@ -334,6 +334,7 @@ PRICES = {
  "Zero Pore Pad": 580.00,
  "Red Bean Refreshing Pore Mask": 480.00,
  "Apricot Blossom Peeling Gel": 300.00,
+ "Zero Pore Blackhead Mud Mask": 350.00,
 }
 
 CURRENCY = "ZAR"
