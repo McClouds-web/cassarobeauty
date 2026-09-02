@@ -378,6 +378,7 @@ PRICES = {
  "Madagascar Centella Hyalu-Cica First Ampoule": 350.00,
  "Madagascar Centella Poremizing Fresh Ampoule": 400.00,
  "Madagascar Centella Tea-Trica Relief Ampoule": 495.00,
+ "Madagascar Centella Tone Brightening Capsule Ampoule": 95.00,
  "Dark Spot Correcting Glow Serum": 390.00,
  "Glow Deep Serum: Rice + Alpha-Arbutin": 350.00,
  # Cleansers
@@ -388,6 +389,7 @@ PRICES = {
  "Heartleaf Quercetinol Pore Deep Cleansing Foam": 280.00,
  # Toners and pads
  "Madagascar Centella Hyalu-Cica Brightening Toner": 395.00,
+ "Green Tea Fresh Toner": 450.00,
  "Zero Pore Pad": 580.00,
  # Sunscreens
  "Madagascar Centella Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++": 395.00,
@@ -395,8 +397,9 @@ PRICES = {
  # Masks
  "Collagen Gel Mask &ndash; Sedum Jelly": 150.00,
  "Bouncy Day Collagen Glow Up Hydrogel Mask": 150.00,
- "Collagen Radiance Mask": 100.00,
+ "Collagen Radiance Mask": 90.00,
  "Deep Peptide Radiance Mask": 100.00,
+ "PDRN Pink Collagen Gel Mask": 100.00,
  "Airy Fit Sheet Mask": 40.00,
  "Peach 70 Niacin Brightening Collagen Mask": 135.00,
  "Kojic Acid Turmeric Brightening Gel Mask": 135.00,
@@ -407,7 +410,7 @@ PRICES = {
  # Moisturisers
  "Advanced Snail 92 All in One Cream": 460.00,
  "Seoul 1988 Cream: Snail Mucin 93% + Rice": 500.00,
- "Collagen Jelly Cream": 500.00,
+ "Collagen Jelly Cream": 480.00,
 }
 
 CURRENCY = "ZAR"
