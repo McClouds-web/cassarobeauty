@@ -604,6 +604,13 @@ def jsonld(page):
 WA_NUMBER = config_value("whatsappNumber")
 WA_DISPLAY = config_value("whatsappDisplay")
 CONTACT_EMAIL = config_value("contactEmail", "cassarobeauty.za@gmail.com")
+TAGLINE = config_value("tagline", "Where self-care becomes art")
+BANK = {
+    "NAME":    config_value("bankName"),
+    "ACCOUNT": config_value("bankAccountName"),
+    "NUMBER":  config_value("bankAccountNumber"),
+    "BRANCH":  config_value("bankBranchCode"),
+}
 
 
 def asset_version(rel_path):
@@ -645,10 +652,23 @@ for p in pages:
         continue
     content = open(src, encoding="utf-8").read()
     doc = layout.replace("{{CONTENT}}", content)
+    # The home page leads with the brand and its tagline; every other page is
+    # "<page> — Cassaro Beauty".
+    page_title = ("Cassaro Beauty — " + TAGLINE if p["file"] == "index"
+                  else p["title"] + " — Cassaro Beauty")
+    doc = doc.replace("{{PAGE_TITLE}}", page_title)
     doc = doc.replace("{{TITLE}}", p["title"]).replace("{{DESC}}", p["desc"])
     doc = doc.replace("{{WA_NUMBER}}", WA_NUMBER).replace("{{WA_DISPLAY}}", WA_DISPLAY)
     doc = doc.replace("{{WA_LINK}}", "https://wa.me/" + WA_NUMBER)
     doc = doc.replace("{{CONTACT_EMAIL}}", CONTACT_EMAIL)
+    doc = doc.replace("{{TAGLINE}}", TAGLINE)
+    # Banking details are substituted only into order-completed.html. Any other
+    # page that used a {{BANK_*}} placeholder would publish the account number
+    # on a crawlable page, so the placeholders are left unresolved and the
+    # build fails loudly below instead.
+    if p["file"] == "order-completed":
+        for k, v in BANK.items():
+            doc = doc.replace("{{BANK_%s}}" % k, v)
     for asset in ("assets/css/site.css", "assets/js/config.js", "assets/js/site.js",
                   "assets/js/shop.js", "assets/js/checkout.js", "assets/js/forms.js"):
         doc = doc.replace('"%s"' % asset, '"%s?v=%s"' % (asset, asset_version(asset)))
@@ -716,6 +736,17 @@ if orphans:
     print("  WARNING: card labels with no matching product page:")
     for n in orphans:
         print("    -", n)
+leaked = []
+for p in pages:
+    src_path = os.path.join(ROOT, "pages", p["file"] + ".html")
+    if p["file"] == "order-completed" or not os.path.exists(src_path):
+        continue
+    if "{{BANK_" in open(src_path, encoding="utf-8").read():
+        leaked.append(p["file"])
+if leaked:
+    raise SystemExit("banking details may only appear on order-completed.html; "
+                     "found a {{BANK_*}} placeholder in: " + ", ".join(leaked))
+
 unpriced = sorted({p["product"]["name"] for p in pages
                    if p.get("product") and price_of(p["product"]["name"]) == "R___"})
 if unpriced:

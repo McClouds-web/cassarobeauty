@@ -16,6 +16,19 @@ window.CASSARO_CONFIG = {
 
   storeName: 'Cassaro Beauty',
 
+  /* The brand line, used in the home hero and in the site's meta description. */
+  tagline: 'Where self-care becomes art',
+
+  /* Banking details for the bank transfer / EFT payment. These are shown ONLY
+     on order-completed.html, which is in the build's NOINDEX list and reached
+     only after an order is placed — they are deliberately kept off every
+     crawlable page. build.py reads them from here so the account number is
+     written in exactly one place. */
+  bankName: 'FNB',
+  bankAccountName: 'Cassaro Beauty',
+  bankAccountNumber: '63100159870',
+  bankBranchCode: '250655',
+
   /* Order references look like CAS-483920. */
   orderPrefix: 'CAS-',
 

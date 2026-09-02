@@ -32,7 +32,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
 
-<link rel="stylesheet" href="assets/css/site.css?v=528f6be0"/>
+<link rel="stylesheet" href="assets/css/site.css?v=100b256d"/>
 
 </head>
 <body>
@@ -128,7 +128,7 @@
     <div class="center" style="margin-bottom:36px">
       <span class="tickmark material-symbols-outlined">check</span>
       <h2 style="margin:18px 0 8px">Your order reference is <span class="gold" data-order="ref">—</span></h2>
-      <p>Send the message that opened in WhatsApp and our team will confirm availability, delivery cost and the banking details for payment.</p>
+      <p>Send the message that opened in WhatsApp and our team will confirm availability and delivery cost. Your banking details for payment are below.</p>
       <div class="cart-actions" style="justify-content:center;margin-top:22px">
         <a class="btn btn--primary" href="#" data-order-sent>I have sent my order on WhatsApp</a>
         <a class="btn btn--white" href="#" data-whatsapp-resend>Open WhatsApp again</a>
@@ -150,7 +150,21 @@
         <thead><tr><th>Products</th><th style="text-align:right">Sub Total</th></tr></thead>
         <tbody data-order-rows></tbody>
       </table>
-      <p style="font-size:12px;padding:0 26px 22px;color:var(--muted)">This website does not process payment. Payment is made by bank transfer / EFT once our team has confirmed your order and sent the banking details on WhatsApp.</p>
+      <p style="font-size:12px;padding:0 26px 22px;color:var(--muted)">This website does not process payment. Payment is made by bank transfer / EFT once our team has confirmed your order total, including delivery.</p>
+    </div>
+
+    <div class="panel">
+      <h3 class="panel__head">Banking Details</h3>
+      <div class="bankbox">
+        <dl class="bankbox__list">
+          <div><dt>Account Name</dt><dd>Cassaro Beauty</dd></div>
+          <div><dt>Bank</dt><dd>FNB</dd></div>
+          <div><dt>Account Number</dt><dd>63100159870</dd></div>
+          <div><dt>Branch Code</dt><dd>250655</dd></div>
+          <div><dt>Payment Reference</dt><dd><span class="gold" data-order="ref">&mdash;</span></dd></div>
+        </dl>
+        <p class="bankbox__note">Please use your order reference as the payment reference, and only pay once our team has confirmed your total on WhatsApp &mdash; delivery is not included in the figure above. Send your proof of payment to <a href="https://wa.me/27690634793">+27 69 063 4793</a> or <a href="mailto:cassarobeauty.za@gmail.com">cassarobeauty.za@gmail.com</a>.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -254,10 +268,10 @@
   </div>
 </footer>
 
-<script src="assets/js/config.js?v=3839c2e2"></script>
+<script src="assets/js/config.js?v=050431cc"></script>
 <script src="assets/js/site.js?v=ffc0e038"></script>
 <script src="assets/js/shop.js?v=f82e2350"></script>
-<script src="assets/js/checkout.js?v=20a0912d"></script>
+<script src="assets/js/checkout.js?v=f5a8778e"></script>
 <script src="assets/js/forms.js?v=35cf5418"></script>
 </body>
 </html>

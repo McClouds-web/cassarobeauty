@@ -777,6 +777,28 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
 .panel { border: 1px solid var(--line); border-radius: var(--radius-card); padding: 20px 24px; }
 .panel__head { font-size: 16px; margin-bottom: 12px; }
 
+/* Banking details, order-completed only. The figures are read off the screen
+   and typed into a banking app, so they are set larger than body copy and the
+   account number is spaced to stop digits running together. */
+.bankbox__list { margin: 0; }
+.bankbox__list > div {
+  display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px solid var(--line);
+}
+.bankbox__list > div:last-child { border-bottom: 0; }
+.bankbox__list dt {
+  flex: 0 0 150px; font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.bankbox__list dd {
+  margin: 0; font-size: 17px; font-weight: 600; color: var(--ink);
+  font-variant-numeric: tabular-nums; letter-spacing: .04em;
+}
+.bankbox__note { font-size: 12px; color: var(--muted); margin: 14px 0 0; line-height: 1.7; }
+@media (max-width: 560px) {
+  .bankbox__list dt { flex-basis: 100%; }
+}
+
 /* Order status stepper */
 .steps { display: grid; grid-template-columns: repeat(5, 1fr); list-style: none; margin: 0; padding: 0; }
 .steps li { text-align: center; position: relative; font-size: 12px; color: var(--muted); }
@@ -1068,6 +1090,10 @@ img.ph--promo { position: absolute; inset: 0; z-index: 0; }
   padding-top: 0; padding-bottom: 0;
 }
 .hero--cover .hero__copy { max-width: 470px; }
+.hero__eyebrow {
+  font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 14px;
+}
 .hero--cover .hero__seal { top: 34px; right: 40px; }
 .hero--cover .hero__chip--a { top: 22%; left: auto; right: 8%; }
 .hero--cover .hero__chip--b { bottom: 14%; right: 20%; }
@@ -1151,6 +1177,9 @@ img.ph--promo { position: absolute; inset: 0; z-index: 0; }
 .hero--dark .hero__seal { z-index: 3; }
 .hero--dark h1 { color: #F4ECE1; }
 .hero--dark h1 .gold { color: var(--gold-light); }
+/* .hero--dark p is more specific than .hero__eyebrow, so the eyebrow needs
+   its on-dark colour stated here or it renders as body copy. */
+.hero--dark .hero__eyebrow { color: var(--gold-light); }
 .hero--dark p { color: rgba(244,236,225,.86); }
 .hero--dark .btn--primary { background: #F4ECE1; color: var(--green-dark); }
 .hero--dark .btn--primary:hover { background: #fff; }

@@ -148,7 +148,7 @@
     if (d.address) lines.push('Delivery Address: ' + d.address + (d.postal ? ', ' + d.postal : ''));
     if (d.notes) lines.push('Order Notes: ' + d.notes);
     lines.push('');
-    lines.push('Please confirm availability, delivery cost and banking details so I can complete payment by bank transfer.');
+    lines.push('Please confirm availability and delivery cost so I can complete payment by bank transfer.');
     return lines.join('\n');
   }
 
