@@ -4,7 +4,7 @@
 Pages use small macros for the repeating components of the reference design
 ({{CARD}}, {{POST}}, {{FAQ}}, {{MARQUEE}}...) so a product card is defined once.
 """
-import os, re, json, shutil, datetime, hashlib, html as _html
+import os, re, json, shutil, datetime, hashlib, html as _html, urllib.parse
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, "dist")
@@ -555,6 +555,51 @@ def image_dims(rel_path):
         return (1200, 630)
 
 
+# Brand marks for the share row. The site already draws Instagram, TikTok and
+# WhatsApp as inline SVG in the layout; these follow that, rather than the
+# generic material glyphs the share row used to borrow (a globe for Facebook,
+# a close icon for X), which read as UI icons rather than as networks.
+SHARE_ICONS = {
+ "whatsapp": '<path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35ZM12.04 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.01c0-5.18 4.22-9.4 9.42-9.4a9.35 9.35 0 0 1 6.65 2.76 9.32 9.32 0 0 1 2.75 6.65c0 5.18-4.22 9.4-9.41 9.4Zm8-17.4A11.31 11.31 0 0 0 12.04.79C5.75.79.63 5.91.63 12.2c0 2.01.53 3.98 1.53 5.71L.53 23.75l5.98-1.57a11.36 11.36 0 0 0 5.53 1.41h.01c6.29 0 11.41-5.12 11.41-11.41 0-3.05-1.19-5.91-3.35-8.07Z"/>',
+ "facebook": '<path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/>',
+ "x":        '<path d="M17.53 3h3.02l-6.6 7.55L21.75 21h-5.9l-4.62-6.04L5.94 21H2.92l7.06-8.07L2.4 3h6.05l4.18 5.52L17.53 3Zm-1.06 16.2h1.67L7.6 4.71H5.81L16.47 19.2Z"/>',
+ "pinterest":'<path d="M12 2a10 10 0 0 0-3.65 19.31c-.09-.78-.17-1.98.03-2.83.19-.79 1.2-5.06 1.2-5.06s-.31-.61-.31-1.52c0-1.42.83-2.48 1.85-2.48.88 0 1.3.66 1.3 1.45 0 .88-.56 2.2-.85 3.42-.24 1.02.51 1.86 1.52 1.86 1.83 0 3.23-1.93 3.23-4.71 0-2.46-1.77-4.18-4.3-4.18-2.93 0-4.65 2.2-4.65 4.47 0 .89.34 1.84.77 2.36.08.1.1.19.07.29-.08.32-.25.99-.28 1.13-.05.19-.15.23-.35.14-1.3-.61-2.11-2.5-2.11-4.03 0-3.28 2.38-6.29 6.87-6.29 3.6 0 6.4 2.57 6.4 6 0 3.58-2.25 6.46-5.39 6.46-1.05 0-2.04-.55-2.38-1.2l-.65 2.47c-.23.9-.86 2.03-1.28 2.72A10 10 0 1 0 12 2Z"/>',
+}
+
+
+def share_row(page):
+    """Share links for a product page. Every target is a real endpoint that
+    takes this page's own URL.
+
+    Instagram is deliberately absent: it has no web share endpoint, so the icon
+    that used to sit here could never have worked. Copy link takes its place,
+    which is what someone pasting into a story or a DM actually needs.
+    """
+    url = "%s/%s.html" % (SITE_URL, page["file"])
+    name = _html.unescape(page["product"]["name"])
+    text = "%s — %s" % (name, config_value("storeName", "Cassaro Beauty"))
+    q = lambda s: urllib.parse.quote(s, safe="")
+    links = [
+        ("WhatsApp",  "https://wa.me/?text=%s%%20%s" % (q(text), q(url)), "whatsapp"),
+        ("Facebook",  "https://www.facebook.com/sharer/sharer.php?u=%s" % q(url), "facebook"),
+        ("X",         "https://twitter.com/intent/tweet?url=%s&text=%s" % (q(url), q(text)), "x"),
+        ("Pinterest", "https://pinterest.com/pin/create/button/?url=%s&media=%s&description=%s"
+                      % (q(url), q("%s/%s" % (SITE_URL, page["product"]["image"])), q(text)), "pinterest"),
+    ]
+    out = []
+    for label, href, icon in links:
+        out.append('<a href="%s" target="_blank" rel="noopener" aria-label="Share on %s">'
+                   '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">%s</svg></a>'
+                   % (html_escape(href), label, SHARE_ICONS[icon]))
+    out.append('<button type="button" class="share-copy" data-copy-link aria-label="Copy link">'
+               '<span class="material-symbols-outlined">link</span></button>')
+    return "\n          ".join(out)
+
+
+def html_escape(s):
+    return s.replace("&", "&amp;").replace('"', "&quot;")
+
+
 def jsonld(page):
     """Organisation on the home page, Product on product pages.
 
@@ -691,6 +736,7 @@ for p in pages:
     doc = doc.replace("{{OG_IMAGE}}", og_image)
     doc = doc.replace("{{OG_W}}", str(ow)).replace("{{OG_H}}", str(oh))
     doc = doc.replace("{{JSONLD}}", jsonld(p))
+    doc = doc.replace("{{SHARE}}", share_row(p) if p.get("product") else "")
     if p.get("product"):
         # The buy column's price is written from PRICES, not from the page
         # markup, so the visible price, the cart, the WhatsApp message and the

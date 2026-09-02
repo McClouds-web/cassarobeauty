@@ -271,11 +271,17 @@ p  { margin: 0; color: var(--body); }
 .footer li a, .footer address { font-size: 13px; color: var(--body); font-style: normal; line-height: 1.9; }
 .footer li a:hover { color: var(--green); }
 .socials { display: flex; gap: 10px; }
-.socials a {
+/* The share row's copy-link control is a button, not a link — it performs an
+   action rather than going anywhere — so it has to be styled alongside the
+   anchors or it renders as a bare browser button. */
+.socials a,
+.socials button {
   width: 30px; height: 30px; border-radius: 50%; background: var(--section); color: var(--green);
   display: grid; place-items: center; font-size: 15px; transition: background .2s, color .2s;
+  border: 0; padding: 0; cursor: pointer; font-family: inherit;
 }
-.socials a:hover { background: var(--green); color: #fff; }
+.socials a:hover,
+.socials button:hover { background: var(--green); color: #fff; }
 .footer__bar {
   border-top: 1px solid var(--line); margin-top: 40px; padding: 20px 0;
   display: flex; justify-content: space-between; font-size: 13px; color: var(--body);
@@ -649,7 +655,8 @@ textarea.input { border-radius: var(--radius-card); resize: vertical; min-height
 .pdp__meta div { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
 .pdp__meta dt { font-weight: 500; color: var(--ink); }
 .pdp__meta dd { margin: 0; }
-.socials--inline a { width: 26px; height: 26px; font-size: 13px; }
+.socials--inline a,
+.socials--inline button { width: 26px; height: 26px; font-size: 13px; }
 
 .tabs { display: flex; gap: 34px; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
 .tab { padding: 12px 0; font-size: 15px; color: var(--body); border-bottom: 2px solid transparent; margin-bottom: -1px; }
@@ -1642,9 +1649,10 @@ body:has(.hero--dark) .hero--dark[class] {
 
 /* Brand social marks (inline SVG, so they render as the real logos). */
 .announce__social a,
-.socials a { display: grid; place-items: center; }
+.socials a, .socials button { display: grid; place-items: center; }
 .announce__social a svg { width: 13px; height: 13px; }
 .socials a svg { width: 15px; height: 15px; }
+.socials--inline a svg { width: 13px; height: 13px; }
 .announce__social a {
   width: 20px; height: 20px; border-radius: 50%;
   background: #fff; color: var(--green);

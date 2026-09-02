@@ -437,3 +437,46 @@
 
   show(0);
 })();
+
+/* ------------------------------------------------------- copy link to share
+   Instagram has no web share endpoint, so the share row offers a copy link
+   instead. The Clipboard API needs a secure context and can be refused, so a
+   textarea + execCommand stands behind it and the button never fails silently.
+   ------------------------------------------------------------------------ */
+(function () {
+  var buttons = document.querySelectorAll('[data-copy-link]');
+  if (!buttons.length) return;
+
+  function say(message) {
+    if (window.Cassaro && window.Cassaro.toast) window.Cassaro.toast(message);
+  }
+
+  function fallback(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var url = window.location.href.split('#')[0];
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(function () {
+          say('Link copied');
+        }, function () {
+          say(fallback(url) ? 'Link copied' : 'Press ⌘C to copy the link');
+        });
+      } else {
+        say(fallback(url) ? 'Link copied' : 'Press ⌘C to copy the link');
+      }
+    });
+  });
+})();
