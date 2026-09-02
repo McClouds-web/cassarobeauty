@@ -292,10 +292,9 @@ p  { margin: 0; color: var(--body); }
 /* A product pagehead announces the product instead of repeating the path that
    led to it. The plain .pagehead carries an h1 on every other inner page, but
    product pages kept their title down in the buy column, which left this band
-   holding nothing but a breadcrumb. The brand sits above the name in the
-   signature script the rest of the site already uses for flourishes, and the
-   name itself is the page's h1 — .pdp__title below it is an h2, so the
-   document still has exactly one. */
+   holding nothing but a breadcrumb. The band carries the brand alone; the
+   product name is the .pdp__title beside the photograph, which is the page's
+   h1, so the document still has exactly one. */
 .pagehead--product {
   padding: 58px 0 52px;
   background:
@@ -307,26 +306,17 @@ p  { margin: 0; color: var(--body); }
    handwriting face are close to unreadable. Caps also match the brand book's
    own display treatment. */
 .pagehead--product .pagehead__brand {
-  font-size: 13px; line-height: 1;
+  /* This is the band's whole title now, so it is set at display size rather
+     than as an eyebrow above something else. The tracking stays wide — the
+     line is one or two words and needs the width to hold the band. */
+  font-size: clamp(24px, 3.2vw, 38px);
+  line-height: 1.1;
   font-weight: 500;
-  letter-spacing: .34em;
-  text-indent: .34em;          /* the last letter's tracking, re-centred */
+  letter-spacing: .3em;
+  text-indent: .3em;           /* the last letter's tracking, re-centred */
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 18px;
-}
-.pagehead--product .pagehead__name {
-  /* Long names (Madagascar Centella Poremizing Deep Cleansing Foam) have to
-     stay on two lines at the top of the scale, so the size is fluid and the
-     measure is capped rather than the font being sized for the worst case. */
-  font-size: clamp(30px, 4.4vw, 54px);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  font-weight: 600;
-  color: var(--ink);
-  max-width: 18ch;
-  margin: 0 auto;
-  text-wrap: balance;
+  margin: 0;
 }
 /* A short gilt rule closes the block so the band reads as composed rather than
    as a heading that ran out of page. */
@@ -336,7 +326,6 @@ p  { margin: 0; color: var(--body); }
 }
 @media (max-width: 768px) {
   .pagehead--product { padding: 34px 0 30px; }
-  .pagehead--product .pagehead__brand { font-size: 11px; margin-bottom: 12px; }
   .pagehead--product .pagehead__rule { margin-top: 14px; }
 }
 
