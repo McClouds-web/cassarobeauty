@@ -378,6 +378,24 @@ body:has(.pagehead--cover) .header { z-index: 60; }
   /* Anchor the top so the crop takes from the shoulders, never the face. */
   object-position: right top;
 }
+/* Some page covers are pale still-life photographs rather than the dark
+   portraits the shop and skincare covers use, and white type over those is
+   unreadable. This modifier lays a scrim down the left of the band — under the
+   copy, fading out before the products — so a light photograph can still carry
+   a title. */
+.pagehead--cover-ink::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(100deg,
+    rgba(36,24,18,.74) 0%, rgba(36,24,18,.52) 34%, rgba(36,24,18,.12) 62%, rgba(36,24,18,0) 82%);
+}
+@media (max-width: 700px) {
+  /* Narrow screens put the copy over the middle of the frame, so the scrim has
+     to cover the whole band rather than a left column of it. */
+  .pagehead--cover-ink::after {
+    background: linear-gradient(180deg, rgba(36,24,18,.30) 0%, rgba(36,24,18,.62) 100%);
+  }
+}
 .pagehead--cover .wrap { position: relative; z-index: 2; }
 .pagehead--cover h1 { color: #fff; }
 .pagehead--cover .crumb,

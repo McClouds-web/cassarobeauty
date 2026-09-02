@@ -56,6 +56,10 @@ IMAGES = {
  "About Collection Image":               "about-collection",
  "Brands Cover Image":                   "brands-cover",
  "Cart Cover Image":                     "cassaro-hero-centella",
+ "Legal Cover Image":                    "korean-skincare-banner",
+ "Account Cover Image":                  "new-arrivals-banner",
+ "Order Cover Image":                    "featured-skincare-banner",
+ "Help Cover Image":                     "about-collection",
  "New Arrivals Feature Image":           "new-arrivals-feature",
  "Shop Promotion Image":                 "k-secret-seoul-1988-cream",
 
