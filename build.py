@@ -375,9 +375,11 @@ DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
 PRICES = {
  # Serums and ampoules
  "Madagascar Centella Ampoule": 575.00,
- "Madagascar Centella Hyalu-Cica First Ampoule": 350.00,
+ "Madagascar Centella Hyalu-Cica First Ampoule": 395.00,
  "Madagascar Centella Poremizing Fresh Ampoule": 400.00,
  "Madagascar Centella Tea-Trica Relief Ampoule": 495.00,
+ "Azelaic Acid 10 + Hyaluron Redness Soothing Serum": 500.00,
+ "First Spray Serum": 350.00,
  "Madagascar Centella Tone Brightening Capsule Ampoule": 95.00,
  "Dark Spot Correcting Glow Serum": 390.00,
  "Glow Deep Serum: Rice + Alpha-Arbutin": 350.00,
@@ -387,13 +389,17 @@ PRICES = {
  "Madagascar Centella Poremizing Deep Cleansing Foam": 310.00,
  "Madagascar Centella Ampoule Foam": 300.00,
  "Heartleaf Quercetinol Pore Deep Cleansing Foam": 280.00,
+ "Centella Cleansing Foam": 200.00,
  # Toners and pads
  "Madagascar Centella Hyalu-Cica Brightening Toner": 395.00,
  "Green Tea Fresh Toner": 450.00,
+ "Madagascar Centella Tea-Trica Purifying Toner": 400.00,
  "Zero Pore Pad": 580.00,
  # Sunscreens
  "Madagascar Centella Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++": 395.00,
  "Relief Sun: Rice + Probiotics SPF50+ PA++++": 360.00,
+ "Zero-Cast Moisturizing Finish Sunscreen SPF50": 350.00,
+ "Centella Sun Cream SPF50+ PA++++": 190.00,
  # Masks
  "Collagen Gel Mask &ndash; Sedum Jelly": 150.00,
  "Bouncy Day Collagen Glow Up Hydrogel Mask": 150.00,
@@ -409,6 +415,7 @@ PRICES = {
  "Apricot Blossom Peeling Gel": 300.00,
  # Moisturisers
  "Advanced Snail 92 All in One Cream": 460.00,
+ "Madagascar Centella Probio-Cica Enrich Cream": 470.00,
  "Seoul 1988 Cream: Snail Mucin 93% + Rice": 500.00,
  "Collagen Jelly Cream": 480.00,
 }
