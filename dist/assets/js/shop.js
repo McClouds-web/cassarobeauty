@@ -4,10 +4,11 @@
    read off the page that already displays them (card markup, product detail
    markup) rather than duplicated into a second catalogue that could drift.
 
-   Prices: the catalogue does not carry real prices yet — every product still
-   renders the R___ placeholder. Anything that cannot be priced is reported as
-   "To be confirmed" rather than guessed. Once prices land in the markup this
-   file starts totalling them with no further change.
+   Prices come from the PRICES table in build.py and are rendered into the
+   markup. A product the client has not priced yet still renders the R___
+   placeholder, and anything that cannot be priced is reported as
+   "To be confirmed" rather than guessed, so a part-priced cart still totals
+   the products that do have a price.
    ------------------------------------------------------------------------- */
 (function () {
   'use strict';

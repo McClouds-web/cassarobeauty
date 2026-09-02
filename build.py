@@ -4,7 +4,7 @@
 Pages use small macros for the repeating components of the reference design
 ({{CARD}}, {{POST}}, {{FAQ}}, {{MARQUEE}}...) so a product card is defined once.
 """
-import os, re, json, shutil, datetime, hashlib
+import os, re, json, shutil, datetime, hashlib, html as _html
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ROOT, "dist")
@@ -373,30 +373,97 @@ DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
 # so the catalogue can be priced one product at a time without the cart, the
 # WhatsApp message or Google ever seeing a half-priced product.
 PRICES = {
- "Collagen Jelly Cream": 590.00,
- "Collagen Night Wrapping Mask": 650.00,
- "Zero Pore Pad": 580.00,
- "Red Bean Refreshing Pore Mask": 480.00,
- "Apricot Blossom Peeling Gel": 300.00,
+ # Serums and ampoules
+ "Madagascar Centella Ampoule": 575.00,
+ "Madagascar Centella Hyalu-Cica First Ampoule": 350.00,
+ "Madagascar Centella Poremizing Fresh Ampoule": 400.00,
+ "Madagascar Centella Tea-Trica Relief Ampoule": 495.00,
+ "Dark Spot Correcting Glow Serum": 390.00,
+ "Glow Deep Serum: Rice + Alpha-Arbutin": 350.00,
+ # Cleansers
+ "Deep Clean Foam Cleanser &mdash; Sedum Hyaluron Foam": 250.00,
+ "Acne Foam Cleanser &ndash; Heartleaf Foam": 250.00,
+ "Madagascar Centella Poremizing Deep Cleansing Foam": 310.00,
+ "Madagascar Centella Ampoule Foam": 300.00,
  "Heartleaf Quercetinol Pore Deep Cleansing Foam": 280.00,
- "Peach 70 Niacin Brightening Collagen Mask": 135.00,
+ # Toners and pads
+ "Madagascar Centella Hyalu-Cica Brightening Toner": 395.00,
+ "Zero Pore Pad": 580.00,
+ # Sunscreens
+ "Madagascar Centella Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++": 395.00,
+ "Relief Sun: Rice + Probiotics SPF50+ PA++++": 360.00,
+ # Masks
+ "Collagen Gel Mask &ndash; Sedum Jelly": 150.00,
+ "Bouncy Day Collagen Glow Up Hydrogel Mask": 150.00,
+ "Collagen Radiance Mask": 100.00,
+ "Deep Peptide Radiance Mask": 100.00,
  "Airy Fit Sheet Mask": 40.00,
+ "Peach 70 Niacin Brightening Collagen Mask": 135.00,
  "Kojic Acid Turmeric Brightening Gel Mask": 135.00,
  "Zero Pore Blackhead Mud Mask": 350.00,
+ "Red Bean Refreshing Pore Mask": 480.00,
+ "Collagen Night Wrapping Mask": 650.00,
+ "Apricot Blossom Peeling Gel": 300.00,
+ # Moisturisers
+ "Advanced Snail 92 All in One Cream": 460.00,
+ "Seoul 1988 Cream: Snail Mucin 93% + Rice": 500.00,
+ "Collagen Jelly Cream": 500.00,
 }
 
 CURRENCY = "ZAR"
 
 
+# Product cards shorten some names ("Relief Sun: Rice + Probiotics" for the
+# product page's "Relief Sun: Rice + Probiotics SPF50+ PA++++"), and the same
+# name is written with an entity in one place and a literal dash in another.
+# Prices are keyed by the full product name, so a card looked up by its own
+# label would silently fall back to R___ — which is exactly what happened. Both
+# forms are normalised before lookup, and a shortened label is listed here.
+CARD_ALIASES = {
+ "Acne Foam Cleanser":                          "Acne Foam Cleanser &ndash; Heartleaf Foam",
+ "Deep Clean Foam Cleanser - Sedum Hyaluron":   "Deep Clean Foam Cleanser &mdash; Sedum Hyaluron Foam",
+ "Glow Deep Serum: Rice + Alpha Arbutin":       "Glow Deep Serum: Rice + Alpha-Arbutin",
+ "Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++":"Madagascar Centella Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++",
+ "Relief Sun: Rice + Probiotics":               "Relief Sun: Rice + Probiotics SPF50+ PA++++",
+ "Tone Brightening Capsule Ampoule":            "Madagascar Centella Tone Brightening Capsule Ampoule",
+}
+
+
+def norm_name(name):
+    """Entity-free, dash-agnostic, case-folded form of a product name."""
+    text = _html.unescape(name)
+    text = re.sub(r"[\u2010-\u2015]", "-", text)
+    return re.sub(r"\s+", " ", text).strip().lower()
+
+
+def _price_index():
+    index = {}
+    for key, amount in PRICES.items():
+        index[norm_name(key)] = amount
+    for label, target in CARD_ALIASES.items():
+        if target in PRICES:
+            index[norm_name(label)] = PRICES[target]
+    return index
+
+
+PRICE_INDEX = _price_index()
+
+
 def price_of(name):
-    """Formatted price for a product name, or the R___ placeholder."""
+    """Formatted price for a product name or card label, or the R___ placeholder."""
     amount = PRICES.get(name)
+    if amount is None:
+        amount = PRICE_INDEX.get(norm_name(name))
     return f"R{amount:,.2f}" if amount is not None else "R___"
+
+
+CARD_LABELS_SEEN = set()
 
 
 def card(imglabel, brand, name, price=None):
     """Product card. Brand sits above the product name; the rating comes from
     RATINGS so each product carries its own score."""
+    CARD_LABELS_SEEN.add(name)
     price = price or price_of(name)
     href = PRODUCT_PAGES.get(name, "product.html")
     cat, skin, concern = FACETS.get(name, DEFAULT_FACET)
@@ -594,6 +661,14 @@ for p in pages:
     doc = doc.replace("{{OG_IMAGE}}", og_image)
     doc = doc.replace("{{OG_W}}", str(ow)).replace("{{OG_H}}", str(oh))
     doc = doc.replace("{{JSONLD}}", jsonld(p))
+    if p.get("product"):
+        # The buy column's price is written from PRICES, not from the page
+        # markup, so the visible price, the cart, the WhatsApp message and the
+        # JSON-LD offer can never disagree. Pages keep "R___" as their source
+        # text; an unpriced product still renders the placeholder.
+        doc = re.sub(r'(<div class="pdp__price"[^>]*>)[^<]*(</div>)',
+                     lambda m: m.group(1) + price_of(p["product"]["name"]) + m.group(2),
+                     doc)
     for k in NAV_KEYS:
         doc = doc.replace("{{N_%s}}" % k.upper(), "is-active" if p.get("nav") == k else "")
     doc = expand(doc)
@@ -630,3 +705,20 @@ with open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8") as f:
 
 built = sum(1 for p in pages if os.path.exists(os.path.join(ROOT, "pages", p["file"] + ".html")))
 print(f"built {built}/{len(pages)} pages -> dist/")
+
+# A card label that matches no product page prices nothing and links nowhere
+# useful. That drift is invisible in the output — the card just renders R___ —
+# so name it here rather than letting it reach the shop.
+product_names = {norm_name(p["product"]["name"]) for p in pages if p.get("product")}
+product_names |= {norm_name(k) for k in CARD_ALIASES}
+orphans = sorted({n for n in CARD_LABELS_SEEN if norm_name(n) not in product_names})
+if orphans:
+    print("  WARNING: card labels with no matching product page:")
+    for n in orphans:
+        print("    -", n)
+unpriced = sorted({p["product"]["name"] for p in pages
+                   if p.get("product") and price_of(p["product"]["name"]) == "R___"})
+if unpriced:
+    print(f"  {len(unpriced)} products still unpriced (rendering R___):")
+    for n in unpriced:
+        print("    -", n)
