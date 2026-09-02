@@ -16,6 +16,11 @@ window.CASSARO_CONFIG = {
 
   storeName: 'Cassaro Beauty',
 
+  /* The brand's own Instagram. Instagram has no web share endpoint, so the
+     share row's Instagram icon opens the profile rather than pretending to
+     share; copy link beside it is what a customer pastes into a story or DM. */
+  instagramUrl: 'https://www.instagram.com/cassaro_beauty',
+
   /* The brand line, used in the home hero and in the site's meta description. */
   tagline: 'Where self-care becomes art',
 
