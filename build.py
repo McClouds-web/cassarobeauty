@@ -43,7 +43,7 @@ IMAGES = {
  "Sunscreens Category Image":            "skin1004-hyalu-cica-water-fit-sun-serum",
  "Toners Category Image":                "isntree-green-tea-fresh-toner-beige",
  "Skincare Category Image":              "beauty-of-joseon-glow-deep-serum-beige",
- "Moisturisers Category Image":          "dr-althea-147-barrier-cream",
+ "Moisturisers Category Image":          "medicube-collagen-jelly-cream-beige",
  "Face Masks Category Image":            "medicube-deep-peptide-radiance-mask-beige",
 
  # promotional
@@ -66,7 +66,6 @@ IMAGES = {
  # product cards
  "SKIN1004 Madagascar Centella Ampoule Image":       "skin1004-madagascar-centella-ampoule-beige",
  "SKIN1004 Hyalu-Cica Water-Fit Sun Serum Image":    "skin1004-hyalu-cica-water-fit-sun-serum",
- "Dr. Althea 147 Barrier Cream Image":               "dr-althea-147-barrier-cream",
  "K-SECRET Seoul 1988 Cream Image":                  "k-secret-seoul-1988-cream",
  "AXIS-Y Dark Spot Correcting Glow Serum Image":     "axis-y-dark-spot-correcting-glow-serum-beige",
  "Isntree Green Tea Fresh Toner Image":              "isntree-green-tea-fresh-toner-beige",
@@ -211,7 +210,6 @@ PRODUCT_PAGES = {
  "Dark Spot Correcting Glow Serum": "axis-y-dark-spot-correcting-glow-serum.html",
  "Madagascar Centella Ampoule": "skin1004-madagascar-centella-ampoule.html",
  "Hyalu-Cica Water-Fit Sun Serum SPF50+ PA++++": "skin1004-hyalu-cica-water-fit-sun-serum.html",
- "147 Barrier Cream": "dr-althea-147-barrier-cream.html",
  "Seoul 1988 Cream: Snail Mucin 93% + Rice": "k-secret-seoul-1988-cream.html",
  "Deep Peptide Radiance Mask": "medicube-deep-peptide-radiance-mask.html",
  "Collagen Radiance Mask": "medicube-collagen-radiance-mask.html",
@@ -277,7 +275,6 @@ RATINGS = {
  "Dark Spot Correcting Glow Serum":                    (4.6, 182),
  "Green Tea Fresh Toner":                              (4.7, 164),
  "Advanced Snail 92 All in One Cream":                 (4.8, 387),
- "147 Barrier Cream":                                  (4.7, 129),
  "Seoul 1988 Cream: Snail Mucin 93% + Rice":           (4.6, 88),
  "Madagascar Centella Hyalu-Cica Brightening Toner":   (4.7, 178),
  "Madagascar Centella Hyalu-Cica First Ampoule":       (4.8, 224),
@@ -343,7 +340,6 @@ FACETS = {
  "Relief Sun: Rice + Probiotics":                      ("Sunscreens",    "normal combination dry",           "daily-protection hydration"),
  "Collagen Jelly Cream":                               ("Moisturisers",  "normal combination dry",           "hydration"),
  "Advanced Snail 92 All in One Cream":                 ("Moisturisers",  "normal combination dry",           "hydration"),
- "147 Barrier Cream":                                  ("Moisturisers",  "normal dry",                       "hydration soothing"),
  "Seoul 1988 Cream: Snail Mucin 93% + Rice":           ("Moisturisers",  "normal combination dry",           "hydration"),
  "Collagen Gel Mask \u2013 Sedum Jelly":                 ("Face Masks",   "normal combination dry",           "hydration"),
  "Deep Peptide Radiance Mask":                         ("Face Masks",   "normal combination dry",           "hydration brightening"),
