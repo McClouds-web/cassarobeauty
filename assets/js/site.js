@@ -296,9 +296,38 @@
     search.scrollIntoView({ block: 'center' });
   }
 
-  var initial = new URLSearchParams(location.search).get('q');
+  var params  = new URLSearchParams(location.search);
+  var initial = params.get('q');
   if (initial && search) { search.value = initial; }
-  if (initial || (search && search.value)) apply();
+
+  /* The Brands page links here as shop.html?brand=Medicube. Without this the
+     link lands on the full unfiltered grid, which is what it used to do. Any
+     facet works the same way, so ?cat=Toners is available too. */
+  var preset = false;
+  ['brand', 'cat', 'skin', 'concern'].forEach(function (facet) {
+    params.getAll(facet).forEach(function (want) {
+      var target = want.trim().toLowerCase();
+      boxes.forEach(function (b) {
+        if (b.getAttribute('data-facet') === facet &&
+            b.value.trim().toLowerCase() === target) {
+          b.checked = true;
+          preset = true;
+        }
+      });
+    });
+  });
+
+  if (preset) {
+    apply();
+    /* The grid sits below a full-height cover, so a filtered arrival would
+       otherwise open on a photograph with the result out of sight. */
+    var anchor = document.querySelector('[data-result-count]') || grid;
+    if (anchor && 'scrollIntoView' in anchor) {
+      anchor.scrollIntoView({ block: 'start' });
+    }
+  } else if (initial || (search && search.value)) {
+    apply();
+  }
 })();
 
 /* Shop filters collapse behind a toggle on small screens, where the sidebar
