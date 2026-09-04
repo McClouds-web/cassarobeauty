@@ -374,13 +374,14 @@ DEFAULT_FACET = ("Skincare", "normal combination", "hydration")
 # WhatsApp message or Google ever seeing a half-priced product.
 PRICES = {
  # Serums and ampoules
- "Madagascar Centella Ampoule": 575.00,
+ "Madagascar Centella Ampoule": 400.00,
  "Madagascar Centella Hyalu-Cica First Ampoule": 395.00,
  "Madagascar Centella Poremizing Fresh Ampoule": 400.00,
  "Madagascar Centella Tea-Trica Relief Ampoule": 495.00,
  "Azelaic Acid 10 + Hyaluron Redness Soothing Serum": 500.00,
  "First Spray Serum": 350.00,
  "Madagascar Centella Tone Brightening Capsule Ampoule": 95.00,
+ "Niacinamide 10% + TXA 4% Serum": 500.00,
  "Dark Spot Correcting Glow Serum": 390.00,
  "Glow Deep Serum: Rice + Alpha-Arbutin": 350.00,
  # Cleansers
@@ -390,8 +391,10 @@ PRICES = {
  "Madagascar Centella Ampoule Foam": 300.00,
  "Heartleaf Quercetinol Pore Deep Cleansing Foam": 280.00,
  "Centella Cleansing Foam": 200.00,
+ "PDRN Pink Niacinamide Whip Cleanser": 360.00,
  # Toners and pads
  "Madagascar Centella Hyalu-Cica Brightening Toner": 395.00,
+ "Madagascar Centella Toning Toner": 495.00,
  "Green Tea Fresh Toner": 450.00,
  "Madagascar Centella Tea-Trica Purifying Toner": 400.00,
  "Zero Pore Pad": 580.00,
