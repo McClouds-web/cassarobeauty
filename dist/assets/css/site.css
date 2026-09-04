@@ -269,6 +269,11 @@ p  { margin: 0; color: var(--body); }
 .footer h4 { font-size: 15px; margin-bottom: 16px; }
 .footer li { margin-bottom: 10px; }
 .footer li a, .footer address { font-size: 13px; color: var(--body); font-style: normal; line-height: 1.9; }
+/* An inline anchor is only as tall as its text — 18px here, under the 24px
+   minimum touch target. The list already leaves 35px between rows, so the
+   padding buys a 26px target without moving anything. */
+.footer li a { display: inline-block; padding: 4px 0; }
+.footer li { margin-bottom: 6px; }
 .footer li a:hover { color: var(--green); }
 .socials { display: flex; gap: 10px; }
 /* The share row's copy-link control is a button, not a link — it performs an
@@ -1419,14 +1424,14 @@ body:has(.hero--dark) .hero--dark .hero__seal { top: 172px; right: 44px; }
   .grid--2 { grid-template-columns: 1fr; }
   .cats, .cats--4 { grid-template-columns: repeat(2, 1fr); gap: 18px; }
   .pcard__name { font-size: 13px; }
-  .pcard__cat, .rating { font-size: 11px; }
+  .pcard__cat, .rating { font-size: 12px; }
   .price { font-size: 14px; }
   .bloglist .grid--3, .blog-layout .grid--3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 420px) {
   .grid--3, .grid--4 { gap: 12px; }
-  .rating { gap: 2px; font-size: 10px; }
-  .rating .star { font-size: 12px; }
+  .rating { gap: 2px; font-size: 11px; }
+  .rating .star { font-size: 13px; }
 }
 
 /* ---- Trust + support strips ---------------------------------------------- */
@@ -2322,10 +2327,10 @@ body:has(.hero--dark) .hero--dark[class] {
 /* Count on the header cart / wishlist icons */
 .cbadge {
   position: absolute; top: -6px; right: -8px;
-  min-width: 17px; height: 17px; padding: 0 4px;
+  min-width: 18px; height: 18px; padding: 0 4px;
   border-radius: var(--radius-pill, 999px);
   background: var(--gold); color: #fff;
-  font-size: 10px; font-weight: 600; line-height: 17px;
+  font-size: 11px; font-weight: 600; line-height: 18px;
   text-align: center; pointer-events: none;
 }
 
@@ -2375,8 +2380,14 @@ body:has(.hero--dark) .hero--dark[class] {
 .shopsearch .material-symbols-outlined { font-size: 19px; color: var(--muted, #5C5C5C); }
 .shopsearch input { min-width: 210px; }
 @media (max-width: 720px) {
+  /* The toolbar is one nowrap row on desktop. On a phone that squeezed the
+     sort control to 42px, so its selected option was unreadable and the
+     search field was clipped mid-word. Stack the three controls instead. */
+  .shop-bar { flex-direction: column; align-items: stretch; gap: 12px; }
   .shopsearch { width: 100%; }
   .shopsearch input { width: 100%; min-width: 0; }
+  .sortby { display: flex; width: 100%; }
+  .sortby select { flex: 1; min-width: 0; }
 }
 
 /* Legal pages read like documents, so they get a narrow measure
